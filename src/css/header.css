@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Cookie|Kaushan+Script|Pacifico|Permanent+Marker|Tangerine&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff&display=swap');
+
+.header {
+  display: flex;
+  justify-content: center;
+
+  & .headerIzq {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+
+    & .appName {
+      background-size: cover;
+      background-image: url(../img/logo3.png);
+      padding: 0 70px;
+    }
+  }
+
+  & .headerDer {
+    padding: 0 70px;
+    width: 40%;
+    height: 100%;
+    display: grid;
+    grid-template-areas: "explor nov cont log reg";
+
+    & .explorador {
+      grid-area: explor;
+    }
+
+    & .novedades {
+      grid-area: nov;
+    }
+
+    & .contacto {
+      grid-area: cont;
+    }
+
+    & .login {
+      grid-area: log;
+    }
+
+    & .register {
+      grid-area: reg;
+    }
+
+    & a:hover {
+      color: #fff;
+    }
+  }
+}
+
+.textIndex {
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 3px;
+  color: #fb4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  height: 70%;
+  width: 100px;
+  border-radius: 10%;
+}
+
+.flexing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
