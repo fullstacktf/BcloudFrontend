@@ -15,9 +15,12 @@
     height: 100%;
 
     & .appName {
-      background-size: cover;
-      background-image: url(../img/logo3.png);
-      padding: 0 70px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 30%;
+      height: 90%;
+      background-image: url(../img/Color.svg);
     }
   }
 
