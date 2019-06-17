@@ -1,1 +1,0 @@
-{"version":3,"sources":["<input css 1>"],"names":[],"mappings":"AAAA,mBAAmB,UAAU,CAAC,YAAY,CAAC,QAAQ,CAAC,SAAS,CAA7D,KAAK,QAAQ,CAAC,qBAAqB,CAAC,2DAA2D,CAAC,2BAA2B,CAAC,kBAAkB,gCAAgC,CAAC,UAAU,CAAC,2BAA2B,cAAc,CAAC,UAAU,CAAC,aAAa","file":"css.967bad95.css","sourceRoot":"..\\src","sourcesContent":[".containerCarousel{width:100%;height:600px;margin:0;padding:0}"]}
