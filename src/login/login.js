@@ -1,5 +1,8 @@
 import axios from "axios";
-require("/css/login.css");
+import cabecera from "../js/Vue/header";
+import piePagina from "../js/Vue/footer";
+import Vue from "vue";
+require("../css/login.css");
 const send = document.querySelector("#send");
 send.addEventListener("click", () => {
   const email = document.querySelector("#email");
@@ -15,4 +18,14 @@ send.addEventListener("click", () => {
     let a = localStorage["token"];
     console.log(a);
   });
+});
+
+let app = new Vue({
+  el: "#cabecera",
+  render: h => h(cabecera)
+});
+
+app = new Vue({
+  el: "#piePagina",
+  render: h => h(piePagina)
 });

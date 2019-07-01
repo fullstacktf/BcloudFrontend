@@ -1,12 +1,26 @@
 .container {
-  background-color: #ff6;    
-  height: 200px;
-  width: 200px;
-  margin: auto;
+  width: 1200px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageLogin {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-image: url(../login/libro2.png);
+  background-repeat: no-repeat;
+}
+
+.bigContainer {
+  height: 670px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 .email {
@@ -25,4 +39,17 @@
 
 .botons {
   padding-top: 20px;
+}
+
+body {
+  margin: 0;
+  background-size: cover;
+  background-image: url(../img/libros.jpg);
+  background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 500px) {
+  .imageLogin {
+    background-color: lightblue;
+  }
 }

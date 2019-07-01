@@ -26,7 +26,7 @@ app = new Vue({
   el: "#example",
   data: {
     slides: 8,
-    images: "portada2.jpg"
+    images: "portada1.jpg"
   }
 });
 tilt.init(document.querySelectorAll(".imagenes"), {

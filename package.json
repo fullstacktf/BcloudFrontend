@@ -8,7 +8,7 @@
     "comoejecuto": "echo (npm run) siempre delante",
     "liveserver": "live-server --browser=chrome src",
     "parcelserver": "parcel src/index.html --open",
-    "parcelserverlogin": "parcel src/login.html --open",
+    "parcelserverlogin": "parcel src/login/login.html --open",
     "stylelinter": "stylelint src/css/index.css",
     "crearStylelintrc": "code .styleintrc"
   },
