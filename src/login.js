@@ -1,5 +1,5 @@
 import axios from "axios";
-require("../assets/login.css");
+require("/css/login.css");
 const send = document.querySelector("#send");
 send.addEventListener("click", () => {
   const email = document.querySelector("#email");
@@ -15,6 +15,4 @@ send.addEventListener("click", () => {
     let a = localStorage["token"];
     console.log(a);
   });
-  
-
 });
