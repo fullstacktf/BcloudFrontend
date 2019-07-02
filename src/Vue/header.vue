@@ -14,12 +14,13 @@
         <a class="textIndex" href="#">Contact</a>
       </div>
       <div class="login flexing">
-        <a class="textIndex" href="#">Login</a>
+        <router-link to='/login' class="textIndex">Login</router-link>
       </div>
       <div class="register flexing">
         <a class="textIndex" href="#">Register</a>
       </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -60,7 +61,7 @@ export default {
   background-position: center;
   width: 30%;
   height: 90%;
-  background-image: url(../../img/color.svg);
+  background-image: url(../img/color.svg);
 }
 
 .headerDer {
