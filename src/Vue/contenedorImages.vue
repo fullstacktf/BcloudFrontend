@@ -1,31 +1,54 @@
 <template>
-  <div class="contenedorPortadas">
-    <div class="imagenes img1"></div>
-    <div class="imagenes img2"></div>
-    <div class="imagenes img3"></div>
-    <div class="imagenes img4"></div>
-    <div class="imagenes img5"></div>
-    <div class="imagenes img6"></div>
-    <div class="imagenes img7"></div>
-    <div class="imagenes img8"></div>
-    <div class="imagenes img4"></div>
-    <div class="imagenes img5"></div>
-    <div class="imagenes img6"></div>
-    <div class="imagenes img7"></div>
-    <div class="imagenes img6"></div>
-    <div class="imagenes img7"></div>
-    <div class="imagenes img8"></div>
-    <div class="imagenes img4"></div>
-    <div class="imagenes img5"></div>
-    <div class="imagenes img6"></div>
-    <div class="imagenes img7"></div>
-    <div class="imagenes img8"></div>
+  <div>
+    <div class="contenedorPortadas">
+      <div class="imagenes img1"></div>
+      <div class="imagenes img2"></div>
+      <div class="imagenes img3"></div>
+      <div class="imagenes img4"></div>
+      <div class="imagenes img5"></div>
+      <div class="imagenes img6"></div>
+      <div class="imagenes img7"></div>
+      <div class="imagenes img8"></div>
+      <div class="imagenes img4"></div>
+      <div class="imagenes img5"></div>
+      <div class="imagenes img6"></div>
+      <div class="imagenes img7"></div>
+      <div class="imagenes img6"></div>
+      <div class="imagenes img7"></div>
+      <div class="imagenes img8"></div>
+      <div class="imagenes img4"></div>
+      <div class="imagenes img5"></div>
+      <div class="imagenes img6"></div>
+      <div class="imagenes img7"></div>
+      <div class="imagenes img8"></div>
+    </div>
+    <div class="containerCarousel">
+      <carousel-3d :width="300" :height="460">
+        <slide v-for="(slide, i) in slides" :index="i">
+          <img class="imageneses" :src="images" />
+        </slide>
+      </carousel-3d>
+    </div>
   </div>
 </template>
 
 <script>
+import tilt from "vanilla-tilt";
+
+tilt.init(document.querySelectorAll(".imagenes"), {
+  scale: "1.05",
+  glare: true,
+  maxGlare: "0.3"
+});
+
 export default {
-  name: "contenedorImages"
+  name: "contenedorImages",
+  data: function() {
+    return  {
+      slides: 8,
+      images: "portada1.jpg"
+    };
+  }
 };
 </script>
 

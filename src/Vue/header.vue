@@ -20,7 +20,6 @@
         <a class="textIndex" href="#">Register</a>
       </div>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
