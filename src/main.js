@@ -2,6 +2,7 @@ import Vue from "vue";
 import Carousel3d from "vue-carousel-3d";
 import app from "./app"
 import login from "./Vue/login";
+import contenedorImagenes from "./Vue/contenedorImages"
 import VueRouter from "vue-router";
 
 Vue.use(Carousel3d);
@@ -9,7 +10,7 @@ Vue.use(VueRouter);
 
 const routes = [
   { path: '/login', component:login },
-  { path: '/', component:app }
+  { path: '/', component:contenedorImagenes }
 ]
 
 const router = new VueRouter({

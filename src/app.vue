@@ -1,18 +1,15 @@
 <template>
   <div>
     <cabecera></cabecera>
-    <contenedorImagenes></contenedorImagenes>
+    <router-view></router-view>
     <foot></foot>
   </div>
-  
-
-  
+ 
 </template>
 
 <script>
 import cabecera from "./Vue/header"
 import foot from "./Vue/footer"
-import login from "./Vue/login";
 import contenedorImagenes from "./Vue/contenedorImages"
 
 export default {
@@ -20,9 +17,7 @@ export default {
   
   components:{
     cabecera,
-    foot,
-    contenedorImagenes,
-    login
+    foot
   }
 }
 </script>
