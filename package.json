@@ -9,6 +9,7 @@
     "liveserver": "live-server --browser=chrome src",
     "parcelserver": "parcel src/index.html --open",
     "parcelserverlogin": "parcel src/login/login.html --open",
+    "parcelserverregister": "parcel src/register/register.html --open",
     "stylelinter": "stylelint src/css/index.css",
     "crearStylelintrc": "code .styleintrc"
   },

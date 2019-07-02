@@ -1,0 +1,27 @@
+.contenedorGrande {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.78);
+}
+
+.contenedorModal {
+  width: 100%;
+  height: 650px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: 580px;
+  height: 650px;
+  background-color: aqua;
+}
+
+body {
+  margin: 0;
+  background-size: cover;
+  height: 800px;
+  background-image: url(../img/libros.jpg);
+  background-repeat: no-repeat;
+}
