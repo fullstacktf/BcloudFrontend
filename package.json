@@ -37,6 +37,8 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "compass": "^0.1.1",
+    "compass-mixins": "^0.12.10",
     "vanilla-tilt": "^1.7.0",
     "vue": "^2.6.10",
     "vue-carousel": "^0.18.0",

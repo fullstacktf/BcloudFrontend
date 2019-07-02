@@ -6,13 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Registro</title>
     <link rel="stylesheet" href="register.css" />
+    <link rel="stylesheet" href="frasePapel.css" />
+    <link rel="stylesheet" href="cardSlide.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arizonia|Cinzel+Decorative"
+      rel="stylesheet"
+    />
     <script defer src="register.js"></script>
   </head>
   <body>
     <div class="contenedorGrande">
-      <div id="cabecera"></div>
+      <div id="cabecera" class="header"></div>
       <div class="contenedorModal">
-        <div class="modal"></div>
+        <div class="modal">
+          <div class="frase">
+            <p aria-label="Registro">
+              <span data-text="R">R</span>
+              <span data-text="E">E</span>
+              <span data-text="G">G</span>
+              <span data-text="I">I</span>
+              <span data-text="S">S</span>
+              <span data-text="T">T</span>
+              <span data-text="E">E</span>
+              <span data-text="R">R</span>
+            </p>
+          </div>
+          <div class="row row1">
+            <span>
+              <input
+                class="card-slide"
+                type="text"
+                placeholder="Introduce your name"
+              /><label>Name</label>
+            </span>
+          </div>
+          <div class="row row2">
+            <span>
+              <input
+                class="card-slide"
+                type="text"
+                placeholder="Introduce your Email"
+              /><label>Email</label>
+            </span>
+          </div>
+          <div class="row row3">
+            <span>
+              <input
+                class="card-slide"
+                type="text"
+                placeholder="Introduce your Password"
+              /><label>Password</label>
+            </span>
+          </div>
+        </div>
       </div>
       <div id="piePagina"></div>
     </div>
