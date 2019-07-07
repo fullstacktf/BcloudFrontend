@@ -1,9 +1,8 @@
 p {
   color: #fff;
-  font-family: "Arizonia", cursive;
-  font-family: "Cinzel Decorative", cursive;
-  font-size: 1em;
-  font-weight: 700;
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+  font-size: 0.5em;
 }
 
 p span {
@@ -47,7 +46,7 @@ p span:hover::after {
 }
 
 p span + span {
-  margin-left: 0.3em;
+  margin-left: 0;
 }
 
 @media (min-width: 20em) {

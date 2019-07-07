@@ -1,84 +1,54 @@
-@import "compass";
-
-.row {
-  z-index: 1;
-  text-align: center;
+.inputText {
+  position: relative;
+  font-size: 1.5em;
+  background: linear-gradient(21deg, #fb4, #fb4);
+  padding: 3px;
   display: flex;
   justify-content: center;
+  text-align: center;
   align-items: center;
+  border-radius: 9999em;
 }
 
-.row::before {
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-
-.row span {
-  position: relative;
-  margin: 30px 10px;
-}
-
-.card-slide {
-  width: 215px;
-  padding: 10px 0 10px 15px;
-  font-family: "Arizonia", cursive;
-  font-weight: 400;
-  color: #377d6a;
-  background: #efefef;
-  border: 0;
-  border-radius: 3px;
-  text-indent: 60px;
-  transition: all 0.3s ease-in-out;
-}
-
-.card-slide::-webkit-input-placeholder {
-  color: #efefef;
-  text-indent: 0;
-  font-weight: 300;
-}
-
-label {
-  padding: 10px 15px;
-  text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
-  background: #7ab893;
-  font-size: 14px;
-  transition: all 0.3s ease-in-out;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  transform-origin: right center;
-  transform: perspective(300px) scaleX(1) rotateY(0deg);
-}
-
-.card-slide + label {
+.inputText span {
+  transform: scale(0.993, 0.94);
+  transition: transform 0.5s, opacity 0.25s;
+  opacity: 0;
   position: absolute;
-  top: 0;
+  z-index: 0;
+  margin: 4px;
   left: 0;
-  padding: 10px 15px;
-  text-shadow: 0 1px 0 rgba(19, 74, 70, 0.4);
-  background: #fb4;
-  transition: all 0.3s ease-in-out;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  transform-origin: right center;
-  transform: perspective(300px) scaleX(1) rotateY(0deg);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 3px #fff,
+    0 0 0 4px #fff,
+    3px -3px 30px #000,
+    -3px 3px 30px #fb4;
 }
 
-.card-slide:focus,
-.card-slide:active {
-  color: #377d6a;
-  text-indent: 0;
-  background: #fff;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+.inputText *:not(span) {
+  width: 300px;
+  height: 30px;
+  position: relative;
+  display: inherit;
+  border-radius: inherit;
+  text-align: center;
+  margin: 0;
+  border: none;
+  outline: none;
+  padding: 0 0.325em;
+  z-index: 1;
 }
 
-.card-slide:focus::-webkit-input-placeholder,
-.card-slide:active::-webkit-input-placeholder {
-  color: green;
+.inputText *:not(span):focus + span {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.card-slide:focus + label,
-.card-slide:active + label {
-  transform: perspective(600px) translateX(-100%) rotateY(80deg);
+::placeholder {
+  color: #cbd0d5;
 }
