@@ -31,11 +31,24 @@ body {
   align-items: center;
 }
 
-.row1 {
-  grid-area: row1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.nameField {
+  grid-area: frase;
+}
+
+.emailField {
+  grid-area: emailField;
+}
+
+.passwordField {
+  grid-area: passwordField;
+}
+
+.buttonsField {
+  grid-area: buttonsField;
+}
+
+.tagsInputField {
+  grid-area: tagsInputField;
 }
 
 .modal {
@@ -43,8 +56,12 @@ body {
   height: 700px;
   display: grid;
   grid-template-columns: 750px;
-  grid-template-rows: 100px 100px;
+  grid-template-rows: 100px 100px 100px 100px 100px 100px;
   grid-template-areas:
     "frase"
-    "row1";
+    "nameField"
+    "emailField"
+    "passwordField"
+    "tagsInputField"
+    "buttonsField";
 }

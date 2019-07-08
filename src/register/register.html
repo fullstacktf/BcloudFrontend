@@ -7,7 +7,7 @@
     <title>Registro</title>
     <link rel="stylesheet" href="register.css" />
     <link rel="stylesheet" href="frasePapel.css" />
-    <link rel="stylesheet" href="cardSlide.css" />
+    <link rel="stylesheet" href="form.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Arizonia|Cinzel+Decorative"
       rel="stylesheet"
@@ -43,13 +43,32 @@
               <span data-text="R">R</span>
             </p>
           </div>
-          <div class="row1">
-            <p>
-              <span class="inputText">
-                <input type="text" placeholder="Gradient border focus fun" />
-                <span></span>
-              </span>
-            </p>
+          <div class="wrapper">
+            <form>
+              <div class="group nameField flex">
+                <input type="text" required="required" /><span
+                  class="highlight"
+                ></span
+                ><span class="bar"></span><label>Name</label>
+              </div>
+              <div class="group emailField flex">
+                <input type="text" required="required" /><span
+                  class="highlight"
+                ></span
+                ><span class="bar"></span><label>Email</label>
+              </div>
+              <div class="group passwordField flex">
+                <input type="password" required="required" /><span
+                  class="highlight"
+                ></span
+                ><span class="bar"></span><label>Password</label>
+              </div>
+              <div class="tagsInputField"></div>
+              </div>
+              <div class="btn-box buttonsField">
+                <span>AQUI VAN LOS BOTONES</span>
+              </div>
+            </form>
           </div>
         </div>
       </div>
