@@ -1,5 +1,5 @@
-import cabecera from "../js/Vue/header";
-import piePagina from "../js/Vue/footer";
+import cabecera from "../Vue/header";
+import piePagina from "../Vue/footer";
 import Vue from "vue";
 
 let app = new Vue({
