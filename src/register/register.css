@@ -1,0 +1,67 @@
+.contenedorGrande {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.78);
+}
+
+.contenedorModal {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  position: static;
+}
+
+body {
+  margin: 0;
+  background-size: cover;
+  height: 1000px;
+  background-image: url(../img/libros.jpg);
+  background-repeat: no-repeat;
+}
+
+.frase {
+  grid-area: frase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameField {
+  grid-area: frase;
+}
+
+.emailField {
+  grid-area: emailField;
+}
+
+.passwordField {
+  grid-area: passwordField;
+}
+
+.buttonsField {
+  grid-area: buttonsField;
+}
+
+.tagsInputField {
+  grid-area: tagsInputField;
+}
+
+.modal {
+  width: 750px;
+  height: 700px;
+  display: grid;
+  grid-template-columns: 750px;
+  grid-template-rows: 100px 100px 100px 100px 100px 100px;
+  grid-template-areas:
+    "frase"
+    "nameField"
+    "emailField"
+    "passwordField"
+    "tagsInputField"
+    "buttonsField";
+}
