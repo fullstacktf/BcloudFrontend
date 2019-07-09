@@ -17,7 +17,7 @@
         <router-link to='/login' class="textIndex">Login</router-link>
       </div>
       <div class="register flexing">
-        <a class="textIndex" href="#">Register</a>
+        <router-link to='/register' class="textIndex">Register</router-link>
       </div>
     </div>
   </div>
