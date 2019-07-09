@@ -5,7 +5,7 @@
     </div>
     <div class="headerDer">
       <div class="explorador flexing">
-        <a class="textIndex" href="#">Explorer</a>
+        <router-link to="/explorer" class="textIndex">Explorer</router-link>
       </div>
       <div class="novedades flexing">
         <a class="textIndex" href="#">News</a>
@@ -14,10 +14,10 @@
         <a class="textIndex" href="#">Contact</a>
       </div>
       <div class="login flexing">
-        <router-link to='/login' class="textIndex">Login</router-link>
+        <router-link to="/login" class="textIndex">Login</router-link>
       </div>
       <div class="register flexing">
-        <router-link to='/register' class="textIndex">Register</router-link>
+        <router-link to="/register" class="textIndex">Register</router-link>
       </div>
     </div>
   </div>

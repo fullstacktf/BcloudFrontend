@@ -1,92 +1,91 @@
 <template>
-  <body>
-    <div class="contenedorGrande">
-      <div class="contenedorModal">
-        <div class="modal">
-          <div class="frase">
-            <p aria-label="Registro">
-              <span data-text="R">R</span>
-              <span data-text="E">E</span>
-              <span data-text="G">G</span>
-              <span data-text="I">I</span>
-              <span data-text="S">S</span>
-              <span data-text="T">T</span>
-              <span data-text="E">E</span>
-              <span data-text="R">R</span>
-            </p>
-          </div>
-          <div class="wrapper">
-            <form>
-              <div class="group nameField flex">
-                <input type="text" required="required" /><span
-                  class="highlight"
-                ></span
-                ><span class="bar"></span><label>Name</label>
-              </div>
-              <div class="group emailField flex">
-                <input type="text" required="required" /><span
-                  class="highlight"
-                ></span
-                ><span class="bar"></span><label>Email</label>
-              </div>
-              <div class="group passwordField flex">
-                <input type="password" required="required" /><span
-                  class="highlight"
-                ></span
-                ><span class="bar"></span><label>Password</label>
-              </div>
-              <div class="tagsInputField">
-                <Multiselect></Multiselect>
-              </div>
-              </div>
-              <div class="btn-box buttonsField">
-                <span>AQUI VAN LOS BOTONES</span>
-              </div>
-            </form>
-          </div>
+<body>
+  <div class="contenedorGrande">
+    <div class="contenedorModal">
+      <div class="modal">
+        <div class="frase">
+          <p aria-label="Registro">
+            <span data-text="R">R</span>
+            <span data-text="E">E</span>
+            <span data-text="G">G</span>
+            <span data-text="I">I</span>
+            <span data-text="S">S</span>
+            <span data-text="T">T</span>
+            <span data-text="E">E</span>
+            <span data-text="R">R</span>
+          </p>
+        </div>
+        <div class="wrapper">
+          <form>
+            <div class="group nameField flex">
+              <input type="text" required="required" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Name</label>
+            </div>
+            <div class="group emailField flex">
+              <input type="text" required="required" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Email</label>
+            </div>
+            <div class="group passwordField flex">
+              <input type="password" required="required" />
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label>Password</label>
+            </div>
+            <div class="tagsInputField">
+              <multiselect v-model="selected" :multiple="true" :options="options"></multiselect>
+            </div>
+            <div class="btn-box buttonsField">
+              <span>AQUI VAN LOS BOTONES</span>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </template>
 
 
 <script>
-import Multiselect from 'vue-multiselect'
+import Multiselect from "vue-multiselect";
 export default {
-  components: {
-    Multiselect
-  },
-  data () {
+  components: { Multiselect },
+  data() {
     return {
-      value: [
-        { name: 'Javascript', code: 'js' }
-      ],
+      selected: null,
       options: [
-        { name: 'Vue.js', code: 'vu' },
-        { name: 'Javascript', code: 'js' },
-        { name: 'Open Source', code: 'os' }
+        "Laravel",
+        "Laravel 5",
+        "Vue JS",
+        "ItSolutionStuff.com",
+        "HDTuto.com"
       ]
-    }
-  },
-  methods: {
-    addTag (newTag) {
-      const tag = {
-        name: newTag,
-        code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
-      }
-      this.options.push(tag)
-      this.value.push(tag)
-    }
+    };
   }
-}
+};
 </script>
 
 <style>
+.tagsInputField {
+  background: 0 0;
+  color: #c6c6c6;
+  font-size: 18px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 350px;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #fff;
+}
+
 .contenedorGrande {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.78);
+  background-color: rgba(0, 0, 0, 0.38);
 }
 
 .contenedorModal {
@@ -296,5 +295,4 @@ input[type="password"] {
   justify-content: center;
   align-items: center;
 }
-
 </style>

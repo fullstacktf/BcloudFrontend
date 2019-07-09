@@ -10,6 +10,7 @@ Vue.use(Carousel3d);
 Vue.use(VueRouter);
 
 const routes = [
+  { path: "/explorer", component: contenedorImagenes },
   { path: "/register", component: register },
   { path: "/login", component: login },
   { path: "/", component: contenedorImagenes }
