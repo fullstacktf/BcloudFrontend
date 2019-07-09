@@ -74,8 +74,19 @@ export default {
 </script>
 
 <style>
-.prueba {
-  background-color: yellow;
+div.multiselect__tags {
+  background: none;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #fff;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 10px 5px 5px;
+}
+
+.multiselect__tags > .multiselect__placeholder {
+  color: #c6c6c6;
 }
 
 .contenedorGrande {
