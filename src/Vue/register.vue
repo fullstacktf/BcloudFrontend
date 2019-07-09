@@ -1,5 +1,9 @@
 <template>
 <body>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"
+  />
   <div class="contenedorGrande">
     <div class="contenedorModal">
       <div class="modal">
@@ -38,7 +42,7 @@
             <div class="tagsInputField">
               <multiselect v-model="selected" :multiple="true" :options="options"></multiselect>
             </div>
-            <div class="btn-box buttonsField">
+            <div class="btn-box buttonsField prueba">
               <span>AQUI VAN LOS BOTONES</span>
             </div>
           </form>
@@ -70,16 +74,8 @@ export default {
 </script>
 
 <style>
-.tagsInputField {
-  background: 0 0;
-  color: #c6c6c6;
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: 350px;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid #fff;
+.prueba {
+  background-color: yellow;
 }
 
 .contenedorGrande {
