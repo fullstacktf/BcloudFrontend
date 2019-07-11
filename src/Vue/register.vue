@@ -40,7 +40,12 @@
               <label>Password</label>
             </div>
             <div class="tagsInputField">
-              <multiselect v-model="selected" :multiple="true" :options="options"></multiselect>
+              <multiselect
+                v-model="selected"
+                :multiple="true"
+                placeholder="Your tastes"
+                :options="options"
+              ></multiselect>
             </div>
             <div class="btn-box buttonsField prueba">
               <span>AQUI VAN LOS BOTONES</span>
@@ -62,11 +67,20 @@ export default {
     return {
       selected: null,
       options: [
-        "Laravel",
-        "Laravel 5",
-        "Vue JS",
-        "ItSolutionStuff.com",
-        "HDTuto.com"
+        "Aventura",
+        "Terror",
+        "Romántica",
+        "Ficción",
+        "Investigación",
+        "Biografía",
+        "Infantil",
+        "Autoayuda",
+        "Erótica",
+        "Hogar",
+        "Enciclopedia",
+        "Política",
+        "Sociedad",
+        "Viajes"
       ]
     };
   }
@@ -74,6 +88,52 @@ export default {
 </script>
 
 <style>
+div.multiselect__content-wrapper {
+  background: white;
+}
+
+input.multiselect__input {
+  color: #c6c6c6;
+  background: none;
+}
+
+div.multiselect.multiselect--active {
+  color: #555;
+}
+
+input.multiselect__input::placeholder {
+  font-weight: normal;
+  color: #c6c6c6;
+}
+
+span.multiselect__tag {
+  background: #fb1;
+  color: #000;
+}
+
+span.multiselect__option--selected.multiselect__option--highlight {
+  background: #e8bf05;
+  color: #fff;
+}
+
+span.multiselect__option--selected.multiselect__option--highlight::after {
+  background: #e8bf05;
+  content: attr(data-deselect);
+  color: #fff;
+}
+
+span.multiselect__option--highlight {
+  background: #ff7e05;
+  outline: none;
+  color: #fff;
+}
+
+span.multiselect__option--highlight:after {
+  content: attr(data-select);
+  background: #ff7e05;
+  color: #fff;
+}
+
 div.multiselect__tags {
   background: none;
   border: none;
@@ -92,7 +152,7 @@ div.multiselect__tags {
 .contenedorGrande {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.38);
+  background-color: rgba(0, 0, 0, 0.78);
 }
 
 .contenedorModal {
@@ -258,11 +318,11 @@ textarea:focus {
 }
 
 label {
-  color: #c6c6c6;
-  font-size: 16px;
   font-weight: normal;
   position: absolute;
   pointer-events: none;
+  color: #c6c6c6;
+  font-size: 16px;
   left: 5px;
   top: 10px;
   transition: 300ms ease all;
