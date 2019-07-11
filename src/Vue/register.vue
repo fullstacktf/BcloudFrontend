@@ -1,56 +1,11 @@
 <template>
 <body>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"
-  />
   <div class="contenedorGrande">
     <div class="contenedorModal">
       <div class="modal">
-        <div class="frase">
-          <p aria-label="Registro">
-            <span data-text="R">R</span>
-            <span data-text="E">E</span>
-            <span data-text="G">G</span>
-            <span data-text="I">I</span>
-            <span data-text="S">S</span>
-            <span data-text="T">T</span>
-            <span data-text="E">E</span>
-            <span data-text="R">R</span>
-          </p>
-        </div>
+        <registerLetrasTop></registerLetrasTop>
         <div class="wrapper">
-          <form>
-            <div class="group nameField flex">
-              <input type="text" required="required" />
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Name</label>
-            </div>
-            <div class="group emailField flex">
-              <input type="text" required="required" />
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Email</label>
-            </div>
-            <div class="group passwordField flex">
-              <input type="password" required="required" />
-              <span class="highlight"></span>
-              <span class="bar"></span>
-              <label>Password</label>
-            </div>
-            <div class="tagsInputField">
-              <multiselect
-                v-model="selected"
-                :multiple="true"
-                placeholder="Your tastes"
-                :options="options"
-              ></multiselect>
-            </div>
-            <div class="btn-box buttonsField prueba">
-              <span>AQUI VAN LOS BOTONES</span>
-            </div>
-          </form>
+          <registerForm></registerForm>
         </div>
       </div>
     </div>
@@ -60,95 +15,15 @@
 
 
 <script>
-import Multiselect from "vue-multiselect";
+import registerLetrasTop from "./components/register/registerLetrasTop";
+import registerForm from "./components/register/registerForm";
+
 export default {
-  components: { Multiselect },
-  data() {
-    return {
-      selected: null,
-      options: [
-        "Aventura",
-        "Terror",
-        "Romántica",
-        "Ficción",
-        "Investigación",
-        "Biografía",
-        "Infantil",
-        "Autoayuda",
-        "Erótica",
-        "Hogar",
-        "Enciclopedia",
-        "Política",
-        "Sociedad",
-        "Viajes"
-      ]
-    };
-  }
+  components: { registerLetrasTop, registerForm }
 };
 </script>
 
 <style>
-div.multiselect__content-wrapper {
-  background: white;
-}
-
-input.multiselect__input {
-  color: #c6c6c6;
-  background: none;
-}
-
-div.multiselect.multiselect--active {
-  color: #555;
-}
-
-input.multiselect__input::placeholder {
-  font-weight: normal;
-  color: #c6c6c6;
-}
-
-span.multiselect__tag {
-  background: #fb1;
-  color: #000;
-}
-
-span.multiselect__option--selected.multiselect__option--highlight {
-  background: #e8bf05;
-  color: #fff;
-}
-
-span.multiselect__option--selected.multiselect__option--highlight::after {
-  background: #e8bf05;
-  content: attr(data-deselect);
-  color: #fff;
-}
-
-span.multiselect__option--highlight {
-  background: #ff7e05;
-  outline: none;
-  color: #fff;
-}
-
-span.multiselect__option--highlight:after {
-  content: attr(data-select);
-  background: #ff7e05;
-  color: #fff;
-}
-
-div.multiselect__tags {
-  background: none;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid #fff;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 10px 10px 5px 5px;
-}
-
-.multiselect__tags > .multiselect__placeholder {
-  color: #c6c6c6;
-}
-
 .contenedorGrande {
   width: 100%;
   height: 100%;
@@ -161,33 +36,6 @@ div.multiselect__tags {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.frase {
-  grid-area: frase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.nameField {
-  grid-area: frase;
-}
-
-.emailField {
-  grid-area: emailField;
-}
-
-.passwordField {
-  grid-area: passwordField;
-}
-
-.buttonsField {
-  grid-area: buttonsField;
-}
-
-.tagsInputField {
-  grid-area: tagsInputField;
 }
 
 .modal {
@@ -203,163 +51,5 @@ div.multiselect__tags {
     "passwordField"
     "tagsInputField"
     "buttonsField";
-}
-
-p {
-  color: #fff;
-  font-weight: 600;
-  font-family: "Raleway", sans-serif;
-  font-size: 0.5em;
-}
-
-p span {
-  display: inline-block;
-  position: relative;
-  transform-style: preserve-3d;
-  perspective: 500;
-  -webkit-font-smoothing: antialiased;
-}
-
-p span::before,
-p span::after {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: -1px;
-  transform-origin: left top;
-  transition: all ease-out 0.3s;
-  content: attr(data-text);
-}
-
-p span::before {
-  z-index: 1;
-  color: rgba(0, 0, 0, 0.2);
-  transform: scale(1.1, 1) skew(0deg, 20deg);
-}
-
-p span::after {
-  z-index: 2;
-  color: #fb4;
-  text-shadow: -1px 0 1px #fb4, 1px 0 1px rgba(0, 0, 0, 0.8);
-  transform: rotateY(-40deg);
-}
-
-p span:hover::before {
-  transform: scale(1.1, 1) skew(0deg, 5deg);
-}
-
-p span:hover::after {
-  transform: rotateY(-10deg);
-}
-
-p span + span {
-  margin-left: 0;
-}
-
-@media (min-width: 20em) {
-  p {
-    font-size: 2em;
-  }
-
-  p span::before,
-  p span::after {
-    display: block;
-  }
-}
-
-@media (min-width: 10em) {
-  p {
-    font-size: 1em;
-  }
-}
-
-@media (min-width: 20em) {
-  p {
-    font-size: 3em;
-  }
-}
-
-@media (min-width: 30em) {
-  p {
-    font-size: 4em;
-  }
-}
-
-form {
-  width: 320px;
-  margin: 45px auto;
-}
-
-.group {
-  position: relative;
-  margin: 45px 0;
-}
-
-textarea {
-  resize: none;
-}
-
-input,
-textarea {
-  background: none;
-  color: #c6c6c6;
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: 350px;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid #fff;
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-}
-
-label {
-  font-weight: normal;
-  position: absolute;
-  pointer-events: none;
-  color: #c6c6c6;
-  font-size: 16px;
-  left: 5px;
-  top: 10px;
-  transition: 300ms ease all;
-}
-
-input:focus ~ label,
-textarea:focus ~ label,
-input:valid ~ label,
-textarea:valid ~ label {
-  top: -14px;
-  font-size: 12px;
-  color: #fb3;
-}
-
-.bar::before {
-  content: "";
-  height: 2px;
-  width: 0;
-  bottom: 0;
-  position: absolute;
-  background: #fb3;
-  transition: 300ms ease all;
-  left: 0%;
-}
-
-input:focus ~ .bar::before,
-textarea:focus ~ .bar::before {
-  width: 320px;
-}
-
-input[type="password"] {
-  letter-spacing: 0.3em;
-}
-
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>
