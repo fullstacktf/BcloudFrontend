@@ -51,9 +51,9 @@ export default {
       title: "",
       gener: "",
       author:"",
-      rating: "",
+      rating: 1,
       publicationDate: "",
-      price: "",
+      price: 1,
       description: ""
     };
   },
@@ -68,17 +68,17 @@ export default {
       data.append("gener",this.gener);
       data.append("author",this.author);
       data.append("rating",this.rating);
+      data.append("publicationDate",this.publicationDate);
       data.append("price",this.price);
       data.append("description",this.description);
-      console.log(data);
-      /*axios.post("http://localhost:8081/upload", data, {
+      axios.post("http://localhost:8081/books/upload", data, {
           headers: {
-            "Content-Type": this.file.type
+            "Content-Type": this.epubFile.type
           }
         })
         .then(data => {
           console.log(data);
-        });*/
+        });
 
     }
   }
