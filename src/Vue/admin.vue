@@ -5,11 +5,11 @@
       <form ref="uploadForm" id="uploadForm" enctype="multipart/form-data">
 
         <label for="file1">EPUB
-          <input type="file" style="visibility: hidden;" id="file1" ref="file1" />
+          <input type="file" id="file1" ref="file1"/>
         </label> 
 
         <label for="file2">PHOTO
-          <input type="file" id="file2" ref="file2" />
+          <input type="file" id="file2" ref="file2"/>
         </label> 
 
         <button class="button" @click="uploadBook">Upload Book</button>
@@ -20,19 +20,19 @@
       <h2>Book data</h2>
       <form ref="uploadForm2" id="uploadForm2" enctype="multipart/form-data">
         <label for="title">Title</label>
-        <input type="text" id="title" v-bind="title" />
+        <input type="text" id="title" v-model="title" />
         <label for="gener">Gener</label>
-        <input type="text" id="rating" v-bind="gener" />
+        <input type="text" id="rating" v-model="gener" />
         <label for="author">Author</label>
-        <input type="text" id="author" v-bind="author" />
+        <input type="text" id="author" v-model="author" />
         <label for="publicationDate">Publication date</label>
-        <input type="date" id="publicationDate" v-bind="publicationDate" />
+        <input type="date" id="publicationDate" v-model="publicationDate" />
         <label for="rating">Rating</label>
-        <input type="text" id="rating" v-bind="rating"/>
+        <input type="text" id="rating" v-model="rating"/>
         <label for="price">Price</label>
-        <input type="text" id="price" v-bind="price"/>
+        <input type="text" id="price" v-model="price"/>
         <label for="description">description</label>
-        <textarea id="description" v-bind="price"/>
+        <textarea id="description" v-model="description"/>
       </form>
     </div>
     
@@ -46,8 +46,8 @@ import FormData from "form-data";
 export default {
   data: () => {
     return {
-      file: "",
-      file2: "",
+      epubFile: "",
+      imageFile: "",
       title: "",
       gener: "",
       author:"",
@@ -59,19 +59,27 @@ export default {
   },
   methods: {
     uploadBook() {
-      this.file = this.$refs.file.files[0];
-      console.log(this.file);
+      this.epubFile = this.$refs.file1.files[0];
+      this.imageFile = this.$refs.file2.files[0];
       let data = new FormData();
-      data.append("file", this.file, this.file.fileName);
-      axios
-        .post("http://localhost:8081/upload", data, {
+      data.append("epubFile", this.epubFile, this.epubFile.fileName);
+      data.append("imageFile", this.imageFile, this.imageFile.fileName);
+      data.append("title",this.title);
+      data.append("gener",this.gener);
+      data.append("author",this.author);
+      data.append("rating",this.rating);
+      data.append("price",this.price);
+      data.append("description",this.description);
+      console.log(data);
+      /*axios.post("http://localhost:8081/upload", data, {
           headers: {
             "Content-Type": this.file.type
           }
         })
         .then(data => {
           console.log(data);
-        });
+        });*/
+
     }
   }
 };
