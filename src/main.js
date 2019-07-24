@@ -5,6 +5,9 @@ import login from './Vue/login'
 import contenedorImagenes from './Vue/contenedorImages'
 import register from './Vue/register'
 import VueRouter from 'vue-router'
+import book from './Vue/book'
+import buy from './Vue/buy'
+import admin from './Vue/admin'
 
 Vue.use(Carousel3d)
 Vue.use(VueRouter)
@@ -13,6 +16,9 @@ const routes = [
   { path: '/explorer', component: contenedorImagenes },
   { path: '/register', component: register },
   { path: '/login', component: login },
+  { path: '/book', component: book },
+  { path: '/buy/:title', component: buy },
+  { path: '/admin', component: admin },
   { path: '/', component: contenedorImagenes },
 ]
 

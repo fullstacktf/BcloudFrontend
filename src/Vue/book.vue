@@ -2,14 +2,15 @@
   <div class="container">
     <div class="photoContainer">
       <div class="photo">
-      <img :src="image">
+      <img :src="urlImage">
       </div>
     </div>
     
     <div class="contenido">
       <h1>{{title}}</h1>
       <h3> Author: {{autor}} </h3>
-      <h3> Rating: {{valoracion}}/10</h3> 
+      <h3> Rating: {{valoracion}}/10</h3>
+      <h3> Publication date: {{publicationDate}}</h3>  
       <h4> Description: {{descripcion}}</h4>
       <div class="prices">
         <h2>Price: Now: ${{price}} &nbsp;</h2> <h3> before: &nbsp;</h3> <h3  id="tachado"> ${{price + 5}}</h3>
@@ -18,11 +19,8 @@
       <div class="buttons">
         <button id="like" @click="like"> <i class="fa fa-heart"></i>&nbsp;Like</button>
         <button @click="buy">Buy</button>
-      </div>
-      
-    </div>
-
-    
+      </div>  
+    </div>  
   </div>
 </template>
 
@@ -30,13 +28,14 @@
 
 export default {
   data: () => {
-    return{
-      image: 'portada1.jpg',
+    return {
+      urlImage: 'portada1.jpg',
+      urlEbook: "",
       title: "El Secreto de la sirena",
       autor: "Sergio Puto Amo del Pino Hernández",
+      publicationDate: "20-07-2014",
       descripcion: "Lorem Ipsum es simplemente el orem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas",
-      valoracion: 10,
-      url: "",
+      valoracion: 10,   
       price: 19.90
     }
   },
