@@ -15,8 +15,8 @@
 
 <script>
 export default {
-  name: "registerLetrasTop"
-};
+  name: 'registerLetrasTop',
+}
 </script>
 
 <style>
@@ -30,7 +30,7 @@ export default {
 p {
   color: #fff;
   font-weight: 600;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 0.5em;
 }
 
@@ -82,7 +82,6 @@ p span + span {
   p {
     font-size: 2em;
   }
-
   p span::before,
   p span::after {
     display: block;

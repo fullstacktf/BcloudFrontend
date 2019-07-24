@@ -12,16 +12,18 @@
         "declaration-block-trailing-semicolon": "always",
         "declaration-no-important": true,
         "declaration-colon-space-before": "never",
-        "declaration-colon-space-after": "always",
+        "declaration-colon-space-after": "always-single-line",
         "function-url-quotes": "always",
         "font-family-name-quotes": "always-unless-keyword",
         "comment-whitespace-inside": "always",
         "comment-empty-line-before": "always",
-        "rule-empty-line-before": "always-multi-line",
+        "rule-empty-line-before": ["always-multi-line", {
+        except: ["inside-block"]
+      }],
         "selector-pseudo-element-colon-notation": "double",
         "media-feature-range-operator-space-before": "always",
         "media-feature-range-operator-space-after": "always",
-        "media-feature-parentheses-space-inside": "always",
+        "media-feature-parentheses-space-inside": "never",
         "media-feature-colon-space-after": "always"
     }
 }
