@@ -19,21 +19,22 @@
       <label>Password</label>
     </div>
     <registerTagsBottom></registerTagsBottom>
-    <div class="btn-box buttonsField prueba">
-      <span>AQUI VAN LOS BOTONES</span>
+    <div class="buttonsField">
+      <registerButtonsBottom></registerButtonsBottom>
     </div>
   </form>
 </template>
 
 <script>
-import registerTagsBottom from "./registerTagsBottom";
+import registerTagsBottom from './registerTagsBottom'
+import registerButtonsBottom from './registerButtonsBottom'
 export default {
-  name: "registerForm",
-  components: { registerTagsBottom }
-};
+  name: 'registerForm',
+  components: { registerTagsBottom, registerButtonsBottom },
+}
 </script>
 
-<style>
+<style scope>
 .nameField {
   grid-area: frase;
 }
@@ -103,7 +104,7 @@ textarea:valid ~ label {
 }
 
 .bar::before {
-  content: "";
+  content: '';
   height: 2px;
   width: 0;
   bottom: 0;
@@ -118,7 +119,7 @@ textarea:focus ~ .bar::before {
   width: 320px;
 }
 
-input[type="password"] {
+input[type='password'] {
   letter-spacing: 0.3em;
 }
 

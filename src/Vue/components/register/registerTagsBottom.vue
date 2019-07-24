@@ -9,35 +9,35 @@
 </template>
 
 <script>
-import Multiselect from "vue-multiselect";
+import Multiselect from 'vue-multiselect'
 export default {
-  name: "registerTagsBottom",
+  name: 'registerTagsBottom',
   components: { Multiselect },
   data() {
     return {
       selected: null,
       options: [
-        "Aventura",
-        "Terror",
-        "Romántica",
-        "Ficción",
-        "Investigación",
-        "Biografía",
-        "Infantil",
-        "Autoayuda",
-        "Erótica",
-        "Hogar",
-        "Enciclopedia",
-        "Política",
-        "Sociedad",
-        "Viajes"
-      ]
-    };
-  }
-};
+        'Aventura',
+        'Terror',
+        'Romántica',
+        'Ficción',
+        'Investigación',
+        'Biografía',
+        'Infantil',
+        'Autoayuda',
+        'Erótica',
+        'Hogar',
+        'Enciclopedia',
+        'Política',
+        'Sociedad',
+        'Viajes',
+      ],
+    }
+  },
+}
 </script>
 
-<style>
+<style scope>
 .tagsInputField {
   grid-area: tagsInputField;
 }
@@ -93,13 +93,45 @@ div.multiselect__tags {
   border: none;
   border-radius: 0;
   border-bottom: 1px solid #fff;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Times', 'New Roman', serif;
   font-size: 16px;
   font-weight: 400;
   padding: 10px 10px 5px 5px;
 }
 
-.multiselect__tags > .multiselect__placeholder {
+div.multiselect__tags > .multiselect__placeholder {
   color: #c6c6c6;
+}
+
+i.multiselect__tag-icon {
+  cursor: pointer;
+  margin-left: 7px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-weight: 700;
+  font-style: normal;
+  width: 22px;
+  text-align: center;
+  line-height: 22px;
+  transition: all 0.2s ease;
+  border-radius: 5px;
+}
+
+i.multiselect__tag-icon::after {
+  content: '\D7';
+  color: #000;
+  font-size: 14px;
+}
+
+i.multiselect__tag-icon:focus,
+i.multiselect__tag-icon:hover {
+  background: #e89105;
+}
+
+i.multiselect__tag-icon:focus::after,
+i.multiselect__tag-icon:hover::after {
+  color: #fff;
 }
 </style>

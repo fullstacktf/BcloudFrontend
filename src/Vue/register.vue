@@ -23,7 +23,7 @@ export default {
 };
 </script>
 
-<style>
+<style scope>
 .contenedorGrande {
   width: 100%;
   height: 100%;
@@ -43,7 +43,7 @@ export default {
   height: 700px;
   display: grid;
   grid-template-columns: 750px;
-  grid-template-rows: 100px 100px 100px 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px 100px 100px 500px;
   grid-template-areas:
     "frase"
     "nameField"
