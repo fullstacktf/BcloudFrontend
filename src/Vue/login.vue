@@ -39,7 +39,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .container {
   width: 1200px;
   height: 600px;
@@ -53,7 +53,7 @@ export default {
   width: 100%;
   height: 100%;
   background-size: contain;
-  background-image: url(../img/libro2.png);
+  background-image: url('../img/libro2.png');
   background-repeat: no-repeat;
 }
 
@@ -86,7 +86,7 @@ export default {
 body {
   margin: 0;
   background-size: cover;
-  background-image: url(../img/libros.jpg);
+  background-image: url('../img/libros.jpg');
   background-repeat: no-repeat;
 }
 

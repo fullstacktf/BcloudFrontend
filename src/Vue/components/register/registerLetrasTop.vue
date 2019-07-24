@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .frase {
   grid-area: frase;
   display: flex;

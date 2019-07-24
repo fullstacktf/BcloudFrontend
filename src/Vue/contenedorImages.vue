@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .imagenes {
   display: inline-block;
   width: 150px;
@@ -74,35 +74,35 @@ export default {
 }
 
 .img1 {
-  background-image: url(../img/portada1.jpg);
+  background-image: url('../img/portada1.jpg');
 }
 
 .img2 {
-  background-image: url(../img/portada2.jpg);
+  background-image: url('../img/portada2.jpg');
 }
 
 .img3 {
-  background-image: url(../img/portada3.jpg);
+  background-image: url('../img/portada3.jpg');
 }
 
 .img4 {
-  background-image: url(../img/portada4.jpg);
+  background-image: url('../img/portada4.jpg');
 }
 
 .img5 {
-  background-image: url(../img/portada5.jpg);
+  background-image: url('../img/portada5.jpg');
 }
 
 .img6 {
-  background-image: url(../img/portada6.jpg);
+  background-image: url('../img/portada6.jpg');
 }
 
 .img7 {
-  background-image: url(../img/portada7.jpg);
+  background-image: url('../img/portada7.jpg');
 }
 
 .img8 {
-  background-image: url(../img/portada8.jpg);
+  background-image: url('../img/portada8.jpg');
 }
 
 .contenedorPortadas {

@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style >
 .tagsInputField {
   grid-area: tagsInputField;
 }

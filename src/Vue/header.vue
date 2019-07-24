@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css?family=Cookie|Kaushan+Script|Pacifico|Permanent+Marker|Tangerine&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff&display=swap");
@@ -60,7 +60,7 @@ export default {
   background-position: center;
   width: 30%;
   height: 90%;
-  background-image: url(../img/color.svg);
+  background-image: url('../img/color.svg');
 }
 
 .headerDer {

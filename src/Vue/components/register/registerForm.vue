@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style scope>
+<style scoped>
 .nameField {
   grid-area: frase;
 }

@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background-size: contain;
-  background-image: url(../img/libros.jpg);
+  background-size: cover;
+  background-image: url('../img/libros.jpg');
   background-repeat: no-repeat;
 }
 
