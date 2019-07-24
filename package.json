@@ -31,7 +31,8 @@
     "postcss-font-magician": "^2.2.1",
     "postcss-mixins": "^6.2.1",
     "postcss-preset-env": "^6.6.0",
-    "prettier": "^1.18.0",
+    "prettier": "1.18.2",
+    "sass": "^1.22.3",
     "stylelint": "^10.0.1",
     "stylelint-config-standard": "^18.3.0",
     "vue-template-compiler": "^2.6.10"
@@ -47,6 +48,7 @@
     "vue-carousel-3d": "^0.2.0",
     "vue-hot-reload-api": "^2.3.3",
     "vue-multiselect": "^2.1.6",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.7"
   },
   "alias": {

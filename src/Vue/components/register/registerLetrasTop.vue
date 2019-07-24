@@ -1,7 +1,36 @@
+<template>
+  <div class="frase">
+    <p aria-label="Registro">
+      <span data-text="R">R</span>
+      <span data-text="E">E</span>
+      <span data-text="G">G</span>
+      <span data-text="I">I</span>
+      <span data-text="S">S</span>
+      <span data-text="T">T</span>
+      <span data-text="E">E</span>
+      <span data-text="R">R</span>
+    </p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'registerLetrasTop',
+}
+</script>
+
+<style>
+.frase {
+  grid-area: frase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 p {
   color: #fff;
   font-weight: 600;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 0.5em;
 }
 
@@ -53,7 +82,6 @@ p span + span {
   p {
     font-size: 2em;
   }
-
   p span::before,
   p span::after {
     display: block;
@@ -77,3 +105,4 @@ p span + span {
     font-size: 4em;
   }
 }
+</style>

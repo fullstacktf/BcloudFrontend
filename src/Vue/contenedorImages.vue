@@ -38,19 +38,18 @@ import tilt from "vanilla-tilt";
 export default {
   name: "contenedorImages",
   data: function() {
-    return  {
+    return {
       slides: 8,
       images: "portada1.jpg"
     };
   },
-  
+
   mounted() {
     tilt.init(document.querySelectorAll(".imagenes"), {
-    scale: "1.05",
-    glare: true,
-    maxGlare: "0.3"
-  });
-
+      scale: "1.05",
+      glare: true,
+      maxGlare: "0.3"
+    });
   }
 };
 </script>
