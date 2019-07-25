@@ -1,98 +1,151 @@
 <template>
-<div>
-  <div id="cabecera"></div>
-    <div class="bigContainer">
-      <div class="container">
-        <div class="imageLogin">
-          <p class="split">
-            Animation is the process of creating the illusion of motion and
-            shape change by means of the rapid display of a sequence of static
-            images that minimally differ from each other. The illusion—as in
-            motion pictures in general—is thought to rely on the phi phenomenon.
-            Animators are artists who specialize in the creation of animation.
-          </p>
-        </div>
-        <div class="email">
-          <span>Email</span>
-          <input type="text" name="email" id="email" />
-        </div>
-        <div class="passw">
-          <span>Contraseña</span>
-          <input type="password" name="passw" id="passw" />
-        </div>
-        <div class="botons">
-          <button id="send">Enviar</button>
-          <button id="registrer">Registrarte</button>
-        </div>
+  <div class="align body">
+    <div class="grid align__item">
+      <div class="register">
+        <h2>Sign Up</h2>
+        <form action method="post" class="form">
+          <div class="form__field">
+            <input type="email" placeholder="info@mailaddress.com" />
+          </div>
+          <div class="form__field">
+            <input type="password" placeholder="••••••••••••" />
+          </div>
+          <div class="form__field">
+            <input type="submit" value="Sign Up" />
+          </div>
+        </form>
+        <p>
+          Already have an accout?
+          <a href="#">Log in</a>
+        </p>
       </div>
     </div>
-    <div id="piePagina"></div>
   </div>
 </template>
 
 
 <script>
-
 export default {
-  name: "login"
-};
-
+  name: 'login',
+}
 </script>
 
-<style scoped>
-.container {
-  width: 1200px;
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+<style lang='scss' scoped>
+$base-bgcolor: #354152;
+$base-color: #fb1;
+$base-font-weight: 300;
+$base-font-size: 1rem;
+$base-line-height: 1.5;
+$base-font-family: Helvetica Neue;
+$base-font-family-fallback: sans-serif;
+
+* {
+  box-sizing: border-box;
 }
 
-.imageLogin {
-  width: 100%;
-  height: 100%;
+.align {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  &__item {
+    &--start {
+      align-self: flex-start;
+    }
+    &--end {
+      align-self: flex-end;
+    }
+  }
+}
+
+.site {
+  &__logo {
+    margin-bottom: 2rem;
+  }
+}
+
+$input-placeholder-color: #fb1;
+
+input {
+  border: 0;
+  font: inherit;
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+}
+
+.form {
+  &__field {
+    margin-bottom: 1rem;
+  }
+  input {
+    outline: 0;
+    padding: 0.5rem 1rem;
+    &[type='email'],
+    &[type='password'] {
+      width: 100%;
+    }
+  }
+}
+
+$grid-max-width: 25rem;
+$grid-width: 100%;
+
+.grid {
+  margin: 0 auto;
+  max-width: $grid-max-width;
+  width: $grid-width;
+}
+
+h2 {
+  color: #fb1;
+  font-size: 2.75rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+}
+
+svg {
   background-size: contain;
-  background-image: url('../img/libro2.png');
   background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../img/color.svg');
 }
 
-.bigContainer {
-  height: 670px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+$link-color: #fb1;
+
+a {
+  color: $link-color;
 }
 
-.email {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.passw {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.botons {
-  padding-top: 20px;
-}
-
-body {
-  margin: 0;
-  background-size: cover;
-  background-image: url('../img/libros.jpg');
-  background-repeat: no-repeat;
-}
-
-@media only screen and (max-width: 500px) {
-  .imageLogin {
-    background-color: lightblue;
+.register {
+  background-color: rgba(0, 0, 0, 0);
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding: 4rem 2rem;
+  input {
+    border: 1px solid #fb1;
+    border-radius: 999px;
+    background-color: transparent;
+    text-align: center;
+    &[type='email'],
+    &[type='password'] {
+      background-repeat: no-repeat;
+      background-size: 1.5rem;
+      background-position: 1rem 50%;
+    }
+    &[type='email'] {
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M256.017 273.436l-205.17-170.029h410.904l-205.734 170.029zm-.034 55.462l-205.983-170.654v250.349h412v-249.94l-206.017 170.245z"/></svg>');
+    }
+    &[type='password'] {
+      background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#242c37"><path d="M195.334 223.333h-50v-62.666c0-61.022 49.645-110.667 110.666-110.667 61.022 0 110.667 49.645 110.667 110.667v62.666h-50v-62.666c0-33.452-27.215-60.667-60.667-60.667-33.451 0-60.666 27.215-60.666 60.667v62.666zm208.666 30v208.667h-296v-208.667h296zm-121 87.667c0-14.912-12.088-27-27-27s-27 12.088-27 27c0 7.811 3.317 14.844 8.619 19.773 4.385 4.075 6.881 9.8 6.881 15.785v22.942h23v-22.941c0-5.989 2.494-11.708 6.881-15.785 5.302-4.93 8.619-11.963 8.619-19.774z"/></svg>');
+    }
+    &[type='submit'] {
+      background-image: linear-gradient(160deg, #8ceabb 0%, #378f7b 100%);
+      color: #fff;
+      margin-bottom: 6rem;
+      width: 100%;
+    }
   }
 }
 </style>

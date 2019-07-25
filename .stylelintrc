@@ -1,8 +1,6 @@
 {
-    "extends": [
-    "stylelint-config-standard",
-    "prettier"
-  ],
+  
+    "extends": ["stylelint-prettier/recommended"],
     "rules": {
         "indentation": 2,
         "no-duplicate-selectors": true,
