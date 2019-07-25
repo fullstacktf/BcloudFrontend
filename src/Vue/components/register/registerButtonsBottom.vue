@@ -9,7 +9,7 @@
 
 <script>
   export default {
-    name: 'vue-confirmation-button',
+    name: 'registerButtonsBottom',
     props: {
       messages: Array,
       css: {
@@ -22,7 +22,7 @@
         defaultSteps: [
           'Click to confirm',
           'Are you sure?',
-          'â',
+          '✔',
         ],
         currentStep: 0,
       }
@@ -59,16 +59,17 @@
   }
 </script>
 
-<style>
+<style scoped>
   .confirmation__button {
+    margin-top: 40px;
     display: block;
-    background: #5b64b4;
+    background: #fb1;
     font-size: 0.8em;
     font-weight: 700;
     color: #fff;
     border-radius: 50px;
-    height: 50px;
-    min-width: 130px;
+    height: 60px;
+    min-width: 190px;
     padding: 0 1em;
     outline: 0;
     cursor: pointer;
@@ -86,20 +87,21 @@
   }
 
   .confirmation__button:not(.confirmation__button--complete):hover {
-    box-shadow: 0px 15px 54px rgba(71,78,152,0.7);
+    box-shadow: 0 15px 54px rgba(71, 78, 152, 0.7);
   }
 
   .confirmation__button.confirmation__button--complete {
     cursor: not-allowed;
     background: #79ba7a;
-    min-width: 50px;
-    padding: 0em;
+    min-width: 60px;
+    padding: 0;
     font-size: 1em;
-    box-shadow: 0px 6px 54px rgba(104,160,106,0.5);
+    box-shadow: 0 6px 54px rgba(104, 160, 106, 0.5);
     animation: icon-pop 0.3s linear 1;
   }
+
   @keyframes icon-pop {
-      0%   {font-size: 0.1em;}
-      50%  {font-size: 1.8em;}
+    0% { font-size: 0.1em; }
+    50% { font-size: 1.8em; }
   }
 </style>

@@ -48,6 +48,8 @@ export default {
 }
 
 .buttonsField {
+  display: flex;
+  justify-content: center;
   grid-area: buttonsField;
 }
 
