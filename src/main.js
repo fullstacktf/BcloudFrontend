@@ -8,6 +8,7 @@ import VueRouter from 'vue-router'
 import book from './Vue/book'
 import buy from './Vue/buy'
 import admin from './Vue/admin'
+import profile from './Vue/profile'
 
 Vue.use(Carousel3d)
 Vue.use(VueRouter)
@@ -20,6 +21,7 @@ const routes = [
   { path: '/buy/:title', component: buy },
   { path: '/admin', component: admin },
   { path: '/', component: contenedorImagenes },
+  { path: '/profile', component: profile },
 ]
 
 const router = new VueRouter({
