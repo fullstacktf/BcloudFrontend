@@ -18,11 +18,9 @@
       <span class="bar"></span>
       <label>Password</label>
     </div>
-    <registerTagsBottom :method="getLikes"></registerTagsBottom>
-    <!-- Aqui hay que cambiar los rollos o ver como podemos hacer eso o usar vuex-->
+    <registerTagsBottom :sendLike="getLikes"></registerTagsBottom>
     <div class="buttonsField">
       <button @click="sendData()">Send data</button>
-      <!--<registerButtonsBottom @click="sendData()"></registerButtonsBottom> -->
     </div>
     <p class="error">{{ error_ }}</p>
   </form>
@@ -45,7 +43,7 @@ export default {
       email: '',
       password: '',
       gustos: '',
-      likes:"Thriller",
+      likes:[],
       error_: '',
       likes:[]
     }
@@ -78,7 +76,6 @@ export default {
     sendData() {
       if(this.verifyForm());
       let data = new FormData();
-      //VUEX con el REGISTERTAGBUTTON
       data.append("name",this.name);
       data.append("email",this.email);
       data.append("passw",this.password);
