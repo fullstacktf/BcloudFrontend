@@ -10,7 +10,7 @@
       <div class="form__field">
         <input type="password" placeholder="••••••••••••" />
       </div>
-      <registerTagsBottom></registerTagsBottom>
+      <registerTagsBottom :sendLike="getLikes"></registerTagsBottom>
     </form>
     <div class="buttonsField">
       <registerButtonsBottom @send="sendData"></registerButtonsBottom>
@@ -21,16 +21,64 @@
 <script>
 import registerTagsBottom from './registerTagsBottom'
 import registerButtonsBottom from './registerButtonsBottom'
+import FormData from 'form-data'
 export default {
+  data: () => {
+    return {}
+  },
   name: 'registerForm',
   components: { registerTagsBottom, registerButtonsBottom },
+
+  data: () => {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      gustos: '',
+      likes: [],
+      error_: '',
+      likes: [],
+    }
+  },
+
   methods: {
+    getLikes(likes) {
+      this.likes = likes
+    },
+
+    validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(String(email).toLowerCase())
+    },
+
+    verifyForm() {
+      if (this.email == '') this.error_ = 'Escribe un e-mail'
+      else if (!this.validateEmail(this.email))
+        this.error_ = 'Formato de e-mail inválido'
+      else if (this.password == '') this.error_ = 'Escribe una contraseña'
+      else {
+        this.error_ = ''
+        return true
+      }
+    },
+
     sendData() {
-      console.log('hola')
+      if (this.verifyForm());
+      let data = new FormData()
+      data.append('name', this.name)
+      data.append('email', this.email)
+      data.append('passw', this.password)
+      data.append('likes', this.likes)
+      this.$http
+        .post('http://localhost:8081/users/signup', data)
+        .then(response => {
+          this.$router.push('/')
+        })
     },
   },
 }
 </script>
+
 
 <style lang='scss' scoped>
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');

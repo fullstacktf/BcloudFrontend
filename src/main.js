@@ -9,9 +9,11 @@ import book from './Vue/book'
 import buy from './Vue/buy'
 import admin from './Vue/admin'
 import profile from './Vue/profile'
+import axios from 'axios'
 
 Vue.use(Carousel3d)
 Vue.use(VueRouter)
+Vue.prototype.$http = axios
 
 const routes = [
   { path: '/explorer', component: contenedorImagenes },
