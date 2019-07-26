@@ -1,36 +1,94 @@
 <template>
   <form>
     <div class="group nameField flex">
-      <input type="text" required="required" />
+      <input type="text" required="required" v-model="name" />
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>Name</label>
     </div>
     <div class="group emailField flex">
-      <input type="text" required="required" />
+      <input type="text" required="required" v-model="email" />
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>Email</label>
     </div>
     <div class="group passwordField flex">
-      <input type="password" required="required" />
+      <input type="password" required="required" v-model="password" />
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>Password</label>
     </div>
-    <registerTagsBottom></registerTagsBottom>
+    <registerTagsBottom :method="getLikes"></registerTagsBottom>
+    <!-- Aqui hay que cambiar los rollos o ver como podemos hacer eso o usar vuex-->
     <div class="buttonsField">
-      <registerButtonsBottom></registerButtonsBottom>
+      <button @click="sendData()">Send data</button>
+      <!--<registerButtonsBottom @click="sendData()"></registerButtonsBottom> -->
     </div>
+    <p class="error">{{ error_ }}</p>
   </form>
 </template>
 
 <script>
-import registerTagsBottom from './registerTagsBottom'
-import registerButtonsBottom from './registerButtonsBottom'
+import registerTagsBottom from './registerTagsBottom';
+import registerButtonsBottom from './registerButtonsBottom';
+import FormData from "form-data";
 export default {
+  data: () => {
+    return {}
+  },
   name: 'registerForm',
   components: { registerTagsBottom, registerButtonsBottom },
+
+  data: () => {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      gustos: '',
+      likes:"Thriller",
+      error_: '',
+      likes:[]
+    }
+  },
+
+  methods: {
+
+    getLikes(likes){
+      this.likes = likes;
+    },
+
+    validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      return re.test(String(email).toLowerCase())
+    },
+
+    verifyForm() {
+      if (this.email == '') 
+        this.error_ = 'Escribe un e-mail'
+      else if (!this.validateEmail(this.email)) 
+        this.error_ = 'Formato de e-mail inválido'
+       else if (this.password == '') 
+        this.error_ = 'Escribe una contraseña'
+       else{
+         this.error_ = "";
+         return true;
+       }
+    },
+
+    sendData() {
+      if(this.verifyForm());
+      let data = new FormData();
+      //VUEX con el REGISTERTAGBUTTON
+      data.append("name",this.name);
+      data.append("email",this.email);
+      data.append("passw",this.password);
+      data.append("likes",this.likes);
+      this.$http.post("http://localhost:8081/users/signup", data).then( response => {
+        this.$router.push('/');
+      });
+      
+    },
+  },
 }
 </script>
 

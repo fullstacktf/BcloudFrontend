@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import FormData from "form-data";
 
 export default {
@@ -71,7 +70,7 @@ export default {
       data.append("publicationDate",this.publicationDate);
       data.append("price",this.price);
       data.append("description",this.description);
-      axios.post("http://localhost:8081/books/upload", data, {
+      this.$http.post("http://localhost:8081/books/upload", data, {
           headers: {
             "Content-Type": this.epubFile.type
           }

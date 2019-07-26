@@ -4,13 +4,16 @@
       rel="stylesheet"
       href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"
     />
-    <multiselect v-model="selected" :multiple="true" placeholder="Your tastes" :options="options"></multiselect>
+    <multiselect v-model.lazy="selected" :multiple="true" placeholder="Your likes" :options="options" @input="onSelect"></multiselect>
   </div>
 </template>
 
 <script>
 import Multiselect from 'vue-multiselect'
 export default {
+  props: {
+    method: { type: Function },
+  },
   name: 'registerTagsBottom',
   components: { Multiselect },
   data() {
@@ -34,6 +37,12 @@ export default {
       ],
     }
   },
+
+  methods: {
+    onSelect(){
+      this.method(this.selected);
+    }
+  }
 }
 </script>
 
