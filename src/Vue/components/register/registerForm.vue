@@ -1,28 +1,21 @@
 <template>
-  <form>
-    <div class="group nameField flex">
-      <input type="text" required="required" />
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Name</label>
-    </div>
-    <div class="group emailField flex">
-      <input type="text" required="required" />
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Email</label>
-    </div>
-    <div class="group passwordField flex">
-      <input type="password" required="required" />
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Password</label>
-    </div>
-    <registerTagsBottom></registerTagsBottom>
+  <div>
+    <form action method="post" class="form">
+      <div class="form__field">
+        <input type="name" placeholder="Juanito Pérez" />
+      </div>
+      <div class="form__field">
+        <input type="email" placeholder="info@mailaddress.com" />
+      </div>
+      <div class="form__field">
+        <input type="password" placeholder="••••••••••••" />
+      </div>
+      <registerTagsBottom></registerTagsBottom>
+    </form>
     <div class="buttonsField">
-      <registerButtonsBottom></registerButtonsBottom>
+      <registerButtonsBottom @send="sendData"></registerButtonsBottom>
     </div>
-  </form>
+  </div>
 </template>
 
 <script>
@@ -31,10 +24,24 @@ import registerButtonsBottom from './registerButtonsBottom'
 export default {
   name: 'registerForm',
   components: { registerTagsBottom, registerButtonsBottom },
+  methods: {
+    sendData() {
+      console.log('hola')
+    },
+  },
 }
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+$base-color: #fb1;
+$base-font-weight: 300;
+$base-font-size: 1rem;
+$base-line-height: 1.5;
+$base-font-family: 'Raleway', sans-serif;
+$base-font-family-fallback: 'Raleway', sans-serif;
+
 .nameField {
   grid-area: frase;
 }
@@ -53,81 +60,55 @@ export default {
   grid-area: buttonsField;
 }
 
-form {
-  width: 320px;
-  margin: 45px auto;
+input {
+  color: $base-color;
+  border: 0;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  &::placeholder {
+    color: $base-color;
+  }
 }
 
-.group {
-  position: relative;
-  margin: 45px 0;
+.form {
+  margin-top: 40px;
+  &__field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  input {
+    font-family: 'Raleway', sans-serif;
+    height: 30px;
+    outline: 0;
+    padding: 0.5rem 1rem;
+    border: 1px solid $base-color;
+    background-color: transparent;
+    text-align: center;
+    &[type='email'],
+    &[type='password'],
+    &[type='name'] {
+      width: 60%;
+    }
+  }
 }
 
-textarea {
-  resize: none;
+h2 {
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-family: 'Raleway', sans-serif;
+  color: $base-color;
+  font-size: 2.75rem;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
 }
 
-input,
-textarea {
-  background: none;
-  color: #c6c6c6;
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
-  display: block;
-  width: 350px;
-  border: none;
-  border-radius: 0;
-  border-bottom: 1px solid #fff;
+p {
+  color: $base-color;
 }
 
-input:focus,
-textarea:focus {
-  outline: none;
-}
-
-label {
-  font-weight: normal;
-  position: absolute;
-  pointer-events: none;
-  color: #c6c6c6;
-  font-size: 16px;
-  left: 5px;
-  top: 10px;
-  transition: 300ms ease all;
-}
-
-input:focus ~ label,
-textarea:focus ~ label,
-input:valid ~ label,
-textarea:valid ~ label {
-  top: -14px;
-  font-size: 12px;
-  color: #fb3;
-}
-
-.bar::before {
-  content: '';
-  height: 2px;
-  width: 0;
-  bottom: 0;
-  position: absolute;
-  background: #fb3;
-  transition: 300ms ease all;
-  left: 0%;
-}
-
-input:focus ~ .bar::before,
-textarea:focus ~ .bar::before {
-  width: 320px;
-}
-
-input[type='password'] {
-  letter-spacing: 0.3em;
-}
-
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+a {
+  color: $base-color;
 }
 </style>

@@ -28,7 +28,7 @@ export default {
 }
 
 p {
-  color: #fff;
+  color: transparent;
   font-weight: 600;
   font-family: 'Raleway', sans-serif;
   font-size: 0.5em;
@@ -61,7 +61,7 @@ p span::before {
 
 p span::after {
   z-index: 2;
-  color: #fb4;
+  color: #fb1;
   text-shadow: -1px 0 1px #fb4, 1px 0 1px rgba(0, 0, 0, 0.8);
   transform: rotateY(-40deg);
 }

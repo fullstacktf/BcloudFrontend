@@ -33,29 +33,30 @@
 </template>
 
 <script>
-import tilt from "vanilla-tilt";
+import tilt from 'vanilla-tilt'
 
 export default {
-  name: "contenedorImages",
+  name: 'contenedorImages',
   data: function() {
     return {
       slides: 8,
-      images: "portada1.jpg"
-    };
+      images: 'portada1.jpg',
+    }
   },
 
   mounted() {
-    tilt.init(document.querySelectorAll(".imagenes"), {
-      scale: "1.05",
+    tilt.init(document.querySelectorAll('.imagenes'), {
+      scale: '1.05',
       glare: true,
-      maxGlare: "0.3"
-    });
-  }
-};
+      maxGlare: '0.3',
+    })
+  },
+}
 </script>
 
 <style scoped>
 .imagenes {
+  cursor: pointer;
   display: inline-block;
   width: 150px;
   height: 230px;
@@ -65,6 +66,7 @@ export default {
 }
 
 .imageneses {
+  cursor: pointer;
   display: inline-block;
   width: 100%;
   height: 100%;

@@ -4,9 +4,7 @@
     <div class="contenedorModal">
       <div class="modal">
         <registerLetrasTop></registerLetrasTop>
-        <div class="wrapper">
-          <registerForm></registerForm>
-        </div>
+        <registerForm></registerForm>
       </div>
     </div>
   </div>
@@ -24,7 +22,6 @@ export default {
 </script>
 
 <style scoped>
-
 .contenedorModal {
   width: 100%;
   height: 700px;

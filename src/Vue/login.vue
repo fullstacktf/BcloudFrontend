@@ -2,7 +2,7 @@
   <div class="align body">
     <div class="grid align__item">
       <div class="register">
-        <h2>Sign Up</h2>
+        <h2>Login</h2>
         <form action method="post" class="form">
           <div class="form__field">
             <input type="email" placeholder="info@mailaddress.com" />
@@ -11,12 +11,12 @@
             <input type="password" placeholder="••••••••••••" />
           </div>
           <div class="form__field">
-            <input type="submit" value="Sign Up" />
+            <input type="submit" value="Log In" />
           </div>
         </form>
         <p>
-          Already have an accout?
-          <a href="#">Log in</a>
+          Don´t you have an accout?
+          <a href="#">Register Here</a>
         </p>
       </div>
     </div>
@@ -69,6 +69,7 @@ $base-font-family-fallback: 'Raleway', sans-serif;
 $input-placeholder-color: #fb1;
 
 input {
+  color: #fb1;
   border: 0;
   font: inherit;
   &::placeholder {
@@ -112,13 +113,6 @@ h2 {
 
 p {
   color: #fb1;
-}
-
-svg {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url('../img/color.svg');
 }
 
 $link-color: #fb1;

@@ -1,16 +1,16 @@
 <template>
   <div class="container">
-
     <div class="files">
       <form ref="uploadForm" id="uploadForm" enctype="multipart/form-data">
+        <label for="file1">
+          EPUB
+          <input type="file" id="file1" ref="file1" />
+        </label>
 
-        <label for="file1">EPUB
-          <input type="file" id="file1" ref="file1"/>
-        </label> 
-
-        <label for="file2">PHOTO
-          <input type="file" id="file2" ref="file2"/>
-        </label> 
+        <label for="file2">
+          PHOTO
+          <input type="file" id="file2" ref="file2" />
+        </label>
 
         <button class="button" @click="uploadBook">Upload Book</button>
       </form>
@@ -28,61 +28,60 @@
         <label for="publicationDate">Publication date</label>
         <input type="date" id="publicationDate" v-model="publicationDate" />
         <label for="rating">Rating</label>
-        <input type="text" id="rating" v-model="rating"/>
+        <input type="text" id="rating" v-model="rating" />
         <label for="price">Price</label>
-        <input type="text" id="price" v-model="price"/>
+        <input type="text" id="price" v-model="price" />
         <label for="description">description</label>
-        <textarea id="description" v-model="description"/>
+        <textarea id="description" v-model="description" />
       </form>
     </div>
-    
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import FormData from "form-data";
+import axios from 'axios'
+import FormData from 'form-data'
 
 export default {
   data: () => {
     return {
-      epubFile: "",
-      imageFile: "",
-      title: "",
-      gener: "",
-      author:"",
+      epubFile: '',
+      imageFile: '',
+      title: '',
+      gener: '',
+      author: '',
       rating: 1,
-      publicationDate: "",
+      publicationDate: '',
       price: 1,
-      description: ""
-    };
+      description: '',
+    }
   },
   methods: {
     uploadBook() {
-      this.epubFile = this.$refs.file1.files[0];
-      this.imageFile = this.$refs.file2.files[0];
-      let data = new FormData();
-      data.append("epubFile", this.epubFile, this.epubFile.fileName);
-      data.append("imageFile", this.imageFile, this.imageFile.fileName);
-      data.append("title",this.title);
-      data.append("gener",this.gener);
-      data.append("author",this.author);
-      data.append("rating",this.rating);
-      data.append("publicationDate",this.publicationDate);
-      data.append("price",this.price);
-      data.append("description",this.description);
-      axios.post("http://localhost:8081/books/upload", data, {
+      this.epubFile = this.$refs.file1.files[0]
+      this.imageFile = this.$refs.file2.files[0]
+      let data = new FormData()
+      data.append('epubFile', this.epubFile, this.epubFile.fileName)
+      data.append('imageFile', this.imageFile, this.imageFile.fileName)
+      data.append('title', this.title)
+      data.append('gener', this.gener)
+      data.append('author', this.author)
+      data.append('rating', this.rating)
+      data.append('publicationDate', this.publicationDate)
+      data.append('price', this.price)
+      data.append('description', this.description)
+      axios
+        .post('http://localhost:8081/books/upload', data, {
           headers: {
-            "Content-Type": this.epubFile.type
-          }
+            'Content-Type': this.epubFile.type,
+          },
         })
         .then(data => {
-          console.log(data);
-        });
-
-    }
-  }
-};
+          console.log(data)
+        })
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -125,18 +124,18 @@ form {
   height: 90%;
 }
 
-[type=date] {
+[type='date'] {
   font-size: 15px;
   padding: 5px;
 }
 
 input {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   margin: 5px;
 }
 
 h2 {
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .button {

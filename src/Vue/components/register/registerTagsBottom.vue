@@ -38,8 +38,16 @@ export default {
 </script>
 
 <style >
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+div.multiselect {
+  width: 65%;
+}
+
 .tagsInputField {
   grid-area: tagsInputField;
+  display: flex;
+  justify-content: center;
 }
 
 div.multiselect__content-wrapper {
@@ -51,17 +59,22 @@ input.multiselect__input {
   background: none;
 }
 
+div.multiselect.multiselect--above--active {
+  background-color: red;
+}
+
 div.multiselect.multiselect--active {
   color: #555;
 }
 
 input.multiselect__input::placeholder {
   font-weight: normal;
-  color: #c6c6c6;
+  color: transparent;
 }
 
 span.multiselect__tag {
-  background: #fb1;
+  border-radius: 0;
+  background-image: linear-gradient(160deg, #ffeb05 0%, #ff7e05 100%);
   color: #000;
 }
 
@@ -73,7 +86,7 @@ span.multiselect__option--selected.multiselect__option--highlight {
 span.multiselect__option--selected.multiselect__option--highlight::after {
   background: #e8bf05;
   content: attr(data-deselect);
-  color: #fff;
+  color: rgba(0, 0, 0, 0);
 }
 
 span.multiselect__option--highlight {
@@ -89,18 +102,17 @@ span.multiselect__option--highlight::after {
 }
 
 div.multiselect__tags {
-  background: none;
-  border: none;
   border-radius: 0;
-  border-bottom: 1px solid #fff;
-  font-family: 'Times', 'New Roman', serif;
-  font-size: 16px;
+  border: 1px solid #fb1;
+  background-color: transparent;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
   font-weight: 400;
-  padding: 10px 10px 5px 5px;
 }
 
 div.multiselect__tags > .multiselect__placeholder {
-  color: #c6c6c6;
+  color: #fb1;
 }
 
 i.multiselect__tag-icon {
@@ -116,18 +128,15 @@ i.multiselect__tag-icon {
   text-align: center;
   line-height: 22px;
   transition: all 0.2s ease;
-  border-radius: 5px;
-}
-
-i.multiselect__tag-icon::after {
-  content: '\D7';
-  color: #000;
-  font-size: 14px;
 }
 
 i.multiselect__tag-icon:focus,
 i.multiselect__tag-icon:hover {
   background: #e89105;
+}
+
+i.multiselect__tag-icon::after {
+  color: #000;
 }
 
 i.multiselect__tag-icon:focus::after,
