@@ -4,19 +4,24 @@
       rel="stylesheet"
       href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"
     />
-    <multiselect v-model="selected" :multiple="true" placeholder="Your tastes" :options="options"></multiselect>
+    <multiselect v-model="selected" :multiple="true" placeholder="Your tastes" :options="options" @input="onSelect"></multiselect>
   </div>
 </template>
 
 <script>
 import Multiselect from 'vue-multiselect'
 export default {
+  props: {
+    sendLike: { type: Function },
+  },
+
   name: 'registerTagsBottom',
   components: { Multiselect },
   data() {
     return {
       selected: null,
       options: [
+        'Thriller',
         'Aventura',
         'Terror',
         'Romántica',
@@ -34,6 +39,11 @@ export default {
       ],
     }
   },
+  methods: {
+    onSelect(){
+      this.sendLike(this.selected);
+    }
+  }
 }
 </script>
 

@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import FormData from 'form-data'
 
 export default {
@@ -58,9 +57,9 @@ export default {
   },
   methods: {
     uploadBook() {
-      this.epubFile = this.$refs.file1.files[0]
-      this.imageFile = this.$refs.file2.files[0]
-      let data = new FormData()
+      this.epubFile = this.$refs.file1.files[0];
+      this.imageFile = this.$refs.file2.files[0];
+      let data = new FormData();
       data.append('epubFile', this.epubFile, this.epubFile.fileName)
       data.append('imageFile', this.imageFile, this.imageFile.fileName)
       data.append('title', this.title)
@@ -70,7 +69,7 @@ export default {
       data.append('publicationDate', this.publicationDate)
       data.append('price', this.price)
       data.append('description', this.description)
-      axios
+      this.$http
         .post('http://localhost:8081/books/upload', data, {
           headers: {
             'Content-Type': this.epubFile.type,
