@@ -16,7 +16,7 @@
         </form>
         <p>
           Don´t you have an accout?
-          <a href="#">Register Here</a>
+          <router-link to="/register" class="link">Register Here</router-link>
         </p>
       </div>
     </div>
@@ -117,7 +117,7 @@ p {
 
 $link-color: #fb1;
 
-a {
+.link {
   color: $link-color;
 }
 

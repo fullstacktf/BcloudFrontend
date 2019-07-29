@@ -71,7 +71,11 @@ export default {
       console.log(data);
       this.$http
         .post('http://localhost:8081/users/signup', data);
+
+      setTimeout(() =>{ this.$router.push("/") }, 3000);
     },
+
+
   },
 }
 </script>
