@@ -25,7 +25,7 @@ export default {
     return {
       recommendedImages: [],
       portadas: 100,
-      slides: 7,
+      slides: 0,
       images: [],
       img:''
     }
@@ -61,6 +61,7 @@ export default {
         this.images.push(d.imageUrl)
       }
       this.slides = this.recommendedImages.length;
+      console.log(this.slides)
       this.portadas = this.recommendedImages.length;
     })
     this.tilteo();

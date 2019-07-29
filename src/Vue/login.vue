@@ -3,21 +3,23 @@
     <div class="grid align__item">
       <div class="register">
         <h2>Login</h2>
-        <form action method="post" class="form">
+        <form class="form" enctype="multipart/form-data">
           <div class="form__field">
-            <input type="email" placeholder="info@mailaddress.com" />
+            <input type="email" placeholder="info@mailaddress.com" v-model="email"/>
           </div>
           <div class="form__field">
-            <input type="password" placeholder="••••••••••••" />
+            <input type="password" placeholder="••••••••••••" v-model="password"/>
           </div>
           <div class="form__field">
-            <input type="submit" value="Log In" />
+            <!-- <input type="submit" value="Log In" @click="login" /> -->
           </div>
+          <button @click="login">login</button>
         </form>
         <p>
           Don´t you have an accout?
           <router-link to="/register" class="link">Register Here</router-link>
         </p>
+        <p>{{error}}</p>
       </div>
     </div>
   </div>
@@ -25,8 +27,36 @@
 
 
 <script>
+import FormData from 'form-data';
+
 export default {
   name: 'login',
+  data() {
+    return {
+      email: '',
+      password:'',
+      error:''
+    }
+  },
+  methods: {
+    login(){
+
+      let data = {"email":this.email, "passw":this.password}
+       this.$http.post('http://localhost:8081/users/login', data).then( response => {
+        if(response.data.token != undefined ){
+          localStorage.setItem('email', this.email);
+          localStorage.setItem('jwt', response.data.token);
+          const dummy = localStorage.getItem('jwt');
+          setTimeout(() =>{ this.$router.push("/") }, 5000);
+          this.error = "Logeado con éxito. Se le redirigirá a la página principal";
+        }
+        else {
+          this.error = response.data.message;
+        }
+      })
+    }
+  }
+  
 }
 </script>
 
