@@ -1,31 +1,15 @@
 <template>
   <div>
     <div class="contenedorPortadas">
-      <div class="imagenes img1"></div>
-      <div class="imagenes img2"></div>
-      <div class="imagenes img3"></div>
-      <div class="imagenes img4"></div>
-      <div class="imagenes img5"></div>
-      <div class="imagenes img6"></div>
-      <div class="imagenes img7"></div>
-      <div class="imagenes img8"></div>
-      <div class="imagenes img4"></div>
-      <div class="imagenes img5"></div>
-      <div class="imagenes img6"></div>
-      <div class="imagenes img7"></div>
-      <div class="imagenes img6"></div>
-      <div class="imagenes img7"></div>
-      <div class="imagenes img8"></div>
-      <div class="imagenes img4"></div>
-      <div class="imagenes img5"></div>
-      <div class="imagenes img6"></div>
-      <div class="imagenes img7"></div>
-      <div class="imagenes img8"></div>
+      <div v-for="(portada, i) in portadas" :key="i" class="imagenes"> 
+        <img class="portadas" :src="images[i]" alt="">
+      </div>
     </div>
+
     <div class="containerCarousel">
       <carousel-3d :width="300" :height="460">
         <slide v-for="(slide, i) in slides" :index="i">
-          <img class="imageneses" :src="images" />
+          <img class="imageneses" :src="recommendedImages[i]" />
         </slide>
       </carousel-3d>
     </div>
@@ -39,17 +23,47 @@ export default {
   name: 'contenedorImages',
   data: function() {
     return {
-      slides: 8,
-      images: 'portada1.jpg',
+      recommendedImages: [],
+      portadas: 100,
+      slides: 7,
+      images: [],
+      img:''
     }
   },
 
+  computed(){
+    takeImage: (index) => {
+      return this.images[index];
+    }
+  },
+
+  methods: {
+    tilteo() {
+      tilt.init(document.querySelectorAll('.imagenes'), {
+        scale: '1.05',
+        glare: true,
+        maxGlare: '0.3',
+      })
+    },
+  },
+
   mounted() {
-    tilt.init(document.querySelectorAll('.imagenes'), {
-      scale: '1.05',
-      glare: true,
-      maxGlare: '0.3',
+
+    // tilt.init(document.querySelectorAll('.imagenes'), {
+    //     scale: '1.05',
+    //     glare: true,
+    //     maxGlare: '0.3',
+    //   })
+
+    this.$http.get('http://localhost:8081/books/getallbooks').then(response => {
+      for (let d of response.data) {
+        this.recommendedImages.push(d.imageUrl)
+        this.images.push(d.imageUrl)
+      }
+      this.slides = this.recommendedImages.length;
+      this.portadas = this.recommendedImages.length;
     })
+    this.tilteo();
   },
 }
 </script>
@@ -65,6 +79,11 @@ export default {
   background-repeat: no-repeat;
 }
 
+.portadas{
+  width: 100%;
+  height: 100%;
+}
+
 .imageneses {
   cursor: pointer;
   display: inline-block;
@@ -75,7 +94,7 @@ export default {
   background-repeat: no-repeat;
 }
 
-.img1 {
+/* .img1 {
   background-image: url('../img/portada1.jpg');
 }
 
@@ -105,7 +124,7 @@ export default {
 
 .img8 {
   background-image: url('../img/portada8.jpg');
-}
+} */
 
 .contenedorPortadas {
   max-width: 920px;

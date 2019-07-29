@@ -38,3 +38,4 @@ new Vue({
   components: { app },
   template: '<app/>',
 })
+
