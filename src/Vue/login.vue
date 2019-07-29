@@ -19,7 +19,7 @@
           Don´t you have an accout?
           <router-link to="/register" class="link">Register Here</router-link>
         </p>
-        <p>{{error}}</p>
+        <p>{{message}}</p>
       </div>
     </div>
   </div>
@@ -27,7 +27,6 @@
 
 
 <script>
-import FormData from 'form-data';
 
 export default {
   name: 'login',
@@ -35,7 +34,7 @@ export default {
     return {
       email: '',
       password:'',
-      error:''
+      message:''
     }
   },
   methods: {
@@ -48,10 +47,10 @@ export default {
           localStorage.setItem('jwt', response.data.token);
           const dummy = localStorage.getItem('jwt');
           setTimeout(() =>{ this.$router.push("/") }, 5000);
-          this.error = "Logeado con éxito. Se le redirigirá a la página principal";
+          this.message = "Logeado con éxito. Se le redirigirá a la página principal";
         }
         else {
-          this.error = response.data.message;
+          this.message = response.data.message;
         }
       })
     }
