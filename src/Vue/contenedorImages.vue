@@ -25,7 +25,7 @@ export default {
     return {
       recommendedImages: [],
       portadas: 100,
-      slides: 0,
+      slides: 7,
       images: [],
       img:''
     }
@@ -48,12 +48,6 @@ export default {
   },
 
   mounted() {
-
-    // tilt.init(document.querySelectorAll('.imagenes'), {
-    //     scale: '1.05',
-    //     glare: true,
-    //     maxGlare: '0.3',
-    //   })
 
     this.$http.get('http://localhost:8081/books/getallbooks').then(response => {
       for (let d of response.data) {

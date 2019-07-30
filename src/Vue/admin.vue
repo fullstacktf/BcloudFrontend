@@ -22,7 +22,7 @@
         <label for="title">Title</label>
         <input type="text" id="title" v-model="title" />
         <label for="gener">Gener</label>
-        <input type="text" id="rating" v-model="gener" />
+        <registerTagsBottom :sendLike="getLikes"></registerTagsBottom>
         <label for="author">Author</label>
         <input type="text" id="author" v-model="author" />
         <label for="publicationDate">Publication date</label>
@@ -39,7 +39,8 @@
 </template>
 
 <script>
-import FormData from 'form-data';
+import FormData from 'form-data'
+import registerTagsBottom from './components/register/registerTagsBottom'
 
 export default {
   data: () => {
@@ -57,28 +58,33 @@ export default {
   },
   methods: {
     uploadBook() {
-      this.epubFile = this.$refs.file1.files[0];
-      this.imageFile = this.$refs.file2.files[0];
-      let data = new FormData();
-      data.append("epubFile", this.epubFile, this.epubFile.fileName);
-      data.append("imageFile", this.imageFile, this.imageFile.fileName);
-      data.append("title",this.title);
-      data.append("gener",this.gener);
-      data.append("author",this.author);
-      data.append("rating",this.rating);
-      data.append("publicationDate",this.publicationDate);
-      data.append("price",this.price);
-      data.append("description",this.description);
-      this.$http.post("http://localhost:8081/books/upload", data, {
+      this.epubFile = this.$refs.file1.files[0]
+      this.imageFile = this.$refs.file2.files[0]
+      let data = new FormData()
+      data.append('epubFile', this.epubFile, this.epubFile.fileName)
+      data.append('imageFile', this.imageFile, this.imageFile.fileName)
+      data.append('title', this.title)
+      data.append('gener', this.gener)
+      data.append('author', this.author)
+      data.append('rating', this.rating)
+      data.append('publicationDate', this.publicationDate)
+      data.append('price', this.price)
+      data.append('description', this.description)
+      this.$http
+        .post('http://localhost:8081/books/upload', data, {
           headers: {
             'Content-Type': this.epubFile.type,
           },
         })
-        .then(data => {
-          console.log(data)
+        .then(response => {
+          console.log(response.data)
         })
     },
+    getLikes(likes) {
+      this.gener = likes
+    },
   },
+  components: { registerTagsBottom },
 }
 </script>
 
