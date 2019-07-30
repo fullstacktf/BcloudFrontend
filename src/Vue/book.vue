@@ -36,7 +36,7 @@ export default {
       publicationDate: "20-07-2014",
       descripcion: "Lorem Ipsum es simplemente el orem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas",
       valoracion: 10,   
-      price: 19.90
+      price: 19.90,
     }
   },
 
@@ -47,7 +47,9 @@ export default {
       like.classList.toggle('liked');
     },
     buy(){
-      this.$router.push('/buy/' + this.title);
+      localStorage.setItem('bookToBuy',this.title);
+      this.$router.push('/buy/');
+      
     }
   }
 }

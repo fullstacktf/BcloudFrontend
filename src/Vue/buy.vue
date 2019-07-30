@@ -45,8 +45,9 @@
         <input v-model="name" placeholder="  Full name" type="text" />
         <input v-model="expireDate" placeholder="  MM/YY" type="text/>" />
         <input v-model="cvc" placeholder="  CVC" type="text" />
-        <button>Buy</button>
+        <button @click="buy">Buy</button>
       </form>
+      {{this.message}}
     </div>
     <span></span>
   </div>
@@ -56,11 +57,31 @@
 export default {
   data() {
     return {
-      number: "",
-      name: "",
-      expireDate: "",
-      cvc: ""
+      number: '',
+      name: '',
+      expireDate: '',
+      cvc: '',
+      message:''
     };
+  },
+
+  methods: {
+    buy(){
+      if((this.number != "") && (this.name != "") && (this.expireDate != "") && (this.cvc != "")){
+        const book = localStorage.getItem('bookToBuy');
+        const user = localStorage.getItem('email');
+        const data = {email: user, title: book}
+        localStorage.removeItem('bookToBuy');
+        this.$http.post('http://localhost:8081/users/buybook', data).then( response => {
+          this.message = "¡Comprado con éxito!";
+          console.log(response.data);
+        })
+        
+      }
+      else{
+        this.message = "¡Asegúrate de que todos los datos están completos!"
+      }
+    }
   }
 };
 </script>

@@ -20,7 +20,7 @@ const routes = [
   { path: '/register', component: register },
   { path: '/login', component: login },
   { path: '/book', component: book },
-  { path: '/buy/:title', component: buy },
+  { path: '/buy/', component: buy },
   { path: '/admin', component: admin },
   { path: '/', component: contenedorImagenes },
   { path: '/profile', component: profile },
