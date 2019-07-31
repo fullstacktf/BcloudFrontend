@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="contenedorPortadas">
-      <div v-for="(portada, i) in portadas" :key="i" class="imagenes"> 
-        <img class="portadas" :src="images[i]" alt="">
+      <div v-for="(portada, i) in portadas" :key="i" class="imagenes">
+         <img @click="book(books[i],i)" class="portadas" :src="books[i].imageUrl"/>
       </div>
     </div>
 
     <div class="containerCarousel">
       <carousel-3d :width="300" :height="460">
         <slide v-for="(slide, i) in slides" :index="i">
-          <img class="imageneses" :src="recommendedImages[i]" />
+          <img @click="book(recommendedBooks[i],i)" class="imageneses" :src="recommendedBooks[i].imageUrl" />
         </slide>
       </carousel-3d>
     </div>
@@ -23,17 +23,12 @@ export default {
   name: 'contenedorImages',
   data: function() {
     return {
-      recommendedImages: [],
+      recommendedBooks: [],
       portadas: 100,
       slides: 7,
-      images: [],
-      img:''
-    }
-  },
-
-  computed(){
-    takeImage: (index) => {
-      return this.images[index];
+      books: [],
+      img: '',
+      a:''
     }
   },
 
@@ -45,19 +40,40 @@ export default {
         maxGlare: '0.3',
       })
     },
+
+    book(book,i){
+      localStorage.setItem('book', JSON.stringify(book));
+      localStorage.setItem('i',i);
+      this.$router.push('/book');
+    }
   },
 
   mounted() {
-
     this.$http.get('http://localhost:8081/books/getallbooks').then(response => {
       for (let d of response.data) {
-        this.recommendedImages.push(d.imageUrl)
-        this.images.push(d.imageUrl)
+        this.books.push(d)
       }
-      this.slides = this.recommendedImages.length;
-      console.log(this.slides)
-      this.portadas = this.recommendedImages.length;
+      this.portadas = this.books.length;
     })
+
+    if (localStorage.getItem('email') != null) {
+      const user = { email: localStorage.getItem('email') }
+      this.$http
+        .post('http://localhost:8081/users/getlikes', user)
+        .then(response => {
+          const data = { likes: response.data }
+          this.$http
+            .post('http://localhost:8081/books/getbookslikes', data)
+            .then(response => {
+              console.log(response.data);
+              this.recommendedBooks = response.data;
+              this.slides = this.recommendedBooks.length;
+            })
+        })
+    } else {
+      this.recommendedBooks = this.books;
+    }
+
     this.tilteo();
   },
 }
@@ -74,7 +90,7 @@ export default {
   background-repeat: no-repeat;
 }
 
-.portadas{
+.portadas {
   width: 100%;
   height: 100%;
 }

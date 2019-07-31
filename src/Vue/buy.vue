@@ -45,8 +45,9 @@
         <input v-model="name" placeholder="  Full name" type="text" />
         <input v-model="expireDate" placeholder="  MM/YY" type="text/>" />
         <input v-model="cvc" placeholder="  CVC" type="text" />
-        <button>Buy</button>
+        <button @click="buy">Buy</button>
       </form>
+      {{this.message}}
     </div>
     <span></span>
   </div>
@@ -56,11 +57,35 @@
 export default {
   data() {
     return {
-      number: "",
-      name: "",
-      expireDate: "",
-      cvc: ""
+      number: '',
+      name: '',
+      expireDate: '',
+      cvc: '',
+      message:'',
+      book:'',
+      user:''
     };
+  },
+
+  mounted() {
+    this.book = localStorage.getItem('bookToBuy');
+    this.user = localStorage.getItem('email');
+    localStorage.removeItem('bookToBuy');
+  },
+
+  methods: {
+    buy(){
+      if((this.number != "") && (this.name != "") && (this.expireDate != "") && (this.cvc != "")){
+        const data = {email: this.user, title: this.book}
+        this.$http.post('http://localhost:8081/users/buybook', data).then( response => {
+          this.message = "¡Comprado con éxito!";
+        })
+        
+      }
+      else{
+        this.message = "¡Asegúrate de que todos los datos están completos!"
+      }
+    }
   }
 };
 </script>
@@ -189,22 +214,20 @@ body {
   -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .card__front {
   padding: 18px;
-  -webkit-transform: rotateY(0);
+  transform: rotateY(0);
   -moz-transform: rotateY(0);
 }
 
 .card__back {
   padding: 18px 0;
-  -webkit-transform: rotateY(-180deg);
-  -moz-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
 }
 
 .card__black-line {
@@ -308,12 +331,11 @@ body {
 }
 
 .card:hover .card__front {
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .card:hover .card__back {
-  -webkit-transform: rotateY(0deg);
-  -moz-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+
 }
 </style>

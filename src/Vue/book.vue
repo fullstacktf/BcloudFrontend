@@ -2,7 +2,7 @@
   <div class="container">
     <div class="photoContainer">
       <div class="photo">
-      <img :src="urlImage">
+      <img :src="imageUrl">
       </div>
     </div>
     
@@ -29,14 +29,13 @@
 export default {
   data: () => {
     return {
-      urlImage: 'portada1.jpg',
-      urlEbook: "",
+      imageUrl: 'portada1.jpg',
       title: "El Secreto de la sirena",
       autor: "Sergio Puto Amo del Pino Hernández",
       publicationDate: "20-07-2014",
       descripcion: "Lorem Ipsum es simplemente el orem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas",
       valoracion: 10,   
-      price: 19.90
+      price: 19.90,
     }
   },
 
@@ -47,8 +46,20 @@ export default {
       like.classList.toggle('liked');
     },
     buy(){
-      this.$router.push('/buy/' + this.title);
+      localStorage.setItem('bookToBuy',this.title);
+      this.$router.push('/buy/');
     }
+  },
+  mounted() {
+    let getter = localStorage.getItem('book');
+    let i = localStorage.getItem('i');
+    console.log(i);
+    const book = JSON.parse(getter);
+    this.imageUrl = book.imageUrl;
+    this.title = book.titulo;
+    this.autor = book.autor;
+    this.publicationDate = book.fechaPublicacion;
+    this.descripcion = book.descripcion;
   }
 }
 </script>
