@@ -13,8 +13,8 @@
 
 
 <script>
-import registerLetrasTop from './components/register/registerLetrasTop'
-import registerForm from './components/register/registerForm'
+import registerLetrasTop from './registerComponents/registerForm'
+import registerForm from './registerComponents/registerLetrasTop'
 
 export default {
   components: { registerLetrasTop, registerForm },

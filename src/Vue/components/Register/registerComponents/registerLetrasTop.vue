@@ -1,24 +1,27 @@
 <template>
   <div class="frase">
     <p aria-label="Registro">
-      <span data-text="L">L</span>
-      <span data-text="O">O</span>
+      <span data-text="R">R</span>
+      <span data-text="E">E</span>
       <span data-text="G">G</span>
       <span data-text="I">I</span>
-      <span data-text="N">N</span>
+      <span data-text="S">S</span>
+      <span data-text="T">T</span>
+      <span data-text="E">E</span>
+      <span data-text="R">R</span>
     </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'loginLetrasTop',
+  name: 'registerLetrasTop',
 }
 </script>
 
 <style scoped>
 .frase {
-  margin-top: 20px;
+  margin-top: 35px;
   grid-area: frase;
   display: flex;
   justify-content: center;

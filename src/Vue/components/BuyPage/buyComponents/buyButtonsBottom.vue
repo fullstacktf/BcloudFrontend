@@ -7,9 +7,8 @@
 </template>
 
 <script>
-
 export default {
-  name: 'registerButtonsBottom',
+  name: 'buyButtonsBottom',
   props: {
     messages: Array,
     css: {
@@ -58,10 +57,10 @@ export default {
 .confirmation__button {
   background-image: linear-gradient(160deg, #ffeb05 0%, #ff7e05 100%);
   margin-bottom: 1rem;
-  width: 65%;
+  width: 518px;
   height: 40px;
   margin-top: 40px;
-  font-weight: 200;
+  font-weight: 400;
   display: block;
   font-size: 1rem;
   color: #000;
@@ -70,14 +69,9 @@ export default {
   cursor: pointer;
   border: none;
   text-transform: capitalize;
-  -webkit-transition: background 0.3s ease-in, min-width 0.1s linear,
-    box-shadow 0.2s ease-in;
-  transition: background 0.3s ease-in, min-width 0.1s linear,
-    box-shadow 0.2s ease-in;
 }
 
 .confirmation__button:not(.confirmation__button--complete):hover {
-  box-shadow: 0 15px 54px rgba(71, 78, 152, 0.7);
   font-size: 1rem;
   padding: 0.5rem 1rem;
 }
@@ -85,10 +79,9 @@ export default {
 .confirmation__button.confirmation__button--complete {
   cursor: not-allowed;
   background-image: linear-gradient(160deg, #ffeb05 0%, #ff7e05 100%);
-  width: 65%;
+  width: 518px;
   font-size: 0.8rem;
   padding: 0.5rem 1rem;
-  box-shadow: 0 6px 54px rgba(104, 160, 106, 0.5);
   animation: icon-pop 0.3s linear 1;
 }
 

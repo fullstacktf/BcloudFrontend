@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'loginButtonsBottom',
+  name: 'registerButtonsBottom',
   props: {
     messages: Array,
     css: {
@@ -55,16 +55,17 @@ export default {
 
 <style scoped>
 .confirmation__button {
-  width: 518px;
-  margin-top: 20px;
-  height: 40px;
-  outline: 0;
-  padding: 0.5rem 1rem;
   background-image: linear-gradient(160deg, #ffeb05 0%, #ff7e05 100%);
+  margin-bottom: 1rem;
+  width: 65%;
+  height: 40px;
+  margin-top: 40px;
   font-weight: 200;
   display: block;
   font-size: 1rem;
   color: #000;
+  padding: 0.5rem 1rem;
+  outline: 0;
   cursor: pointer;
   border: none;
   text-transform: capitalize;
@@ -78,9 +79,7 @@ export default {
 .confirmation__button.confirmation__button--complete {
   cursor: not-allowed;
   background-image: linear-gradient(160deg, #ffeb05 0%, #ff7e05 100%);
-  width: 518px;
-  margin-top: 20px;
-  height: 40px;
+  width: 65%;
   font-size: 0.8rem;
   padding: 0.5rem 1rem;
   animation: icon-pop 0.3s linear 1;
