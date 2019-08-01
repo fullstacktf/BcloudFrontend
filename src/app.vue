@@ -4,21 +4,20 @@
     <router-view></router-view>
     <foot></foot>
   </div>
- 
 </template>
 
 <script>
-import cabecera from "./Vue/header"
-import foot from "./Vue/footer"
-import contenedorImagenes from "./Vue/contenedorImages"
+import cabecera from './Vue/header'
+import foot from './Vue/footer'
+import contenedorImagenes from './Vue/contenedorImages'
 
 export default {
   name: 'app',
-  
-  components:{
+
+  components: {
     cabecera,
-    foot
-  }
+    foot,
+  },
 }
 </script>
 

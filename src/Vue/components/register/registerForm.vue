@@ -2,13 +2,13 @@
   <div>
     <form action method="post" class="form">
       <div class="form__field">
-        <input type="name" placeholder="Juanito Pérez" v-model="name"/>
+        <input type="name" placeholder="Juanito Pérez" v-model="name" />
       </div>
       <div class="form__field">
-        <input type="email" placeholder="info@mailaddress.com" v-model="email"/>
+        <input type="email" placeholder="info@mailaddress.com" v-model="email" />
       </div>
       <div class="form__field">
-        <input type="password" placeholder="••••••••••••" v-model="password"/>
+        <input type="password" placeholder="••••••••••••" v-model="password" />
       </div>
       <registerTagsBottom :sendLike="getLikes"></registerTagsBottom>
     </form>
@@ -47,35 +47,34 @@ export default {
 
     validateEmail(email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(String(email).toLowerCase());
+      return re.test(String(email).toLowerCase())
     },
 
     verifyForm() {
-      if (this.email == '') this.error_ = 'Escribe un e-mail';
+      if (this.email == '') this.error_ = 'Escribe un e-mail'
       else if (!this.validateEmail(this.email))
-        this.error_ = 'Formato de e-mail inválido';
-      else if (this.password == '') this.error_ = 'Escribe una contraseña';
+        this.error_ = 'Formato de e-mail inválido'
+      else if (this.password == '') this.error_ = 'Escribe una contraseña'
       else {
-        this.error_ = '';
+        this.error_ = ''
         return true
       }
     },
 
     sendData() {
       if (this.verifyForm());
-      let data = new FormData();
-      data.append('name', this.name);
-      data.append('email', this.email);
-      data.append('passw', this.password);
-      data.append('likes', this.likes);
-      console.log(data);
-      this.$http
-        .post('http://localhost:8081/users/signup', data);
+      let data = new FormData()
+      data.append('name', this.name)
+      data.append('email', this.email)
+      data.append('passw', this.password)
+      data.append('likes', this.likes)
+      console.log(data)
+      this.$http.post('http://localhost:8081/users/signup', data)
 
-      setTimeout(() =>{ this.$router.push("/") }, 3000);
+      setTimeout(() => {
+        this.$router.push('/')
+      }, 3000)
     },
-
-
   },
 }
 </script>
@@ -141,16 +140,6 @@ input {
       width: 60%;
     }
   }
-}
-
-h2 {
-  font-weight: bold;
-  letter-spacing: 3px;
-  font-family: 'Raleway', sans-serif;
-  color: $base-color;
-  font-size: 2.75rem;
-  margin: 0 0 1rem;
-  text-transform: uppercase;
 }
 
 p {
