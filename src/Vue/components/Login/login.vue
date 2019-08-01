@@ -85,7 +85,7 @@ input {
 }
 
 .form {
-  margin-top: 40px;
+  margin-top: 20px;
   &__field {
     display: flex;
     justify-content: center;
