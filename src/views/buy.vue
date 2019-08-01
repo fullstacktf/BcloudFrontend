@@ -44,8 +44,14 @@
       <form>
         <input v-model="number" placeholder="  Card number" type="tel" />
         <input v-model="name" placeholder="  Full name" type="text" />
-        <input v-model="expireDate" placeholder="  MM/YY" type="text/>" />
-        <input v-model="cvc" placeholder="  CVC" type="text" />
+        <input v-model="expireDate" placeholder="  MM/YY" type="text" />
+        <input
+          v-model="cvc"
+          placeholder="  CVC"
+          type="text"
+          @click="toBackCard"
+          @blur="toFrontCard"
+        />
         <buyButtonsBottom></buyButtonsBottom>
       </form>
     </div>
@@ -54,8 +60,8 @@
 </template>
 
 <script>
-import buyLetrasTop from './buyComponents/buyLetrasTop'
-import buyButtonsBottom from './buyComponents/buyButtonsBottom'
+import buyLetrasTop from '../components/BuyPage/buyComponents/buyLetrasTop'
+import buyButtonsBottom from '../components/BuyPage/buyComponents/buyButtonsBottom'
 export default {
   components: { buyLetrasTop, buyButtonsBottom },
   data() {
@@ -65,6 +71,17 @@ export default {
       expireDate: '',
       cvc: '',
     }
+  },
+  methods: {
+    toBackCard() {
+      console.log('tutu')
+      const card = this.$el.querySelector('.card')
+      card.classList.add('emulateHover')
+    },
+    toFrontCard() {
+      const card = this.$el.querySelector('.card')
+      card.classList.remove('emulateHover')
+    },
   },
 }
 </script>
@@ -108,6 +125,10 @@ span {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+input:focus {
+  outline: 1px solid #ff7e05;
 }
 
 input {
@@ -161,7 +182,7 @@ input::placeholder {
   background-position: center;
   background-size: cover;
   border-radius: 8px;
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
@@ -282,11 +303,13 @@ input::placeholder {
   left: 15px;
 }
 
-.card:hover .card__front {
+.card:hover .card__front,
+.emulateHover .card__front {
   transform: rotateY(180deg);
 }
 
-.card:hover .card__back {
+.card:hover .card__back,
+.emulateHover .card__back {
   transform: rotateY(0deg);
 }
 </style>

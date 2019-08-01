@@ -40,7 +40,7 @@
 
 <script>
 import FormData from 'form-data'
-import adminTagsBottom from './adminComponents/adminTagsBottom'
+import adminTagsBottom from '../components/AdminPage/adminComponents/adminTagsBottom'
 
 export default {
   data: () => {

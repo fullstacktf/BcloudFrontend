@@ -22,8 +22,8 @@
 
 
 <script>
-import loginLetrasTop from './loginComponents/loginLetrasTop'
-import loginButtonsBottom from './loginComponents/loginButtonsBottom'
+import loginLetrasTop from '../components/LoginPage/loginComponents/loginLetrasTop'
+import loginButtonsBottom from '../components/LoginPage/loginComponents/loginButtonsBottom'
 export default {
   name: 'login',
   components: { loginLetrasTop, loginButtonsBottom },
