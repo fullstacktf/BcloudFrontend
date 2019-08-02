@@ -54,8 +54,9 @@
             @click="toBackCard"
             @blur="toFrontCard"
           />
-          <buyButtonsBottom></buyButtonsBottom>
+          <buyButtonsBottom @click.native=incrementStep></buyButtonsBottom>
         </form>
+        <p>{{message}}</p>
       </div>
       <span></span>
     </div>
@@ -79,6 +80,7 @@ export default {
       message: '',
       book: '',
       user: '',
+      step: '' 
     }
   },
 
@@ -107,7 +109,6 @@ export default {
       }
     },
     toBackCard() {
-      console.log('tutu')
       const card = this.$el.querySelector('.card')
       card.classList.add('emulateHover')
     },
@@ -115,6 +116,12 @@ export default {
       const card = this.$el.querySelector('.card')
       card.classList.remove('emulateHover')
     },
+    incrementStep(){
+      if(this.step < 1)
+        this.step++;
+      else
+        this.buy();
+    }
   },
 }
 </script>

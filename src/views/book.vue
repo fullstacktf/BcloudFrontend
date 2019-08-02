@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="photoContainer">
-      <img :src="urlImage" />
+      <img :src="imageUrl" />
     </div>
 
     <div class="contenido">
@@ -30,8 +30,7 @@
 export default {
   data: () => {
     return {
-      urlImage: 'portada1.jpg',
-      urlEbook: '',
+      imageUrl: 'portada1.jpg',
       title: 'El Secreto de la sirena',
       autor: 'Sergio Puto Amo del Pino Hernández',
       publicationDate: '20-07-2014',
@@ -52,6 +51,15 @@ export default {
       this.$router.push('/buy/' + this.title)
     },
   },
+  mounted(){
+    let getter = localStorage.getItem('book');
+    const book = JSON.parse(getter);
+    this.imageUrl = book.imageUrl;
+    this.title = book.titulo;
+    this.autor = book.autor;
+    this.publicationDate = book.fechaPublicacion;
+    this.descripcion = book.descripcion;
+  }
 }
 </script>
 

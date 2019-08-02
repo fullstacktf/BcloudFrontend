@@ -17,11 +17,6 @@
           />
         </slide>
       </carousel-3d>
-      <!-- <carousel-3d :width="300" :height="460">
-        <slide v-for="(recommendedBook, i) in recommendedBooks" :key="i" :index="i">
-          <img @click="book(recommendedBook)" class="imageneses" :src="recommendedBook.imageUrl" />
-        </slide>
-      </carousel-3d>-->
     </div>
     <foot></foot>
   </div>

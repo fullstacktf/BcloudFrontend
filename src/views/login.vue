@@ -12,7 +12,7 @@
             <input type="password" placeholder="••••••••••••" v-model="password" />
           </div>
         </form>
-        <loginButtonsBottom @click="login"></loginButtonsBottom>
+        <loginButtonsBottom @click.native="incrementStep"></loginButtonsBottom>
         <p>
           Don´t you have an accout?
           <router-link to="/register" class="link">Register Here</router-link>
@@ -30,6 +30,7 @@ import cabecera from '../components/Header/header'
 import foot from '../components/Footer/footer'
 import loginLetrasTop from '../components/LoginPage/loginComponents/loginLetrasTop'
 import loginButtonsBottom from '../components/LoginPage/loginComponents/loginButtonsBottom'
+import { setTimeout } from 'timers';
 export default {
   name: 'login',
   components: { loginLetrasTop, loginButtonsBottom, cabecera, foot },
@@ -38,6 +39,7 @@ export default {
       email: '',
       password: '',
       message: '',
+      step: 0
     }
   },
   methods: {
@@ -49,7 +51,6 @@ export default {
           if (response.data.token != undefined) {
             localStorage.setItem('email', this.email)
             localStorage.setItem('jwt', response.data.token)
-            const dummy = localStorage.getItem('jwt')
             setTimeout(() => {
               this.$router.push('/')
             }, 5000)
@@ -60,6 +61,14 @@ export default {
           }
         })
     },
+    incrementStep(){
+      console.log("steps",this.step)
+      if(this.step < 1)
+        this.step++;
+      else
+        this.login();
+    }
+    
   },
 }
 </script>
