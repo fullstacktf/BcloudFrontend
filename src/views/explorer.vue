@@ -8,8 +8,8 @@
     </div>
 
     <div class="containerCarousel">
-      <carousel-3d :width="300" :height="460">
-        <slide v-for="(recommendedBook, i) in 5" :key="i" :index="i">
+      <carousel-3d :width="300" :height="460" :count="4" :autoplay="true">
+        <slide v-for="(recommendedBook, i) in 4" :key="i" :index="i">
           <img
             @click="book(recommendedBooks[i])"
             class="imageneses"
@@ -40,7 +40,7 @@ export default {
     return {
       recommendedBooks: [],
       portadas: 0,
-      slides: 5,
+      slides: 0,
       books: [],
       img: '',
       a: '',
