@@ -22,7 +22,7 @@
         <label for="title">Title</label>
         <input type="text" id="title" v-model="title" />
         <label for="gener">Gener</label>
-        <registerTagsBottom :sendLike="getLikes"></registerTagsBottom>
+        <adminTagsBottom :sendLike="getLikes"></adminTagsBottom>
         <label for="author">Author</label>
         <input type="text" id="author" v-model="author" />
         <label for="publicationDate">Publication date</label>
@@ -40,7 +40,7 @@
 
 <script>
 import FormData from 'form-data'
-import registerTagsBottom from './components/register/registerTagsBottom'
+import adminTagsBottom from '../components/AdminPage/adminComponents/adminTagsBottom'
 
 export default {
   data: () => {
@@ -84,7 +84,7 @@ export default {
       this.gener = likes
     },
   },
-  components: { registerTagsBottom },
+  components: { adminTagsBottom },
 }
 </script>
 

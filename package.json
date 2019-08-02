@@ -11,7 +11,8 @@
     "parcelserverlogin": "parcel src/login/login.html --open",
     "parcelserverregister": "parcel src/register/register.html --open",
     "stylelinter": "stylelint src/css/index.css",
-    "crearStylelintrc": "code .styleintrc"
+    "crearStylelintrc": "code .styleintrc",
+    "parcelproduccion": "parcel build src/index.html -d build"
   },
   "author": "",
   "license": "ISC",

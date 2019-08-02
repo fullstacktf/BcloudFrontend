@@ -1,26 +1,35 @@
 <template>
   <div>
+    <cabecera></cabecera>
     <div class="contenedorPortadas">
       <div v-for="(portada, i) in portadas" :key="i" class="imagenes">
-         <img @click="book(books[i],i)" class="portadas" :src="books[i].imageUrl"/>
+        <img @click="book(books[i],i)" class="portadas" :src="books[i].imageUrl" />
       </div>
     </div>
 
     <div class="containerCarousel">
       <carousel-3d :width="300" :height="460">
         <slide v-for="(slide, i) in slides" :index="i">
-          <img @click="book(recommendedBooks[i],i)" class="imageneses" :src="recommendedBooks[i].imageUrl" />
+          <img
+            @click="book(recommendedBooks[i],i)"
+            class="imageneses"
+            :src="recommendedBooks[i].imageUrl"
+          />
         </slide>
       </carousel-3d>
     </div>
+    <foot></foot>
   </div>
 </template>
 
 <script>
 import tilt from 'vanilla-tilt'
+import cabecera from '../components/Header/header'
+import foot from '../components/Footer/footer'
 
 export default {
   name: 'contenedorImages',
+  components: { tilt, cabecera, foot },
   data: function() {
     return {
       recommendedBooks: [],
@@ -28,7 +37,7 @@ export default {
       slides: 7,
       books: [],
       img: '',
-      a:''
+      a: '',
     }
   },
 
@@ -41,11 +50,11 @@ export default {
       })
     },
 
-    book(book,i){
-      localStorage.setItem('book', JSON.stringify(book));
-      localStorage.setItem('i',i);
-      this.$router.push('/book');
-    }
+    book(book, i) {
+      localStorage.setItem('book', JSON.stringify(book))
+      localStorage.setItem('i', i)
+      this.$router.push('/book')
+    },
   },
 
   mounted() {
@@ -53,7 +62,7 @@ export default {
       for (let d of response.data) {
         this.books.push(d)
       }
-      this.portadas = this.books.length;
+      this.portadas = this.books.length
     })
 
     if (localStorage.getItem('email') != null) {
@@ -65,16 +74,16 @@ export default {
           this.$http
             .post('http://localhost:8081/books/getbookslikes', data)
             .then(response => {
-              console.log(response.data);
-              this.recommendedBooks = response.data;
-              this.slides = this.recommendedBooks.length;
+              console.log(response.data)
+              this.recommendedBooks = response.data
+              this.slides = this.recommendedBooks.length
             })
         })
     } else {
-      this.recommendedBooks = this.books;
+      this.recommendedBooks = this.books
     }
 
-    this.tilteo();
+    this.tilteo()
   },
 }
 </script>
@@ -104,38 +113,6 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-/* .img1 {
-  background-image: url('../img/portada1.jpg');
-}
-
-.img2 {
-  background-image: url('../img/portada2.jpg');
-}
-
-.img3 {
-  background-image: url('../img/portada3.jpg');
-}
-
-.img4 {
-  background-image: url('../img/portada4.jpg');
-}
-
-.img5 {
-  background-image: url('../img/portada5.jpg');
-}
-
-.img6 {
-  background-image: url('../img/portada6.jpg');
-}
-
-.img7 {
-  background-image: url('../img/portada7.jpg');
-}
-
-.img8 {
-  background-image: url('../img/portada8.jpg');
-} */
 
 .contenedorPortadas {
   max-width: 920px;

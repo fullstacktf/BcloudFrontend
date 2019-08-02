@@ -25,14 +25,12 @@
 
 <script>
 export default {
-  name: "cabecera"
-};
+  name: 'cabecera',
+}
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css?family=Cookie|Kaushan+Script|Pacifico|Permanent+Marker|Tangerine&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 .header {
   display: flex;
@@ -60,7 +58,7 @@ export default {
   background-position: center;
   width: 30%;
   height: 90%;
-  background-image: url('../img/color.svg');
+  background-image: url('../../img/color.svg');
 }
 
 .headerDer {
@@ -68,7 +66,7 @@ export default {
   width: 40%;
   height: 100%;
   display: grid;
-  grid-template-areas: "explor nov cont log reg";
+  grid-template-areas: 'explor nov cont log reg';
 }
 
 .explorador {
@@ -97,7 +95,7 @@ a:hover {
 
 .textIndex {
   font-weight: bold;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
   letter-spacing: 3px;
   color: #fb4;
   display: flex;

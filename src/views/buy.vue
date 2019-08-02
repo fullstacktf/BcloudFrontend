@@ -1,5 +1,9 @@
 <template>
-  <div class="container">
+  <div>
+    <cabecera></cabecera>
+    <div class="container">
+      <buyLetrasTop></buyLetrasTop>
+      <span class="description">Complete all the fields with your credit card information</span>
       <div class="card">
         <div class="card__front card__part">
           <img
@@ -38,63 +42,93 @@
           </div>
         </div>
       </div>
-    <div class="form">
-      <span>Credit card details</span>
-      <form>
-        <input v-model="number" placeholder="  Card number" type="tel" />
-        <input v-model="name" placeholder="  Full name" type="text" />
-        <input v-model="expireDate" placeholder="  MM/YY" type="text/>" />
-        <input v-model="cvc" placeholder="  CVC" type="text" />
-        <button @click="buy">Buy</button>
-      </form>
-      {{this.message}}
+      <div class="form">
+        <form>
+          <input v-model="number" placeholder="  Card number" type="tel" />
+          <input v-model="name" placeholder="  Full name" type="text" />
+          <input v-model="expireDate" placeholder="  MM/YY" type="text" />
+          <input
+            v-model="cvc"
+            placeholder="  CVC"
+            type="text"
+            @click="toBackCard"
+            @blur="toFrontCard"
+          />
+          <buyButtonsBottom></buyButtonsBottom>
+        </form>
+      </div>
+      <span></span>
     </div>
-    <span></span>
+    <foot></foot>
   </div>
 </template>
 
 <script>
+import cabecera from '../components/Header/header'
+import foot from '../components/Footer/footer'
+import buyLetrasTop from '../components/BuyPage/buyComponents/buyLetrasTop'
+import buyButtonsBottom from '../components/BuyPage/buyComponents/buyButtonsBottom'
 export default {
+  components: { buyLetrasTop, buyButtonsBottom, cabecera, foot },
   data() {
     return {
       number: '',
       name: '',
       expireDate: '',
       cvc: '',
-      message:'',
-      book:'',
-      user:''
-    };
+      message: '',
+      book: '',
+      user: '',
+    }
   },
 
   mounted() {
-    this.book = localStorage.getItem('bookToBuy');
-    this.user = localStorage.getItem('email');
-    localStorage.removeItem('bookToBuy');
+    this.book = localStorage.getItem('bookToBuy')
+    this.user = localStorage.getItem('email')
+    localStorage.removeItem('bookToBuy')
   },
 
   methods: {
-    buy(){
-      if((this.number != "") && (this.name != "") && (this.expireDate != "") && (this.cvc != "")){
-        const data = {email: this.user, title: this.book}
-        this.$http.post('http://localhost:8081/users/buybook', data).then( response => {
-          this.message = "¡Comprado con éxito!";
-        })
-        
+    buy() {
+      if (
+        this.number != '' &&
+        this.name != '' &&
+        this.expireDate != '' &&
+        this.cvc != ''
+      ) {
+        const data = { email: this.user, title: this.book }
+        this.$http
+          .post('http://localhost:8081/users/buybook', data)
+          .then(response => {
+            this.message = '¡Comprado con éxito!'
+          })
+      } else {
+        this.message = '¡Asegúrate de que todos los datos están completos!'
       }
-      else{
-        this.message = "¡Asegúrate de que todos los datos están completos!"
-      }
-    }
-  }
-};
+    },
+    toBackCard() {
+      console.log('tutu')
+      const card = this.$el.querySelector('.card')
+      card.classList.add('emulateHover')
+    },
+    toFrontCard() {
+      const card = this.$el.querySelector('.card')
+      card.classList.remove('emulateHover')
+    },
+  },
+}
 </script>
 
 <style scoped>
+.description {
+  margin-bottom: 50px;
+}
+
 .container {
-  height: 700px;
+  height: 800px;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -104,99 +138,61 @@ img {
   max-height: 50px;
 }
 
-button {
-  height: 10%;
-  width: 30%;
-  border: 1px solid black;
-  vertical-align: middle;
-  text-align: center;
-  display: inline-block;
-  background-color: #fb4;
-  margin: 2px;
-}
-
 span {
-  font-size: 35px;
-  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
   color: #fb4;
 }
 
 .form {
-  background-color: #f5f5f7;
-  border-radius: 4px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  margin: 30px auto;
-  width: 400px;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-form {
-  background-color: #f5f5f7;
-  border-radius: 4px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  margin: 30px auto;
+  font-family: 'Raleway', sans-serif;
+  height: 30px;
+  outline: 0;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   width: 400px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+input:focus {
+  outline: 1px solid #ff7e05;
 }
 
 input {
+  border: 1px solid #fb1;
+  background-color: transparent;
   margin-top: 20px;
-  font-family: "Raleway", sans-serif;
-  width: 350px;
-  height: 10%;
-  border-radius: 5%;
+  font-family: 'Raleway', sans-serif;
+  width: 518px;
+  text-align: center;
+  height: 48px;
 }
 
 input::placeholder {
-  font-family: "Raleway", sans-serif;
-  color: violet;
-  text-align: unset;
+  font-family: 'Raleway', sans-serif;
+  color: #fb1;
 }
 
 * {
+  color: #fb1;
   box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
-}
-
-body html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-align-items: center;
-  -webkit-justify-content: center;
-  background-image: linear-gradient(to right top, #a2beeb, #8ecfee, #8edde5, #a4e7d5, #c7eec7);
-  flex-direction: column;
-  -webkit-flex-direction: column;
-}
-
-.title {
-  margin-bottom: 30px;
-  color: #162969;
+  font-family: 'Raleway', sans-serif;
 }
 
 .card {
   width: 320px;
   height: 190px;
-  -webkit-perspective: 600px;
-  -moz-perspective: 600px;
   perspective: 600px;
+  margin-bottom: 100px;
 }
 
 .card__part {
-  box-shadow: 1px 1px #aaa3a3;
   top: 0;
   position: absolute;
   z-index: 1000;
@@ -204,16 +200,22 @@ body {
   display: inline-block;
   width: 320px;
   height: 190px;
-  background-image: url('https://image.ibb.co/bVnMrc/g3095.png'), linear-gradient(to right bottom, #fd696b, #fa616e, #f65871, #f15075, #ec4879);
+  background-image: url('https://image.ibb.co/bVnMrc/g3095.png'),
+    linear-gradient(
+      135deg,
+      rgba(255, 234, 5, 1) 0%,
+      rgba(235, 192, 0, 0.81) 31%,
+      rgba(255, 187, 15, 0.72) 45%,
+      rgba(235, 145, 0, 0.66) 54%,
+      rgba(255, 34, 5, 0.56) 71%,
+      rgba(255, 126, 5, 0.41) 94%,
+      rgba(255, 126, 5, 0.38) 99%
+    );
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   border-radius: 8px;
-  -webkit-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -moz-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -ms-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  -o-transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
   transform-style: preserve-3d;
   backface-visibility: hidden;
 }
@@ -221,12 +223,10 @@ body {
 .card__front {
   padding: 18px;
   transform: rotateY(0);
-  -moz-transform: rotateY(0);
 }
 
 .card__back {
   padding: 18px 0;
-  transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 }
 
@@ -307,7 +307,7 @@ body {
   position: relative;
 }
 
-.card__secret:before {
+.card__secret::before {
   content: '';
   position: absolute;
   top: -3px;
@@ -315,7 +315,13 @@ body {
   height: calc(100% + 6px);
   width: calc(100% - 42px);
   border-radius: 4px;
-  background: repeating-linear-gradient(45deg, #ededed, #ededed 5px, #f9f9f9 5px, #f9f9f9 10px);
+  background: repeating-linear-gradient(
+    45deg,
+    #ededed,
+    #ededed 5px,
+    #f9f9f9 5px,
+    #f9f9f9 10px
+  );
 }
 
 .card__back-logo {
@@ -330,12 +336,13 @@ body {
   left: 15px;
 }
 
-.card:hover .card__front {
+.card:hover .card__front,
+.emulateHover .card__front {
   transform: rotateY(180deg);
 }
 
-.card:hover .card__back {
+.card:hover .card__back,
+.emulateHover .card__back {
   transform: rotateY(0deg);
-
 }
 </style>
