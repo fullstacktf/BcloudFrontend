@@ -9,7 +9,7 @@
 
     <div class="containerCarousel">
       <carousel-3d :width="300" :height="460">
-        <slide v-for="(slide, i) in slides" :index="i">
+        <slide v-for="(recommendedBook, i) in 5" :key="i" :index="i">
           <img
             @click="book(recommendedBooks[i])"
             class="imageneses"
@@ -17,6 +17,11 @@
           />
         </slide>
       </carousel-3d>
+      <!-- <carousel-3d :width="300" :height="460">
+        <slide v-for="(recommendedBook, i) in recommendedBooks" :key="i" :index="i">
+          <img @click="book(recommendedBook)" class="imageneses" :src="recommendedBook.imageUrl" />
+        </slide>
+      </carousel-3d>-->
     </div>
     <foot></foot>
   </div>
@@ -26,10 +31,11 @@
 import tilt from 'vanilla-tilt'
 import cabecera from '../components/Header/header'
 import foot from '../components/Footer/footer'
+import { Carousel3d, Slide } from 'vue-carousel-3d'
 
 export default {
   name: 'contenedorImages',
-  components: { tilt, cabecera, foot },
+  components: { tilt, cabecera, foot, Carousel3d, Slide },
   data: function() {
     return {
       recommendedBooks: [],
@@ -56,16 +62,13 @@ export default {
     },
   },
 
-  mounted() {
-    return
+  created() {
     this.$http.get('http://localhost:8081/books/getallbooks').then(response => {
       for (let d of response.data) {
         this.books.push(d)
       }
       this.slides = this.recommendedBooks.length
       this.portadas = this.books.length
-      console.log(response.data)
-      console.log('Aqui está la tal')
     })
 
     if (localStorage.getItem('email') != null) {
@@ -84,7 +87,6 @@ export default {
     } else {
       this.slides = this.recommendedBooks.length
       this.recommendedBooks = this.books
-      console.log(this.recommendedBooks)
     }
   },
 }
@@ -105,6 +107,11 @@ export default {
   width: 100%;
   height: 100%;
 }
+
+/* .carousel-3d-slider .carousel-3d-slide {
+  opacity: 1;
+  overflow: visible;
+} */
 
 .imageneses {
   cursor: pointer;
