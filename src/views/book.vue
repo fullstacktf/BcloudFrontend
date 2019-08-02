@@ -67,6 +67,7 @@ export default {
 
 .contenido {
   font-family: 'Raleway', sans-serif;
+  background-color: red;
   height: 70%;
   width: 30%;
   display: flex;
@@ -112,23 +113,27 @@ button {
   vertical-align: middle;
   text-align: center;
   display: inline-block;
-  background-color: #fb4;
+  background-color: green;
   margin: 2px;
 }
 
+* {
+  color: #fb1;
+}
+
 .liked {
-  background-color: red;
+  background-color: blue;
 }
 
 button:hover {
-  border-color: red;
-  background-color: #fb3;
+  border-color: blue;
+  background-color: green;
 }
 
 img {
   display: inline-block;
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 70%;
   background-size: cover;
 }
 </style>

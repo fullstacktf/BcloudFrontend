@@ -1,69 +1,75 @@
 <template>
-  <div class="container">
-    <buyLetrasTop></buyLetrasTop>
-    <span class="description">Complete all the fields with your credit card information</span>
-    <div class="card">
-      <div class="card__front card__part">
-        <img
-          class="card__front-square card__square"
-          src="https://image.ibb.co/cZeFjx/little_square.png"
-        />
-        <img
-          class="card__front-logo card__logo"
-          src="https://www.fireeye.com/partners/strategic-technology-partners/visa-fireeye-cyber-watch-program/_jcr_content/content-par/grid_20_80_full/grid-20-left/image.img.png/1505254557388.png"
-        />
-        <p class="card_numer">{{number}}</p>
-        <div class="card__space-75">
-          <span class="card__label">Card holder</span>
-          <p class="card__info">{{name}}</p>
-        </div>
-        <div class="card__space-25">
-          <span class="card__label">Expires</span>
-          <p class="card__info">{{expireDate}}</p>
-        </div>
-      </div>
-
-      <div class="card__back card__part">
-        <div class="card__black-line"></div>
-        <div class="card__back-content">
-          <div class="card__secret">
-            <p class="card__secret--last" v-bind="cvc">{{cvc}}</p>
-          </div>
+  <div>
+    <cabecera></cabecera>
+    <div class="container">
+      <buyLetrasTop></buyLetrasTop>
+      <span class="description">Complete all the fields with your credit card information</span>
+      <div class="card">
+        <div class="card__front card__part">
           <img
-            class="card__back-square card__square"
+            class="card__front-square card__square"
             src="https://image.ibb.co/cZeFjx/little_square.png"
           />
           <img
-            class="card__back-logo card__logo"
+            class="card__front-logo card__logo"
             src="https://www.fireeye.com/partners/strategic-technology-partners/visa-fireeye-cyber-watch-program/_jcr_content/content-par/grid_20_80_full/grid-20-left/image.img.png/1505254557388.png"
           />
+          <p class="card_numer">{{number}}</p>
+          <div class="card__space-75">
+            <span class="card__label">Card holder</span>
+            <p class="card__info">{{name}}</p>
+          </div>
+          <div class="card__space-25">
+            <span class="card__label">Expires</span>
+            <p class="card__info">{{expireDate}}</p>
+          </div>
+        </div>
+
+        <div class="card__back card__part">
+          <div class="card__black-line"></div>
+          <div class="card__back-content">
+            <div class="card__secret">
+              <p class="card__secret--last" v-bind="cvc">{{cvc}}</p>
+            </div>
+            <img
+              class="card__back-square card__square"
+              src="https://image.ibb.co/cZeFjx/little_square.png"
+            />
+            <img
+              class="card__back-logo card__logo"
+              src="https://www.fireeye.com/partners/strategic-technology-partners/visa-fireeye-cyber-watch-program/_jcr_content/content-par/grid_20_80_full/grid-20-left/image.img.png/1505254557388.png"
+            />
+          </div>
         </div>
       </div>
+      <div class="form">
+        <form>
+          <input v-model="number" placeholder="  Card number" type="tel" />
+          <input v-model="name" placeholder="  Full name" type="text" />
+          <input v-model="expireDate" placeholder="  MM/YY" type="text" />
+          <input
+            v-model="cvc"
+            placeholder="  CVC"
+            type="text"
+            @click="toBackCard"
+            @blur="toFrontCard"
+          />
+          <buyButtonsBottom></buyButtonsBottom>
+        </form>
+      </div>
+      <span></span>
     </div>
-    <div class="form">
-      <form>
-        <input v-model="number" placeholder="  Card number" type="tel" />
-        <input v-model="name" placeholder="  Full name" type="text" />
-        <input v-model="expireDate" placeholder="  MM/YY" type="text" />
-        <input
-          v-model="cvc"
-          placeholder="  CVC"
-          type="text"
-          @click="toBackCard"
-          @blur="toFrontCard"
-        />
-        <buyButtonsBottom></buyButtonsBottom>
-      </form>
-    </div>
-    <span></span>
+    <foot></foot>
   </div>
 </template>
 
 <script>
+import cabecera from '../components/Header/header'
+import foot from '../components/Footer/footer'
 import buyLetrasTop from '../components/BuyPage/buyComponents/buyLetrasTop'
 import buyButtonsBottom from '../components/BuyPage/buyComponents/buyButtonsBottom'
 export default {
-  components: { buyLetrasTop, buyButtonsBottom },
+  components: { buyLetrasTop, buyButtonsBottom, cabecera, foot },
   data() {
     return {
       number: '',

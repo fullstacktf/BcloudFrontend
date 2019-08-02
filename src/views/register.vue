@@ -1,5 +1,6 @@
 <template>
 <body>
+  <cabecera></cabecera>
   <div class="contenedorGrande">
     <div class="contenedorModal">
       <div class="modal">
@@ -8,16 +9,19 @@
       </div>
     </div>
   </div>
+  <foot></foot>
 </body>
 </template>
 
 
 <script>
+import cabecera from '../components/Header/header'
+import foot from '../components/Footer/footer'
 import registerLetrasTop from '../components/RegisterPage/registerComponents/registerLetrasTop'
 import registerForm from '../components/RegisterPage/registerComponents/registerForm'
 
 export default {
-  components: { registerLetrasTop, registerForm },
+  components: { registerLetrasTop, registerForm, cabecera, foot },
 }
 </script>
 

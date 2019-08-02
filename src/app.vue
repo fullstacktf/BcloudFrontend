@@ -1,23 +1,12 @@
 <template>
   <div>
-    <cabecera></cabecera>
     <router-view></router-view>
-    <foot></foot>
   </div>
 </template>
 
 <script>
-import cabecera from './components/Header/header'
-import foot from './components/Footer/footer'
-import contenedorImagenes from './views/explorer'
-
 export default {
   name: 'app',
-
-  components: {
-    cabecera,
-    foot,
-  },
 }
 </script>
 

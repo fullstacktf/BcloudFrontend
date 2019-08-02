@@ -1,32 +1,38 @@
 <template>
-  <div class="container">
-    <div class="login">
-      <loginLetrasTop></loginLetrasTop>
-      <form class="form" enctype="multipart/form-data">
-        <div class="form__field">
-          <input type="email" placeholder="info@mailaddress.com" v-model="email" />
-        </div>
-        <div class="form__field">
-          <input type="password" placeholder="••••••••••••" v-model="password" />
-        </div>
-      </form>
-      <loginButtonsBottom @click="login"></loginButtonsBottom>
-      <p>
-        Don´t you have an accout?
-        <router-link to="/register" class="link">Register Here</router-link>
-      </p>
-      <p>{{message}}</p>
+  <div>
+    <cabecera></cabecera>
+    <div class="container">
+      <div class="login">
+        <loginLetrasTop></loginLetrasTop>
+        <form class="form" enctype="multipart/form-data">
+          <div class="form__field">
+            <input type="email" placeholder="info@mailaddress.com" v-model="email" />
+          </div>
+          <div class="form__field">
+            <input type="password" placeholder="••••••••••••" v-model="password" />
+          </div>
+        </form>
+        <loginButtonsBottom @click="login"></loginButtonsBottom>
+        <p>
+          Don´t you have an accout?
+          <router-link to="/register" class="link">Register Here</router-link>
+        </p>
+        <p>{{message}}</p>
+      </div>
     </div>
+    <foot></foot>
   </div>
 </template>
 
 
 <script>
+import cabecera from '../components/Header/header'
+import foot from '../components/Footer/footer'
 import loginLetrasTop from '../components/LoginPage/loginComponents/loginLetrasTop'
 import loginButtonsBottom from '../components/LoginPage/loginComponents/loginButtonsBottom'
 export default {
   name: 'login',
-  components: { loginLetrasTop, loginButtonsBottom },
+  components: { loginLetrasTop, loginButtonsBottom, cabecera, foot },
   data() {
     return {
       email: '',

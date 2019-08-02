@@ -1,8 +1,9 @@
 <template>
   <div>
+    <cabecera></cabecera>
     <div class="contenedorPortadas">
-      <div v-for="(portada, i) in portadas" :key="i" class="imagenes"> 
-        <img class="portadas" :src="images[i]" alt="">
+      <div v-for="(portada, i) in portadas" :key="i" class="imagenes">
+        <img class="portadas" :src="images[i]" alt />
       </div>
     </div>
 
@@ -13,27 +14,31 @@
         </slide>
       </carousel-3d>
     </div>
+    <foot></foot>
   </div>
 </template>
 
 <script>
 import tilt from 'vanilla-tilt'
+import cabecera from '../components/Header/header'
+import foot from '../components/Footer/footer'
 
 export default {
   name: 'contenedorImages',
+  components: { tilt, cabecera, foot },
   data: function() {
     return {
       recommendedImages: [],
       portadas: 100,
       slides: 7,
       images: [],
-      img:''
+      img: '',
     }
   },
 
-  computed(){
-    takeImage: (index) => {
-      return this.images[index];
+  computed() {
+    takeImage: index => {
+      return this.images[index]
     }
   },
 
@@ -48,17 +53,16 @@ export default {
   },
 
   mounted() {
-
     this.$http.get('http://localhost:8081/books/getallbooks').then(response => {
       for (let d of response.data) {
         this.recommendedImages.push(d.imageUrl)
         this.images.push(d.imageUrl)
       }
-      this.slides = this.recommendedImages.length;
+      this.slides = this.recommendedImages.length
       console.log(this.slides)
-      this.portadas = this.recommendedImages.length;
+      this.portadas = this.recommendedImages.length
     })
-    this.tilteo();
+    this.tilteo()
   },
 }
 </script>
@@ -74,7 +78,7 @@ export default {
   background-repeat: no-repeat;
 }
 
-.portadas{
+.portadas {
   width: 100%;
   height: 100%;
 }
@@ -88,38 +92,6 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-/* .img1 {
-  background-image: url('../img/portada1.jpg');
-}
-
-.img2 {
-  background-image: url('../img/portada2.jpg');
-}
-
-.img3 {
-  background-image: url('../img/portada3.jpg');
-}
-
-.img4 {
-  background-image: url('../img/portada4.jpg');
-}
-
-.img5 {
-  background-image: url('../img/portada5.jpg');
-}
-
-.img6 {
-  background-image: url('../img/portada6.jpg');
-}
-
-.img7 {
-  background-image: url('../img/portada7.jpg');
-}
-
-.img8 {
-  background-image: url('../img/portada8.jpg');
-} */
 
 .contenedorPortadas {
   max-width: 920px;
