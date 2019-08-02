@@ -9,6 +9,7 @@ import profile from '../views/profile'
 import login from '../views/login'
 import contenedorImagenes from '../views/explorer'
 import register from '../views/register'
+import contact from '../views/contact'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,7 @@ const routes = [
   { path: '/admin', component: admin },
   { path: '/', component: contenedorImagenes },
   { path: '/profile', component: profile },
+  { path: '/contact', component: contact },
   // { path: '*', component: NotFoundPage },
 ]
 export default new VueRouter({ routes })

@@ -38,6 +38,13 @@ export default {
       books: [],
       img: '',
       a: '',
+      images: [],
+    }
+  },
+
+  computed() {
+    takeImage: index => {
+      return this.images[index]
     }
   },
 
@@ -58,6 +65,7 @@ export default {
   },
 
   mounted() {
+    return
     this.$http.get('http://localhost:8081/books/getallbooks').then(response => {
       for (let d of response.data) {
         this.books.push(d)
@@ -81,9 +89,10 @@ export default {
         })
     } else {
       this.recommendedBooks = this.books
+      this.slides = this.recommendedImages.length
+      console.log(this.slides)
+      this.portadas = this.recommendedImages.length
     }
-
-    this.tilteo()
   },
 }
 </script>

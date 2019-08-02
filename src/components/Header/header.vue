@@ -11,7 +11,7 @@
         <router-link to="/profile" class="textIndex">Perfil</router-link>
       </div>
       <div class="contacto flexing">
-        <a class="textIndex" href="#">Contact</a>
+        <router-link to="/contact" class="textIndex">Contact</router-link>
       </div>
       <div class="login flexing">
         <router-link to="/login" class="textIndex">Login</router-link>
