@@ -7,7 +7,17 @@
       </div>
     </div>
 
-    <div class="containerCarousel"></div>
+    <div class="containerCarousel">
+      <carousel-3d :width="300" :height="460">
+        <slide v-for="(slide, i) in slides" :index="i">
+          <img
+            @click="book(recommendedBooks[i])"
+            class="imageneses"
+            :src="recommendedBooks[i].imageUrl"
+          />
+        </slide>
+      </carousel-3d>
+    </div>
     <foot></foot>
   </div>
 </template>
