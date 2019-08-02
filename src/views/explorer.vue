@@ -7,17 +7,7 @@
       </div>
     </div>
 
-    <div class="containerCarousel">
-      <carousel-3d :width="300" :height="460">
-        <slide v-for="(slide, i) in slides" :index="i">
-          <img
-            @click="book(recommendedBooks[i],i)"
-            class="imageneses"
-            :src="recommendedBooks[i].imageUrl"
-          />
-        </slide>
-      </carousel-3d>
-    </div>
+    <div class="containerCarousel"></div>
     <foot></foot>
   </div>
 </template>
@@ -33,18 +23,11 @@ export default {
   data: function() {
     return {
       recommendedBooks: [],
-      portadas: 100,
-      slides: 7,
+      portadas: 0,
+      slides: 5,
       books: [],
       img: '',
       a: '',
-      images: [],
-    }
-  },
-
-  computed() {
-    takeImage: index => {
-      return this.images[index]
     }
   },
 
@@ -57,9 +40,8 @@ export default {
       })
     },
 
-    book(book, i) {
+    book(book) {
       localStorage.setItem('book', JSON.stringify(book))
-      localStorage.setItem('i', i)
       this.$router.push('/book')
     },
   },
@@ -70,7 +52,10 @@ export default {
       for (let d of response.data) {
         this.books.push(d)
       }
+      this.slides = this.recommendedBooks.length
       this.portadas = this.books.length
+      console.log(response.data)
+      console.log('Aqui está la tal')
     })
 
     if (localStorage.getItem('email') != null) {
@@ -84,14 +69,12 @@ export default {
             .then(response => {
               console.log(response.data)
               this.recommendedBooks = response.data
-              this.slides = this.recommendedBooks.length
             })
         })
     } else {
+      this.slides = this.recommendedBooks.length
       this.recommendedBooks = this.books
-      this.slides = this.recommendedImages.length
-      console.log(this.slides)
-      this.portadas = this.recommendedImages.length
+      console.log(this.recommendedBooks)
     }
   },
 }
