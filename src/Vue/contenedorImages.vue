@@ -2,14 +2,18 @@
   <div>
     <div class="contenedorPortadas">
       <div v-for="(portada, i) in portadas" :key="i" class="imagenes">
-         <img @click="book(books[i],i)" class="portadas" :src="books[i].imageUrl"/>
+        <img @click="book(books[i],i)" class="portadas" :src="books[i].imageUrl" />
       </div>
     </div>
 
     <div class="containerCarousel">
       <carousel-3d :width="300" :height="460">
         <slide v-for="(slide, i) in slides" :index="i">
-          <img @click="book(recommendedBooks[i],i)" class="imageneses" :src="recommendedBooks[i].imageUrl" />
+          <img
+            @click="book(recommendedBooks[i])"
+            class="imageneses"
+            :src="recommendedBooks[i].imageUrl"
+          />
         </slide>
       </carousel-3d>
     </div>
@@ -24,11 +28,11 @@ export default {
   data: function() {
     return {
       recommendedBooks: [],
-      portadas: 100,
-      slides: 7,
+      portadas: 0,
+      slides: 5,
       books: [],
       img: '',
-      a:''
+      a: '',
     }
   },
 
@@ -41,11 +45,10 @@ export default {
       })
     },
 
-    book(book,i){
-      localStorage.setItem('book', JSON.stringify(book));
-      localStorage.setItem('i',i);
-      this.$router.push('/book');
-    }
+    book(book) {
+      localStorage.setItem('book', JSON.stringify(book))
+      this.$router.push('/book')
+    },
   },
 
   mounted() {
@@ -53,7 +56,10 @@ export default {
       for (let d of response.data) {
         this.books.push(d)
       }
-      this.portadas = this.books.length;
+      this.slides = this.recommendedBooks.length
+      this.portadas = this.books.length
+      console.log(response.data)
+      console.log('Aqui está la tal')
     })
 
     if (localStorage.getItem('email') != null) {
@@ -65,16 +71,15 @@ export default {
           this.$http
             .post('http://localhost:8081/books/getbookslikes', data)
             .then(response => {
-              console.log(response.data);
-              this.recommendedBooks = response.data;
-              this.slides = this.recommendedBooks.length;
+              console.log(response.data)
+              this.recommendedBooks = response.data
             })
         })
     } else {
-      this.recommendedBooks = this.books;
+      this.slides = this.recommendedBooks.length
+      this.recommendedBooks = this.books
+      console.log(this.recommendedBooks)
     }
-
-    this.tilteo();
   },
 }
 </script>
