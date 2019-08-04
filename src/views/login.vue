@@ -49,20 +49,15 @@ export default {
         .post('http://localhost:8081/users/login', data)
         .then(response => {
           if (response.data.token != undefined) {
-            localStorage.setItem('email', this.email)
-            localStorage.setItem('jwt', response.data.token)
-            setTimeout(() => {
-              this.$router.push('/')
-            }, 5000)
-            this.message =
-              'Logeado con éxito. Se le redirigirá a la página principal'
-          } else {
+            localStorage.setItem('email', this.email);
+            localStorage.setItem('jwt', response.data.token);
+            this.$router.push('/');
+          } 
+          else
             this.message = response.data.message
-          }
-        })
+        });
     },
     incrementStep(){
-      console.log("steps",this.step)
       if(this.step < 1)
         this.step++;
       else
