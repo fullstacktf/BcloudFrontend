@@ -20,7 +20,7 @@
         <button id="like" @click="like">
           <i class="fa fa-heart"></i>&nbsp;Like
         </button>
-        <button id="dislike" @click="like">
+        <button id="dislike" @click="dislike">
           <i class="far fa-thumbs-down"></i>&nbsp;Dislike
         </button>
         <button @click="buy">Buy</button>
@@ -51,16 +51,22 @@ export default {
       like.classList.toggle('liked');
       if(like.classList.contains('liked')){
         const data = { email: localStorage.getItem('email'), title: this.title }
-        this.$http.post('http://localhost:8081/users/like', data)
+        this.$http.post('http://localhost:8081/users/like', data);
       }
     },
 
     dislike(){
-
+      let dislike = document.querySelector('#dislike');
+      let like = document.querySelector('#like');
+      dislike.classList.toggle('liked');
+      like.classList.toggle('liked');
+      const data = { email: localStorage.getItem('email'), title: this.title }
+      this.$http.post('http://localhost:8081/users/dislike', data);
     },
 
     buy() {
-      this.$router.push('/buy/' + this.title);
+      localStorage.setItem('bookToBuy',this.title);
+      this.$router.push('/buy/');
     },
 
   },

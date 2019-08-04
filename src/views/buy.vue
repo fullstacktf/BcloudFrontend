@@ -54,8 +54,8 @@
             @click="toBackCard"
             @blur="toFrontCard"
           />
-          <buyButtonsBottom @click.native=incrementStep></buyButtonsBottom>
         </form>
+        <buyButtonsBottom @click.native=incrementStep></buyButtonsBottom>
         <p>{{message}}</p>
       </div>
       <span></span>
@@ -80,7 +80,7 @@ export default {
       message: '',
       book: '',
       user: '',
-      step: '' 
+      step: 0 
     }
   },
 
@@ -88,6 +88,7 @@ export default {
     this.book = localStorage.getItem('bookToBuy')
     this.user = localStorage.getItem('email')
     localStorage.removeItem('bookToBuy')
+    console.log(this.book);
   },
 
   methods: {
