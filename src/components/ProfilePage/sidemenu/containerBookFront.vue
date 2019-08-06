@@ -6,6 +6,7 @@
   </div>
 </template>
 <script>
+import tilt from 'vanilla-tilt'
 export default {
   name: 'containerBookFront',
   data: function() {
@@ -23,16 +24,28 @@ export default {
       localStorage.setItem('book', JSON.stringify(book))
       this.$router.push('/book')
     },
+    tilteo() {
+      tilt.init(document.querySelectorAll('.imagenes'), {
+        scale: '1.05',
+        glare: true,
+        maxGlare: '0.3',
+      })
+    },
   },
 
   created() {
-    this.$http.get('http://localhost:8081/books/getallbooks').then(response => {
-      for (let d of response.data) {
-        this.books.push(d)
-      }
-      this.slides = this.recommendedBooks.length
-      this.portadas = this.books.length
-    })
+    this.$http
+      .get('http://localhost:8081/books/getallbooks')
+      .then(response => {
+        for (let d of response.data) {
+          this.books.push(d)
+        }
+        this.slides = this.recommendedBooks.length
+        this.portadas = this.books.length
+      })
+      .then(() => {
+        this.tilteo()
+      })
 
     if (localStorage.getItem('email') != null) {
       const user = { email: localStorage.getItem('email') }

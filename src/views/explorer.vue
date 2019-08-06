@@ -58,13 +58,18 @@ export default {
   },
 
   created() {
-    this.$http.get('http://localhost:8081/books/getallbooks').then(response => {
-      for (let d of response.data) {
-        this.books.push(d)
-      }
-      this.slides = this.recommendedBooks.length
-      this.portadas = this.books.length
-    })
+    this.$http
+      .get('http://localhost:8081/books/getallbooks')
+      .then(response => {
+        for (let d of response.data) {
+          this.books.push(d)
+        }
+        this.slides = this.recommendedBooks.length
+        this.portadas = this.books.length
+      })
+      .then(() => {
+        this.tilteo()
+      })
 
     if (localStorage.getItem('email') != null) {
       const user = { email: localStorage.getItem('email') }
@@ -82,8 +87,6 @@ export default {
     } else {
       this.slides = this.recommendedBooks.length
       this.recommendedBooks = this.books
-      this.tilteo()
-      this.tilteo
     }
   },
 }

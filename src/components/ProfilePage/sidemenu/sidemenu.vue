@@ -42,6 +42,7 @@ export default {
     yourFavouriteBooks,
     yourBooks,
   },
+  methods: {},
 }
 </script>
 

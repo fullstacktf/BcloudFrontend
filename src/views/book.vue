@@ -37,8 +37,10 @@
 </template>
 
 <script>
+import tilt from 'vanilla-tilt'
 import cabecera from '../components/Header/header'
 import foot from '../components/Footer/footer'
+import { constants } from 'crypto'
 export default {
   data: () => {
     return {
@@ -63,6 +65,14 @@ export default {
         const data = { email: localStorage.getItem('email'), title: this.title }
         this.$http.post('http://localhost:8081/users/like', data)
       }
+    },
+    tilteo() {
+      console.log('hola')
+      tilt.init(document.querySelectorAll('.photoContainer'), {
+        scale: '1.05',
+        glare: true,
+        maxGlare: '0.3',
+      })
     },
 
     dislike() {
@@ -96,6 +106,7 @@ export default {
 
         if (this.booksUser.includes(book)) console.log('le gusta')
       })
+
     let getter = localStorage.getItem('book')
     const book = JSON.parse(getter)
     this.imageUrl = book.imageUrl
@@ -103,6 +114,7 @@ export default {
     this.autor = book.autor
     this.publicationDate = book.fechaPublicacion
     this.descripcion = book.descripcion
+    this.tilteo()
   },
 }
 </script>
