@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "comoejecuto": "echo (npm run) siempre delante",
     "liveserver": "live-server --browser=chrome src",
-    "parcelserver": "parcel src/index.html --open",
+    "dev": "parcel src/index.html --open",
     "parcelserverlogin": "parcel src/login/login.html --open",
     "parcelserverregister": "parcel src/register/register.html --open",
     "stylelinter": "stylelint src/css/index.css",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.0.0",
     "autoprefixer": "^9.5.1",
+    "cssnano": "^4.1.10",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-config-standard": "^12.0.0",

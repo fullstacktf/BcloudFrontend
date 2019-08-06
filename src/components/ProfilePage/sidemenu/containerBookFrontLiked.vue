@@ -1,36 +1,15 @@
-<template>
-  <div>
-    <cabecera></cabecera>
-    <div class="contenedorPortadas">
-      <div v-for="(portada, i) in portadas" :key="i" class="imagenes">
-        <img @click="book(books[i],i)" class="portadas" :src="books[i].imageUrl" />
-      </div>
+ <template>
+  <div class="contenedorPortadas">
+    <div v-for="(portada, i) in portadas" :key="i" class="imagenes">
+      <img @click="book(books[i],i)" class="portadas" :src="books[i].imageUrl" />
     </div>
-
-    <div class="containerCarousel">
-      <carousel-3d :width="300" :height="460" :count="5" :autoplay="true">
-        <slide v-for="(recommendedBook, i) in 5" :key="i" :index="i">
-          <img
-            @click="book(recommendedBooks[i])"
-            class="imageneses"
-            :src="recommendedBooks[i].imageUrl"
-          />
-        </slide>
-      </carousel-3d>
-    </div>
-    <foot></foot>
   </div>
 </template>
 
 <script>
 import tilt from 'vanilla-tilt'
-import cabecera from '../components/Header/header'
-import foot from '../components/Footer/footer'
-import { Carousel3d, Slide } from 'vue-carousel-3d'
-
 export default {
-  name: 'contenedorImages',
-  components: { tilt, cabecera, foot, Carousel3d, Slide },
+  name: 'containerBookFrontLiked',
   data: function() {
     return {
       recommendedBooks: [],
@@ -41,19 +20,17 @@ export default {
       a: '',
     }
   },
-
   methods: {
+    book(book) {
+      localStorage.setItem('book', JSON.stringify(book))
+      this.$router.push('/book')
+    },
     tilteo() {
       tilt.init(document.querySelectorAll('.imagenes'), {
         scale: '1.05',
         glare: true,
         maxGlare: '0.3',
       })
-    },
-
-    book(book) {
-      localStorage.setItem('book', JSON.stringify(book))
-      this.$router.push('/book')
     },
   },
 
@@ -108,24 +85,9 @@ export default {
   height: 100%;
 }
 
-/* .carousel-3d-slider .carousel-3d-slide {
-  opacity: 1;
-  overflow: visible;
-} */
-
-.imageneses {
-  cursor: pointer;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  font-size: initial;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
 .contenedorPortadas {
-  max-width: 920px;
-  max-height: 500px;
+  max-width: 1200px;
+  max-height: 230px;
   margin: 0 auto;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
