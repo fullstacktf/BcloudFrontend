@@ -82,6 +82,8 @@ export default {
     } else {
       this.slides = this.recommendedBooks.length
       this.recommendedBooks = this.books
+      this.tilteo()
+      this.tilteo
     }
   },
 }
