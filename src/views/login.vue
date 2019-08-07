@@ -46,7 +46,7 @@ export default {
     login() {
       let data = { email: this.email, passw: this.password }
       this.$http
-        .post('http://localhost:8081/users/login', data)
+        .post('http://localhost:8081/api/users/login', data)
         .then(response => {
           if (response.data.token != undefined) {
             localStorage.setItem('email', this.email);

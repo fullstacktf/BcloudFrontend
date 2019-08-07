@@ -8,8 +8,8 @@
     </div>
 
     <div class="containerCarousel">
-      <carousel-3d :width="300" :height="460" :count="5" :autoplay="true">
-        <slide v-for="(recommendedBook, i) in 5" :key="i" :index="i">
+      <carousel-3d :width="300" :height="460" :count="3" :autoplay="true">
+        <slide v-for="(recommendedBook, i) in 3" :key="i" :index="i">
           <img
             @click="book(recommendedBooks[i])"
             class="imageneses"
@@ -59,7 +59,7 @@ export default {
 
   created() {
     this.$http
-      .get('http://localhost:8081/books/getallbooks')
+      .get('http://localhost:8081/api/books/getallbooks')
       .then(response => {
         for (let d of response.data) {
           this.books.push(d)
@@ -74,11 +74,12 @@ export default {
     if (localStorage.getItem('email') != null) {
       const user = { email: localStorage.getItem('email') }
       this.$http
-        .post('http://localhost:8081/users/getlikes', user)
+        .post('http://localhost:8081/api/users/getlikes', user)
         .then(response => {
           const data = { likes: response.data }
+          console.log(data);
           this.$http
-            .post('http://localhost:8081/books/getbookslikes', data)
+            .post('http://localhost:8081/api/books/getbookslikes', data)
             .then(response => {
               console.log(response.data)
               this.recommendedBooks = response.data
