@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     goBook(book) {
-      this.$router.push('/epub')
+      this.$router.push('/epub');
     },
     tilteo() {
       tilt.init(document.querySelectorAll('.imagenes'), {
