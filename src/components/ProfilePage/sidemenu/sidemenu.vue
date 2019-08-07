@@ -4,7 +4,7 @@
       <ul class="nav">
         <li class="nav__items homeClass">
           <i class="fas fa-home"></i>
-          <a href="#">Home</a>
+          <a @click="home()">Home</a>
         </li>
         <li class="nav__items searchClass">
           <i class="fas fa-search"></i>
@@ -16,7 +16,7 @@
         </li>
         <li class="nav__items logoutClass">
           <i class="fas fa-sign-out-alt"></i>
-          <a href="#">LogOut</a>
+          <a @click="logOut" >LogOut</a>
         </li>
       </ul>
     </nav>
@@ -42,7 +42,16 @@ export default {
     yourFavouriteBooks,
     yourBooks,
   },
-  methods: {},
+  methods: {
+    logOut(){
+      localStorage.clear();
+      this.$router.push('/');
+    },
+
+    home(){
+      this.$router.push('/');
+    }
+  },
 }
 </script>
 

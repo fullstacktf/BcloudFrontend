@@ -1,7 +1,7 @@
  <template>
   <div class="contenedorPortadas">
-    <div v-for="(portada, i) in portadas" :key="i" class="imagenes">
-      <img @click="book(books[i],i)" class="portadas" :src="books[i].imageUrl" />
+    <div v-for="(book) in books" :key="book" class="imagenes">
+      <img @click="goBook(book)" class="portadas" :src="book.imageUrl" />
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
   data: function() {
     return {
       recommendedBooks: [],
-      portadas: 0,
+      portadas: 5,
       slides: 0,
       books: [],
       img: '',
@@ -21,7 +21,7 @@ export default {
     }
   },
   methods: {
-    book(book) {
+    goBook(book) {
       localStorage.setItem('book', JSON.stringify(book))
       this.$router.push('/book')
     },
@@ -35,36 +35,23 @@ export default {
   },
 
   created() {
+    const data = { email: localStorage.getItem('email') }
     this.$http
-      .get('http://localhost:8081/books/getallbooks')
+      .post('http://localhost:8081/api/users/booksUser', data)
       .then(response => {
-        for (let d of response.data) {
-          this.books.push(d)
-        }
-        this.slides = this.recommendedBooks.length
-        this.portadas = this.books.length
-      })
-      .then(() => {
-        this.tilteo()
-      })
+        this.books = response.data.librosFavoritos;
+        console.log(this.books);
+        let getter = localStorage.getItem('book')
 
-    if (localStorage.getItem('email') != null) {
-      const user = { email: localStorage.getItem('email') }
-      this.$http
-        .post('http://localhost:8081/users/getlikes', user)
-        .then(response => {
-          const data = { likes: response.data }
-          this.$http
-            .post('http://localhost:8081/books/getbookslikes', data)
-            .then(response => {
-              console.log(response.data)
-              this.recommendedBooks = response.data
-            })
-        })
-    } else {
-      this.slides = this.recommendedBooks.length
-      this.recommendedBooks = this.books
-    }
+        for (const book of this.booksUser) {
+          if (getter == JSON.stringify(book)) {
+            let like = document.querySelector('#like')
+            like.classList.add('liked')
+          }
+        }
+
+        if (this.booksUser.includes(book)) console.log('le gusta')
+      })
   },
 }
 </script>

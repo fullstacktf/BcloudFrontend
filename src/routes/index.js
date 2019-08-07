@@ -10,6 +10,7 @@ import login from '../views/login'
 import contenedorImagenes from '../views/explorer'
 import register from '../views/register'
 import contact from '../views/contact'
+import epub from '../views/epub'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,7 @@ const routes = [
   { path: '/', component: contenedorImagenes },
   { path: '/profile', component: profile },
   { path: '/contact', component: contact },
+  { path: '/epub', component: epub },
   // { path: '*', component: NotFoundPage },
 ]
 export default new VueRouter({ routes })

@@ -101,7 +101,7 @@ export default {
       ) {
         const data = { email: this.user, title: this.book }
         this.$http
-          .post('http://localhost:8081/users/buybook', data)
+          .post('http://localhost:8081/api/users/buybook', data)
           .then(response => {
             this.message = '¡Comprado con éxito!'
           })
