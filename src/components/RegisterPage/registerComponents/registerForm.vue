@@ -68,8 +68,7 @@ export default {
       data.append('email', this.email)
       data.append('passw', this.password)
       data.append('likes', this.likes)
-      console.log(data)
-      this.$http.post('http://localhost:8081/api/users/signup', data)
+      this.$http.post('/api/users/signup', data)
 
       setTimeout(() => {
         this.$router.push('/')

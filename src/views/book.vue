@@ -63,7 +63,7 @@ export default {
       like.classList.toggle('liked')
       if (like.classList.contains('liked')) {
         const data = { email: localStorage.getItem('email'), title: this.title }
-        this.$http.post('http://localhost:8081/api/users/like', data)
+        this.$http.post('/api/users/like', data)
       }
     },
     tilteo() {
@@ -81,7 +81,7 @@ export default {
       dislike.classList.toggle('liked')
       like.classList.toggle('liked')
       const data = { email: localStorage.getItem('email'), title: this.title }
-      this.$http.post('http://localhost:8081/api/users/dislike', data)
+      this.$http.post('/api/users/dislike', data)
     },
 
     buy() {
@@ -92,7 +92,7 @@ export default {
   mounted() {
     const data = { email: localStorage.getItem('email') }
     this.$http
-      .post('http://localhost:8081/api/users/booksUser', data)
+      .post('/api/users/booksUser', data)
       .then(response => {
         this.booksUser = response.data.librosFavoritos;
         console.log(this.booksUser);
