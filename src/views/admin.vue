@@ -71,7 +71,7 @@ export default {
       data.append('price', this.price)
       data.append('description', this.description)
       this.$http
-        .post('https://bookcloud.me/api/books/upload', data, {
+        .post('/api/books/upload', data, {
           headers: {
             'Content-Type': this.epubFile.type,
           },
