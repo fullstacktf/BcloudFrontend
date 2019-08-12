@@ -106,7 +106,7 @@ export default {
 .containerEpub {
   height: 900px;
   width: 100%;
-  background-color: #ff7e05;
+  background-color: #fb1;
 }
 
 div .epub-reading-progress-bar {

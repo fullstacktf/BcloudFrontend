@@ -7,14 +7,15 @@
       <div class="details">
         <h4 class="color1">Hey, We are BClouD Creators ♥!</h4>
         <h4 class="color2 margin">Do you wanna know more about us?</h4>
-        <p>We are,</p>
+        <p>We are</p>
         <p>two students with</p>
-        <p>a lot of eager to lear, our names are:</p>
-        <p>Sergio del Pino Hernández</p>
-        <p>Manuel Jesús Peraza Alonso</p>
+        <p>a lot of eager to learn,</p>
+        <p>our names are</p>
+        <p>Sergio del Pino Hernández and</p>
+        <p>Manuel Jesús Peraza Alonso.</p>
         <p>This page is born from a fullstack</p>
         <p>development course, so if you</p>
-        <p>want to contact us to give us suggestions</p>
+        <p>want to contact to give us suggestions</p>
         <p>or advice you can do it here</p>
         <p class="text-right">Bcloud@gmail.com</p>
         <p class="text-right">BClouD Team :)</p>
@@ -34,7 +35,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 
 .container {
-  height: 600px;
+  height: 800px;
   width: 100%;
 }
 
@@ -111,8 +112,10 @@ h4 {
   border-left: 30px solid #875a39;
   width: 270px;
   background-color: #fb1;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-image: url('../../img/Black.svg'), url('../../img/noise.png');
+  background-repeat: no-repeat, repeat-y;
+  background-size: 175px 175px, contain;
+  background-position: center 50px, 0 0;
 }
 
 .card .bark {
