@@ -9,10 +9,10 @@
         <h4 class="color2 margin">Do you wanna know more about us?</h4>
         <p>We are,</p>
         <p>two students with</p>
-        <p>a lot of eager to lear, our names are:</p>
+        <p>a lot of eager to learn, our names are:</p>
         <p>Sergio del Pino Hernández</p>
         <p>Manuel Jesús Peraza Alonso</p>
-        <p>This page is born from a fullstack</p>
+        <p>This page was born from a fullstack</p>
         <p>development course, so if you</p>
         <p>want to contact us to give us suggestions</p>
         <p>or advice you can do it here</p>
