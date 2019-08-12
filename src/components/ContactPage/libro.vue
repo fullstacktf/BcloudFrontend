@@ -108,16 +108,9 @@ h4 {
   top: 0%;
   transform-origin: left;
   transition: 0.7s;
-  background-image: url('../../img/Black.svg'),
-    linear-gradient(
-      to right,
-      rgba(255, 234, 5, 1) 0%,
-      rgba(255, 234, 5, 1) 0%,
-      rgba(230, 189, 5, 1) 20%,
-      rgba(255, 126, 5, 1) 50%,
-      rgba(230, 144, 5, 1) 80%,
-      rgba(255, 126, 5, 1) 100%
-    );
+  border-left: 30px solid #875a39;
+  width: 270px;
+  background-color: #fb1;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -128,16 +121,16 @@ h4 {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: 0.7s;
+  transition: 0.5s;
 }
+
 .card:hover .imgBox {
   transform: rotateY(-135deg);
 }
 
 .card:hover .bark {
   opacity: 1;
-  transition: 0.6s;
-  box-shadow: 300px 200px 100px rgba(0, 0, 0, 0.4) inset;
+  background-color: #875a39;
 }
 
 .card .details {
