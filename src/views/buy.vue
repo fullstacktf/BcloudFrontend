@@ -69,6 +69,7 @@ import cabecera from '../components/Header/header'
 import foot from '../components/Footer/footer'
 import buyLetrasTop from '../components/BuyPage/buyComponents/buyLetrasTop'
 import buyButtonsBottom from '../components/BuyPage/buyComponents/buyButtonsBottom'
+import { get } from 'http';
 export default {
   components: { buyLetrasTop, buyButtonsBottom, cabecera, foot },
   data() {
@@ -85,10 +86,11 @@ export default {
   },
 
   mounted() {
-    this.book = localStorage.getItem('bookToBuy')
-    this.user = localStorage.getItem('email')
-    localStorage.removeItem('bookToBuy')
-    console.log(this.book)
+    const getter = localStorage.getItem('bookToBuy');
+    this.book = JSON.parse(getter);
+    this.user = localStorage.getItem('email');
+    localStorage.removeItem('bookToBuy');
+    console.log(this.book);
   },
 
   methods: {
@@ -103,7 +105,7 @@ export default {
         this.$http
           .post('/api/users/buybook', data)
           .then(response => {
-            this.message = '¡Comprado con éxito!'
+            this.message = '¡Comprado con éxito!';
           })
       } else {
         this.message = '¡Asegúrate de que todos los datos están completos!'

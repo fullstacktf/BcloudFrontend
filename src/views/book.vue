@@ -104,6 +104,7 @@ export default {
       })
 
     let getter = localStorage.getItem('book')
+    localStorage.setItem('bookToBuy', getter);
     const book = JSON.parse(getter)
     this.imageUrl = book.imageUrl
     this.title = book.titulo
