@@ -18,7 +18,7 @@
         <p>want to contact to give us suggestions</p>
         <p>or advice you can do it here</p>
         <p class="text-right">Bcloud@gmail.com</p>
-        <p class="text-right">BClouD Team :)</p>
+        <p class="text-right">Bcloud Team :)</p>
       </div>
     </div>
   </div>
