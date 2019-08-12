@@ -103,14 +103,14 @@ export default {
         if (this.booksUser.includes(book)) console.log('le gusta')
       })
 
-    let getter = localStorage.getItem('book')
-    localStorage.setItem('bookToBuy', getter);
-    const book = JSON.parse(getter)
-    this.imageUrl = book.imageUrl
-    this.title = book.titulo
-    this.autor = book.autor
-    this.publicationDate = book.fechaPublicacion
-    this.descripcion = book.descripcion
+    let getter = localStorage.getItem('book');
+    const book = JSON.parse(getter);
+    this.imageUrl = book.imageUrl;
+    this.title = book.titulo;
+    this.autor = book.autor;
+    this.publicationDate = book.fechaPublicacion;
+    this.descripcion = book.descripcion;
+    localStorage.setItem('bookToBuy',this.title);
     this.tilteo()
   },
 }
