@@ -8,7 +8,7 @@
         <router-link to="/explorer" class="textIndex">Explorer</router-link>
       </div>
       <div class="novedades flexing">
-        <router-link to="/profile" class="textIndex">Perfil</router-link>
+        <router-link to="/profile" class="textIndex">Profile</router-link>
       </div>
       <div class="contacto flexing">
         <router-link to="/contact" class="textIndex">Contact</router-link>

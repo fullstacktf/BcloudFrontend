@@ -10,7 +10,7 @@
       <span data-text="I">I</span>
       <span data-text="T">T</span>
       <span data-text="E">E</span>
-      <span data-text=".">.</span>
+      <span data-text=" "></span>
       <span data-text="B">B</span>
       <span data-text="O">O</span>
       <span data-text="O">O</span>

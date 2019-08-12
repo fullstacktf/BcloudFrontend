@@ -11,7 +11,10 @@ import { setTimeout } from 'timers'
 export default {
   name: 'bookButtons',
   props: {
-    messages: Array,
+    messages: {
+      type: Array,
+      default: "Click Here"
+    },
     css: {
       type: String,
       default: 'confirmation__button',

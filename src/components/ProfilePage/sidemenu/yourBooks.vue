@@ -5,7 +5,7 @@
       <span data-text="O">O</span>
       <span data-text="U">U</span>
       <span data-text="R">R</span>
-      <span data-text=".">.</span>
+      <span data-text=""></span>
       <span data-text="B">B</span>
       <span data-text="O">O</span>
       <span data-text="O">O</span>
