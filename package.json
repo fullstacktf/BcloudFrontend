@@ -12,7 +12,7 @@
     "parcelserverregister": "parcel src/register/register.html --open",
     "stylelinter": "stylelint src/css/index.css",
     "crearStylelintrc": "code .styleintrc",
-    "parcelproduccion": "parcel build src/index.html -d build"
+    "build": "parcel build src/index.html -d build --no-cache"
   },
   "author": "",
   "license": "ISC",
@@ -46,8 +46,11 @@
     "compass": "^0.1.1",
     "compass-mixins": "^0.12.10",
     "epubjs": "^0.3.84",
+    "express": "^4.17.1",
     "form-data": "^2.5.0",
+    "http-proxy-middleware": "^0.19.1",
     "index": "^0.4.0",
+    "parcel-bundler": "^1.12.3",
     "vanilla-tilt": "^1.7.0",
     "vue": "^2.6.10",
     "vue-carousel": "^0.18.0",

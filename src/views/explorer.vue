@@ -59,7 +59,7 @@ export default {
 
   created() {
     this.$http
-      .get('http://localhost:8081/api/books/getallbooks')
+      .get('/api/books/getallbooks')
       .then(response => {
         for (let d of response.data) {
           this.books.push(d)
@@ -74,12 +74,12 @@ export default {
     if (localStorage.getItem('email') != null) {
       const user = { email: localStorage.getItem('email') }
       this.$http
-        .post('http://localhost:8081/api/users/getlikes', user)
+        .post('/api/users/getlikes', user)
         .then(response => {
           const data = { likes: response.data }
           console.log(data);
           this.$http
-            .post('http://localhost:8081/api/books/getbookslikes', data)
+            .post('/api/books/getbookslikes', data)
             .then(response => {
               console.log(response.data)
               this.recommendedBooks = response.data
