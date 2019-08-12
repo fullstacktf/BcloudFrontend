@@ -129,7 +129,7 @@ p {
   display: flex;
   text-align: center;
   width: 750px;
-  height: 500px;
+  height: 700px;
   flex-direction: column;
   align-items: center;
   input {

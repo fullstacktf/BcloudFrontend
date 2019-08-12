@@ -1,7 +1,11 @@
 <template>
   <div class="header">
     <div class="headerIzq">
-      <div class="appName"></div>
+      <router-link to="/explorer">
+        <div class="appName">
+          <img src="../../img/color.svg" alt="Logo app">
+        </div>
+      </router-link>
     </div>
     <div class="headerDer">
       <div class="explorador flexing">
@@ -43,6 +47,12 @@ export default {
   z-index: 10;
 }
 
+img {
+  height: 50%;
+  width: 50%;
+  margin-left: 50px;
+}
+
 .headerIzq {
   display: flex;
   justify-content: flex-start;
@@ -58,7 +68,7 @@ export default {
   background-position: center;
   width: 30%;
   height: 90%;
-  background-image: url('../../img/color.svg');
+  /*background-image: url('../../img/color.svg')*/;
 }
 
 .headerDer {

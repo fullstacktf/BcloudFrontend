@@ -27,7 +27,7 @@
             <button id="dislike" class="genericStyle" @click="dislike">
               <i class="far fa-thumbs-down"></i>&nbsp;Dislike
             </button>
-            <bookButtons :messages="['Click Here to Buy','Okey']" class="genericStyle">Buy</bookButtons>
+            <bookButtons :messages="['Click Here to Buy','✔']" class="genericStyle">Buy</bookButtons>
           </div>
         </div>
       </div>

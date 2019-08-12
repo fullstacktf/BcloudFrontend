@@ -34,7 +34,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 
 .container {
-  height: 600px;
+  height: 800px;
   width: 100%;
 }
 
