@@ -30,7 +30,7 @@ import cabecera from '../components/Header/header'
 import foot from '../components/Footer/footer'
 import loginLetrasTop from '../components/LoginPage/loginComponents/loginLetrasTop'
 import loginButtonsBottom from '../components/LoginPage/loginComponents/loginButtonsBottom'
-import { setTimeout } from 'timers';
+import { setTimeout } from 'timers'
 export default {
   name: 'login',
   components: { loginLetrasTop, loginButtonsBottom, cabecera, foot },
@@ -39,7 +39,7 @@ export default {
       email: '',
       password: '',
       message: '',
-      step: 0
+      step: 0,
     }
   },
   methods: {
@@ -49,21 +49,16 @@ export default {
         .post('http://localhost:8081/api/users/login', data)
         .then(response => {
           if (response.data.token != undefined) {
-            localStorage.setItem('email', this.email);
-            localStorage.setItem('jwt', response.data.token);
-            this.$router.push('/');
-          } 
-          else
-            this.message = response.data.message
-        });
+            localStorage.setItem('email', this.email)
+            localStorage.setItem('jwt', response.data.token)
+            this.$router.push('/')
+          } else this.message = response.data.message
+        })
     },
-    incrementStep(){
-      if(this.step < 1)
-        this.step++;
-      else
-        this.login();
-    }
-    
+    incrementStep() {
+      if (this.step < 1) this.step++
+      else this.login()
+    },
   },
 }
 </script>
@@ -148,5 +143,9 @@ p {
       background-position: 1rem 50%;
     }
   }
+}
+
+input:focus {
+  outline: 1px solid white;
 }
 </style>

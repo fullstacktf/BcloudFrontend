@@ -55,7 +55,7 @@
             @blur="toFrontCard"
           />
         </form>
-        <buyButtonsBottom @click.native=incrementStep></buyButtonsBottom>
+        <buyButtonsBottom @click.native="incrementStep"></buyButtonsBottom>
         <p>{{message}}</p>
       </div>
       <span></span>
@@ -80,7 +80,7 @@ export default {
       message: '',
       book: '',
       user: '',
-      step: 0 
+      step: 0,
     }
   },
 
@@ -88,7 +88,7 @@ export default {
     this.book = localStorage.getItem('bookToBuy')
     this.user = localStorage.getItem('email')
     localStorage.removeItem('bookToBuy')
-    console.log(this.book);
+    console.log(this.book)
   },
 
   methods: {
@@ -117,12 +117,10 @@ export default {
       const card = this.$el.querySelector('.card')
       card.classList.remove('emulateHover')
     },
-    incrementStep(){
-      if(this.step < 1)
-        this.step++;
-      else
-        this.buy();
-    }
+    incrementStep() {
+      if (this.step < 1) this.step++
+      else this.buy()
+    },
   },
 }
 </script>
@@ -159,7 +157,7 @@ span {
   padding: 0.5rem 1rem;
   background-color: transparent;
   text-align: center;
-  margin-top: 1.5rem;
+  margin-top: 5.5rem;
   margin-bottom: 1.5rem;
   width: 400px;
   height: 100%;
@@ -169,7 +167,7 @@ span {
 }
 
 input:focus {
-  outline: 1px solid #ff7e05;
+  outline: 1px solid white;
 }
 
 input {

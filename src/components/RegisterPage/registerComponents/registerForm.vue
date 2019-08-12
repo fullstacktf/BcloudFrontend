@@ -142,6 +142,10 @@ input {
   }
 }
 
+input:focus {
+  outline: 1px solid white;
+}
+
 p {
   color: $base-color;
 }

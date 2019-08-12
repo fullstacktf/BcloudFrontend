@@ -27,7 +27,7 @@
             <button id="dislike" class="genericStyle" @click="dislike">
               <i class="far fa-thumbs-down"></i>&nbsp;Dislike
             </button>
-            <button class="genericStyle" @click="buy">Buy</button>
+            <bookButtons class="genericStyle">Buy</bookButtons>
           </div>
         </div>
       </div>
@@ -40,6 +40,7 @@
 import tilt from 'vanilla-tilt'
 import cabecera from '../components/Header/header'
 import foot from '../components/Footer/footer'
+import bookButtons from '../components/BookPage/bookButtons'
 import { constants } from 'crypto'
 export default {
   data: () => {
@@ -55,7 +56,7 @@ export default {
       booksUser: [],
     }
   },
-  components: { cabecera, foot },
+  components: { cabecera, foot, bookButtons },
 
   methods: {
     like() {
@@ -67,7 +68,6 @@ export default {
       }
     },
     tilteo() {
-      console.log('hola')
       tilt.init(document.querySelectorAll('.photoContainer'), {
         scale: '1.05',
         glare: true,
@@ -83,19 +83,14 @@ export default {
       const data = { email: localStorage.getItem('email'), title: this.title }
       this.$http.post('http://localhost:8081/api/users/dislike', data)
     },
-
-    buy() {
-      localStorage.setItem('bookToBuy', this.title)
-      this.$router.push('/buy/')
-    },
   },
   mounted() {
     const data = { email: localStorage.getItem('email') }
     this.$http
       .post('http://localhost:8081/api/users/booksUser', data)
       .then(response => {
-        this.booksUser = response.data.librosFavoritos;
-        console.log(this.booksUser);
+        this.booksUser = response.data.librosFavoritos
+        console.log(this.booksUser)
         let getter = localStorage.getItem('book')
 
         for (const book of this.booksUser) {
@@ -122,6 +117,9 @@ export default {
 
 <style scoped>
 .genericStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   border: 1px solid #fb1;
   margin-top: 20px;
@@ -212,7 +210,6 @@ export default {
 }
 
 button:hover {
-  border-color: blue;
   background-color: green;
 }
 </style>
