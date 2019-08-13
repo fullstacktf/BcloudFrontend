@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     goBook(book) {
-      this.$router.push('/epub')
+      this.$router.push('/epub');
     },
     tilteo() {
       tilt.init(document.querySelectorAll('.imagenes'), {
@@ -30,7 +30,7 @@ export default {
   created() {
     const data = { email: localStorage.getItem('email') }
     this.$http
-      .post('http://localhost:8081/api/users/booksUser', data)
+      .post('/api/users/booksUser', data)
       .then(response => {
         this.books = response.data.librosAdquiridos;
         console.log(this.books);

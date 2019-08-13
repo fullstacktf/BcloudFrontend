@@ -18,7 +18,11 @@
         <p>want to contact to give us suggestions</p>
         <p>or advice you can do it here</p>
         <p class="text-right">Bcloud@gmail.com</p>
+<<<<<<< HEAD
         <p class="text-right">BclouD Team :)</p>
+=======
+        <p class="text-right">Bcloud Team :)</p>
+>>>>>>> b5df6ea22d9b1e9f4777178a4f5ddabf24c276ac
       </div>
     </div>
   </div>

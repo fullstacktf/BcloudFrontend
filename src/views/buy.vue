@@ -44,15 +44,16 @@
       </div>
       <div class="form">
         <form>
-          <input v-model="number" placeholder="  Card number" type="tel" />
-          <input v-model="name" placeholder="  Full name" type="text" />
-          <input v-model="expireDate" placeholder="  MM/YY" type="text" />
+          <input v-model="number" placeholder="  Card number" type="tel" maxlength="16" size="16"/>
+          <input v-model="name" placeholder="  Full name" type="text" maxlength="35" size="35"/>
+          <input v-model="expireDate" placeholder="  MM/YY" type="text" maxlength="5" size="5"/>
           <input
             v-model="cvc"
             placeholder="  CVC"
             type="text"
             @click="toBackCard"
             @blur="toFrontCard"
+            maxlength="3" size="3"
           />
         </form>
         <buyButtonsBottom @click.native="incrementStep"></buyButtonsBottom>
@@ -69,6 +70,7 @@ import cabecera from '../components/Header/header'
 import foot from '../components/Footer/footer'
 import buyLetrasTop from '../components/BuyPage/buyComponents/buyLetrasTop'
 import buyButtonsBottom from '../components/BuyPage/buyComponents/buyButtonsBottom'
+import { get } from 'http';
 export default {
   components: { buyLetrasTop, buyButtonsBottom, cabecera, foot },
   data() {
@@ -85,10 +87,10 @@ export default {
   },
 
   mounted() {
-    this.book = localStorage.getItem('bookToBuy')
-    this.user = localStorage.getItem('email')
-    localStorage.removeItem('bookToBuy')
-    console.log(this.book)
+    this.book = localStorage.getItem('bookToBuy');
+    this.user = localStorage.getItem('email');
+    localStorage.removeItem('bookToBuy');
+    console.log(this.book);
   },
 
   methods: {
@@ -101,9 +103,9 @@ export default {
       ) {
         const data = { email: this.user, title: this.book }
         this.$http
-          .post('http://localhost:8081/api/users/buybook', data)
+          .post('/api/users/buybook', data)
           .then(response => {
-            this.message = '¡Comprado con éxito!'
+            this.message = '¡Comprado con éxito!';
           })
       } else {
         this.message = '¡Asegúrate de que todos los datos están completos!'

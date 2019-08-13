@@ -43,8 +43,7 @@ export default {
   methods: {
     buy() {
       setTimeout(() => {
-        localStorage.setItem('bookToBuy', this.title)
-        this.$router.push('/buy/')
+        this.$router.push('/buy/');
       }, 750)
     },
     incrementStep() {

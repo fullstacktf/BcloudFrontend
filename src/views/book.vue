@@ -64,7 +64,7 @@ export default {
       like.classList.toggle('liked')
       if (like.classList.contains('liked')) {
         const data = { email: localStorage.getItem('email'), title: this.title }
-        this.$http.post('http://localhost:8081/api/users/like', data)
+        this.$http.post('/api/users/like', data)
       }
     },
     tilteo() {
@@ -81,13 +81,13 @@ export default {
       dislike.classList.toggle('liked')
       like.classList.toggle('liked')
       const data = { email: localStorage.getItem('email'), title: this.title }
-      this.$http.post('http://localhost:8081/api/users/dislike', data)
+      this.$http.post('/api/users/dislike', data)
     },
   },
   mounted() {
     const data = { email: localStorage.getItem('email') }
     this.$http
-      .post('http://localhost:8081/api/users/booksUser', data)
+      .post('/api/users/booksUser', data)
       .then(response => {
         this.booksUser = response.data.librosFavoritos
         console.log(this.booksUser)
@@ -103,13 +103,14 @@ export default {
         if (this.booksUser.includes(book)) console.log('le gusta')
       })
 
-    let getter = localStorage.getItem('book')
-    const book = JSON.parse(getter)
-    this.imageUrl = book.imageUrl
-    this.title = book.titulo
-    this.autor = book.autor
-    this.publicationDate = book.fechaPublicacion
-    this.descripcion = book.descripcion
+    let getter = localStorage.getItem('book');
+    const book = JSON.parse(getter);
+    this.imageUrl = book.imageUrl;
+    this.title = book.titulo;
+    this.autor = book.autor;
+    this.publicationDate = book.fechaPublicacion;
+    this.descripcion = book.descripcion;
+    localStorage.setItem('bookToBuy',this.title);
     this.tilteo()
   },
 }
