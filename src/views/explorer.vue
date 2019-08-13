@@ -1,8 +1,10 @@
 <template>
-  <div class="container">
+  <div>
     <cabecera></cabecera>
-    <explorerContenedorPortadas></explorerContenedorPortadas>
-    <explorerCarouselPortadas></explorerCarouselPortadas>
+    <div class="container">
+      <explorerContenedorPortadas></explorerContenedorPortadas>
+      <explorerCarouselPortadas></explorerCarouselPortadas>
+    </div>
     <foot></foot>
   </div>
 </template>
@@ -81,8 +83,7 @@ export default {
 
 <style scoped>
 .container {
-  height: 1000px;
-  background-color: rgba(0, 0, 0, 0.78);
+  height: 1400px;
 }
 
 .imagenes {
