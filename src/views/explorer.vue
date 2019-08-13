@@ -73,24 +73,25 @@ export default {
 
     if (localStorage.getItem('email') != null) {
       const user = { email: localStorage.getItem('email') }
-      this.$http
-        .post('/api/users/getlikes', user)
-        .then(response => {
-          const data = { likes: response.data }
-          console.log(data);
-          this.$http
-            .post('/api/books/getbookslikes', data)
-            .then(response => {
-              console.log(response.data)
-              this.recommendedBooks = response.data
-            })
-        })
-        .then(() => {
-          this.tilteo()
-        })
+      this.$http.post('/api/users/getlikes', user).then(response => {
+        const data = { likes: response.data }
+        console.log(data)
+        this.$http
+          .post('/api/books/getbookslikes', data)
+          .then(response => {
+            console.log(response.data)
+            this.recommendedBooks = response.data
+          })
+          .then(() => {
+            this.tilteo()
+          })
+        this.tilteo()
+      })
+      this.tilteo()
     } else {
       this.slides = this.recommendedBooks.length
       this.recommendedBooks = this.books
+      this.tilteo()
     }
   },
 }
