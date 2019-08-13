@@ -44,15 +44,16 @@
       </div>
       <div class="form">
         <form>
-          <input v-model="number" placeholder="  Card number" type="tel" />
-          <input v-model="name" placeholder="  Full name" type="text" />
-          <input v-model="expireDate" placeholder="  MM/YY" type="text" />
+          <input v-model="number" placeholder="  Card number" type="tel" maxlength="16" size="16"/>
+          <input v-model="name" placeholder="  Full name" type="text" maxlength="35" size="35"/>
+          <input v-model="expireDate" placeholder="  MM/YY" type="text" maxlength="5" size="5"/>
           <input
             v-model="cvc"
             placeholder="  CVC"
             type="text"
             @click="toBackCard"
             @blur="toFrontCard"
+            maxlength="3" size="3"
           />
         </form>
         <buyButtonsBottom @click.native="incrementStep"></buyButtonsBottom>
