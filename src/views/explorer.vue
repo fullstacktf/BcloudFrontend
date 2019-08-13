@@ -27,6 +27,7 @@ import tilt from 'vanilla-tilt'
 import cabecera from '../components/Header/header'
 import foot from '../components/Footer/footer'
 import { Carousel3d, Slide } from 'vue-carousel-3d'
+import { setTimeout } from 'timers'
 
 export default {
   name: 'contenedorImages',
@@ -72,26 +73,21 @@ export default {
       })
 
     if (localStorage.getItem('email') != null) {
+      setTimeout(() => {
+        this.tilteo()
+      }, 2000)
       const user = { email: localStorage.getItem('email') }
       this.$http.post('/api/users/getlikes', user).then(response => {
         const data = { likes: response.data }
         console.log(data)
-        this.$http
-          .post('/api/books/getbookslikes', data)
-          .then(response => {
-            console.log(response.data)
-            this.recommendedBooks = response.data
-          })
-          .then(() => {
-            this.tilteo()
-          })
-        this.tilteo()
+        this.$http.post('/api/books/getbookslikes', data).then(response => {
+          console.log(response.data)
+          this.recommendedBooks = response.data
+        })
       })
-      this.tilteo()
     } else {
       this.slides = this.recommendedBooks.length
       this.recommendedBooks = this.books
-      this.tilteo()
     }
   },
 }
