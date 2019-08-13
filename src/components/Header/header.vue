@@ -3,7 +3,7 @@
     <div class="headerIzq">
       <router-link to="/explorer">
         <div class="appName">
-          <img src="../../img/color.svg" alt="Logo app">
+          <img src="../../img/color.svg" alt="Logo app" />
         </div>
       </router-link>
     </div>
@@ -21,7 +21,7 @@
         <router-link to="/login" class="textIndex">Login</router-link>
       </div>
       <div class="register flexing">
-        <router-link to="/register" class="textIndex">Register</router-link>
+        <router-link to="/register" class="textIndex">Sign Up</router-link>
       </div>
     </div>
   </div>
@@ -68,7 +68,7 @@ img {
   background-position: center;
   width: 30%;
   height: 90%;
-  /*background-image: url('../../img/color.svg')*/;
+  /*background-image: url('../../img/color.svg')*/
 }
 
 .headerDer {

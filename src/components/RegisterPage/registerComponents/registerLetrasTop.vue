@@ -1,14 +1,13 @@
 <template>
   <div class="frase">
     <p aria-label="Registro">
-      <span data-text="R">R</span>
-      <span data-text="E">E</span>
-      <span data-text="G">G</span>
-      <span data-text="I">I</span>
       <span data-text="S">S</span>
-      <span data-text="T">T</span>
-      <span data-text="E">E</span>
-      <span data-text="R">R</span>
+      <span data-text="I">I</span>
+      <span data-text="G">G</span>
+      <span data-text="N">N</span>
+      <span data-text=" "></span>
+      <span data-text="U">U</span>
+      <span data-text="P">P</span>
     </p>
   </div>
 </template>

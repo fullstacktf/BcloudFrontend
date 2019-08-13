@@ -10,8 +10,8 @@
           <h3 class="rating genericStyle">Rating: {{valoracion}}/10</h3>
           <h3 class="PublDate genericStyle">Publication date: {{publicationDate}}</h3>
           <h4 class="description genericStyle">Description: {{descripcion}}</h4>
-          <div class="prices">
-            <h2 class="genericStyle">
+          <div class="prices genericStyle">
+            <h2>
               Price: Now: ${{price}} &nbsp;
               before: &nbsp;
               <span
@@ -21,13 +21,13 @@
           </div>
 
           <div class="buttons">
-            <button id="like" class="genericStyle" @click="like">
-              <i class="fa fa-heart"></i>&nbsp;Like
+            <button id="like" @click="like">
+              <i class="fas fa-thumbs-up"></i>
             </button>
-            <button id="dislike" class="genericStyle" @click="dislike">
-              <i class="far fa-thumbs-down"></i>&nbsp;Dislike
+            <button id="dislike" @click="dislike">
+              <i class="fas fa-thumbs-down"></i>
             </button>
-            <bookButtons :messages="['Click Here to Buy','✔']" class="genericStyle">Buy</bookButtons>
+            <bookButtons :messages="['Click Here to Buy','✔']" class="buttonToBuy">Buy</bookButtons>
           </div>
         </div>
       </div>
@@ -61,7 +61,14 @@ export default {
   methods: {
     like() {
       let like = document.querySelector('#like')
+      let dislike = document.querySelector('#dislike')
       like.classList.toggle('liked')
+      like.classList.add('animated', 'bounceIn')
+
+      if (dislike.classList.contains('liked')) {
+        dislike.classList.toggle('liked')
+        dislike.classList.remove('animated', 'bounceIn')
+      }
       if (like.classList.contains('liked')) {
         const data = { email: localStorage.getItem('email'), title: this.title }
         this.$http.post('/api/users/like', data)
@@ -79,7 +86,11 @@ export default {
       let dislike = document.querySelector('#dislike')
       let like = document.querySelector('#like')
       dislike.classList.toggle('liked')
-      like.classList.toggle('liked')
+      dislike.classList.add('animated', 'bounceIn')
+      if (like.classList.contains('liked')) {
+        like.classList.toggle('liked')
+        like.classList.remove('animated', 'bounceIn')
+      }
       const data = { email: localStorage.getItem('email'), title: this.title }
       this.$http.post('/api/users/dislike', data)
     },
@@ -115,13 +126,59 @@ export default {
 </script>
 
 <style scoped>
-.genericStyle {
+#dislike.liked {
+  transition: color 0.3s ease-out;
+  color: #eb4c38;
+}
+
+#dislike {
+  width: 30px;
+  color: #fb1;
+  background-color: transparent;
+  border: 0;
+  font-size: 40px;
+}
+
+#dislike:hover {
+  color: white;
+}
+
+#like.liked {
+  transition: color 0.3s ease-out;
+  color: #6deb1c;
+}
+
+#like {
+  width: 30px;
+  color: #fb1;
+  background-color: transparent;
+  border: 0;
+  font-size: 40px;
+}
+
+#like:hover {
+  color: white;
+}
+
+.buttonToBuy {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   border: 1px solid #fb1;
   margin-top: 20px;
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  color: black;
+}
+
+.genericStyle {
+  color: #fb1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #fb1;
   font-family: 'Raleway', sans-serif;
   width: 100%;
 }
@@ -149,12 +206,15 @@ export default {
 .buttons {
   grid-area: buttons;
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .prices {
   width: 400px;
   grid-area: price;
+  margin-bottom: 20px;
 }
 
 .backgroundContent {
@@ -163,7 +223,7 @@ export default {
 }
 
 .container {
-  height: 600px;
+  height: 700px;
   width: 700px;
   display: flex;
   justify-content: center;
@@ -175,15 +235,15 @@ export default {
   width: 350px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: 80px 80px 80px 80px 80px 80px 80px;
   grid-template-areas:
     'titulo'
     'rating'
     'PublDate'
     'description'
     'author'
-    'buttons'
-    'price';
+    'price'
+    'buttons';
 }
 
 .photoContainer {
@@ -198,14 +258,6 @@ export default {
   text-decoration: line-through;
   text-decoration-color: red;
   color: red;
-}
-
-* {
-  color: #fb1;
-}
-
-.liked {
-  background-color: blue;
 }
 
 button:hover {
