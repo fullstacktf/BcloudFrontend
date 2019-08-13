@@ -1,28 +1,24 @@
 <template>
-  <div>
-    <cabecera></cabecera>
-    <explorerContenedorPortadas></explorerContenedorPortadas>
-    <explorerCarouselPortadas></explorerCarouselPortadas>
-    <foot></foot>
+  <div class="containerCarousel">
+    <carousel-3d :width="300" :height="460" :count="3" :autoplay="true">
+      <slide v-for="(recommendedBook, i) in 5" :key="i" :index="i">
+        <img
+          @click="book(recommendedBooks[i])"
+          class="imageneses"
+          :src="recommendedBooks[i].imageUrl"
+        />
+      </slide>
+    </carousel-3d>
   </div>
 </template>
 
 <script>
-import tilt from 'vanilla-tilt'
-import cabecera from '../components/Header/header'
-import foot from '../components/Footer/footer'
-import { setTimeout } from 'timers'
-import explorerContenedorPortadas from '../components/ExplorerPage/explorerContenedorPortadas'
-import explorerCarouselPortadas from '../components/ExplorerPage/explorerCarouselPortadas'
-
+import { Carousel3d, Slide } from 'vue-carousel-3d'
 export default {
-  name: 'contenedorImages',
+  name: 'explorerCarouselPortadas',
   components: {
-    tilt,
-    cabecera,
-    foot,
-    explorerContenedorPortadas,
-    explorerCarouselPortadas,
+    Carousel3d,
+    Slide,
   },
   data: function() {
     return {
@@ -34,8 +30,11 @@ export default {
       a: '',
     }
   },
-
   methods: {
+    book(book) {
+      localStorage.setItem('book', JSON.stringify(book))
+      this.$router.push('/book')
+    },
     tilteo() {
       tilt.init(document.querySelectorAll('.imagenes'), {
         scale: '1.05',
@@ -44,7 +43,6 @@ export default {
       })
     },
   },
-
   created() {
     this.$http
       .get('/api/books/getallbooks')
@@ -80,26 +78,6 @@ export default {
 </script>
 
 <style scoped>
-.imagenes {
-  cursor: pointer;
-  display: inline-block;
-  width: 150px;
-  height: 230px;
-  font-size: initial;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.portadas {
-  width: 100%;
-  height: 100%;
-}
-
-/* .carousel-3d-slider .carousel-3d-slide {
-  opacity: 1;
-  overflow: visible;
-} */
-
 .imageneses {
   cursor: pointer;
   display: inline-block;
@@ -108,17 +86,5 @@ export default {
   font-size: initial;
   background-size: cover;
   background-repeat: no-repeat;
-}
-
-.contenedorPortadas {
-  max-width: 920px;
-  max-height: 500px;
-  margin: 0 auto;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.contenedorPortadas::-webkit-scrollbar {
-  display: none;
 }
 </style>
