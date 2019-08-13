@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <cabecera></cabecera>
     <explorerContenedorPortadas></explorerContenedorPortadas>
     <explorerCarouselPortadas></explorerCarouselPortadas>
@@ -80,6 +80,11 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  height: 1000px;
+  background-color: rgba(0, 0, 0, 0.78);
+}
+
 .imagenes {
   cursor: pointer;
   display: inline-block;
