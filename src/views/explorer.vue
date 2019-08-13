@@ -73,27 +73,20 @@ export default {
       })
 
     if (localStorage.getItem('email') != null) {
-      setTimeout(() => {
-        this.tilteo()
-        tilteo()
-      }, 1500)
+      // setTimeout(() => {
+      //   this.tilteo()
+      //   tilteo()
+      // }, 750)
+      this.tilteo()
       const user = { email: localStorage.getItem('email') }
       this.tilteo()
-      this.$http
-        .post('/api/users/getlikes', user)
-        .then(response => {
-          this.tilteo()
-          const data = { likes: response.data }
-          this.$http.post('/api/books/getbookslikes', data).then(response => {
-            this.tilteo()
-            this.recommendedBooks = response.data
-          })
+      this.$http.post('/api/users/getlikes', user).then(response => {
+        const data = { likes: response.data }
+        this.$http.post('/api/books/getbookslikes', data).then(response => {
+          this.recommendedBooks = response.data
         })
-        .then(() => {
-          this.tilteo()
-        })
+      })
     } else {
-      this.tilteo()
       this.slides = this.recommendedBooks.length
       this.recommendedBooks = this.books
     }
