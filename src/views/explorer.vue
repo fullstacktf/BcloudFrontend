@@ -85,6 +85,9 @@ export default {
               this.recommendedBooks = response.data
             })
         })
+        .then(() => {
+          this.tilteo()
+        })
     } else {
       this.slides = this.recommendedBooks.length
       this.recommendedBooks = this.books
