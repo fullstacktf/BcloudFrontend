@@ -14,6 +14,7 @@
 
 <script>
 import { Carousel3d, Slide } from 'vue-carousel-3d'
+import tilt from 'vanilla-tilt'
 export default {
   name: 'explorerCarouselPortadas',
   components: {

@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import tilt from 'vanilla-tilt'
 export default {
   name: 'explorerContenedorPortadas',
   data: function() {
@@ -33,10 +34,6 @@ export default {
     },
   },
   created() {
-    setTimeout(() => {
-      this.tilteo()
-      tilteo()
-    }, 750)
     this.$http
       .get('/api/books/getallbooks')
       .then(response => {
