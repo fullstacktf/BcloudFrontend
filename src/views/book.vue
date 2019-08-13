@@ -224,7 +224,7 @@ export default {
 }
 
 .container {
-  height: 700px;
+  height: 800px;
   width: 700px;
   display: flex;
   justify-content: center;
@@ -232,7 +232,7 @@ export default {
 
 .contenido {
   font-family: 'Raleway', sans-serif;
-  height: 700px;
+  height: 650px;
   width: 350px;
   display: grid;
   grid-template-columns: 1fr;
@@ -248,7 +248,7 @@ export default {
 }
 
 .photoContainer {
-  margin-top: 20px;
+  margin-top: 50px;
   margin-right: 50px;
   grid-area: photoContainer;
   max-height: 559px;
@@ -257,11 +257,7 @@ export default {
 
 .tachado {
   text-decoration: line-through;
-  text-decoration-color: red;
-  color: red;
-}
-
-button:hover {
-  background-color: green;
+  text-decoration-color: #eb4c38;
+  color: #eb4c38;
 }
 </style>

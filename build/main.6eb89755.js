@@ -616,4 +616,4 @@ var t;!function(e,r){"object"==typeof exports&&"object"==typeof module?module.ex
 },{"vue":"ApMz","vue-router":"7ov2","../views/book":"OUFe","../views/buy":"2Ch6","../views/admin":"P5BI","../views/profile":"aoAG","../views/login":"RO+A","../views/explorer":"9UDT","../views/register":"YEdp","../views/contact":"sjrU","../views/epub":"xu+V"}],"epB2":[function(require,module,exports) {
 "use strict";var e=p(require("vue")),t=p(require("./app")),u=p(require("axios")),r=p(require("./routes/index"));function p(e){return e&&e.__esModule?e:{default:e}}e.default.prototype.$http=u.default,new e.default({el:"#app",components:{App:t.default},router:r.default,template:"<app/>"});
 },{"vue":"ApMz","./app":"hWNS","axios":"dZBD","./routes/index":"u1A/"}]},{},["epB2"], null)
-//# sourceMappingURL=/main.9ef1108b.js.map
+//# sourceMappingURL=/main.6eb89755.js.map
