@@ -83,7 +83,7 @@ export default {
 
 <style scoped>
 .container {
-  height: 1400px;
+  height: 1200px;
 }
 
 .imagenes {
