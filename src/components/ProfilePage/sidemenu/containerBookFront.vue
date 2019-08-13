@@ -11,12 +11,12 @@ export default {
   name: 'containerBookFront',
   data: function() {
     return {
-      books: []
+      books: [],
     }
   },
   methods: {
     goBook(book) {
-      this.$router.push('/epub');
+      this.$router.push('/epub')
     },
     tilteo() {
       tilt.init(document.querySelectorAll('.imagenes'), {
@@ -28,12 +28,16 @@ export default {
   },
 
   created() {
+    setTimeout(() => {
+      this.tilteo()
+      tilteo()
+    }, 750)
     const data = { email: localStorage.getItem('email') }
     this.$http
       .post('/api/users/booksUser', data)
       .then(response => {
-        this.books = response.data.librosAdquiridos;
-        console.log(this.books);
+        this.books = response.data.librosAdquiridos
+        console.log(this.books)
         let getter = localStorage.getItem('book')
 
         for (const book of this.booksUser) {
@@ -44,6 +48,9 @@ export default {
         }
 
         if (this.booksUser.includes(book)) console.log('le gusta')
+      })
+      .then(() => {
+        this.tilteo()
       })
   },
 }
