@@ -83,7 +83,7 @@ export default {
 
 <style scoped>
 .container {
-  height: 1200px;
+  height: 1100px;
 }
 
 .imagenes {
@@ -100,11 +100,6 @@ export default {
   width: 100%;
   height: 100%;
 }
-
-/* .carousel-3d-slider .carousel-3d-slide {
-  opacity: 1;
-  overflow: visible;
-} */
 
 .imageneses {
   cursor: pointer;
