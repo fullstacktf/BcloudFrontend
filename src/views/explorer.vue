@@ -73,15 +73,12 @@ export default {
       })
 
     if (localStorage.getItem('email') != null) {
-      setTimeout(() => {
-        this.tilteo()
-      }, 2000)
       const user = { email: localStorage.getItem('email') }
       this.$http.post('/api/users/getlikes', user).then(response => {
+        this.tilteo()
         const data = { likes: response.data }
-        console.log(data)
         this.$http.post('/api/books/getbookslikes', data).then(response => {
-          console.log(response.data)
+          this.tilteo()
           this.recommendedBooks = response.data
         })
       })
