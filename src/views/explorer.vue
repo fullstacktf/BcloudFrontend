@@ -43,6 +43,10 @@ export default {
     }
   },
 
+  mounted() {
+    this.tilteo()
+  },
+
   methods: {
     tilteo() {
       tilt.init(document.querySelectorAll('.imagenes'), {
