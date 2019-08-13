@@ -220,6 +220,7 @@ export default {
 .backgroundContent {
   display: flex;
   justify-content: center;
+  height: 800px;
 }
 
 .container {
@@ -235,7 +236,7 @@ export default {
   width: 350px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 80px 80px 80px 80px 80px 80px 80px;
+  grid-template-rows: 1fr 80px 80px 1fr 80px 80px 80px;
   grid-template-areas:
     'titulo'
     'rating'

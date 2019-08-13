@@ -26,58 +26,6 @@ export default {
     explorerContenedorPortadas,
     explorerCarouselPortadas,
   },
-  data: function() {
-    return {
-      recommendedBooks: [],
-      portadas: 0,
-      slides: 0,
-      books: [],
-      img: '',
-      a: '',
-    }
-  },
-
-  methods: {
-    tilteo() {
-      tilt.init(document.querySelectorAll('.imagenes'), {
-        scale: '1.05',
-        glare: true,
-        maxGlare: '0.3',
-      })
-    },
-  },
-
-  created() {
-    this.$http
-      .get('/api/books/getallbooks')
-      .then(response => {
-        for (let d of response.data) {
-          this.books.push(d)
-        }
-        this.slides = this.recommendedBooks.length
-        this.portadas = this.books.length
-      })
-      .then(() => {
-        this.tilteo()
-      })
-
-    if (localStorage.getItem('email') != null) {
-      setTimeout(() => {
-        this.tilteo()
-        tilteo()
-      }, 750)
-      const user = { email: localStorage.getItem('email') }
-      this.$http.post('/api/users/getlikes', user).then(response => {
-        const data = { likes: response.data }
-        this.$http.post('/api/books/getbookslikes', data).then(response => {
-          this.recommendedBooks = response.data
-        })
-      })
-    } else {
-      this.slides = this.recommendedBooks.length
-      this.recommendedBooks = this.books
-    }
-  },
 }
 </script>
 

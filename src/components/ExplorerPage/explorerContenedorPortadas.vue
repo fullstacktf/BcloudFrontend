@@ -33,6 +33,10 @@ export default {
     },
   },
   created() {
+    setTimeout(() => {
+      this.tilteo()
+      tilteo()
+    }, 750)
     this.$http
       .get('/api/books/getallbooks')
       .then(response => {

@@ -115,6 +115,7 @@ div .epub-reading-progress-bar {
   top: 720px;
   left: 50%;
   z-index: 1;
+  display: none;
 }
 
 div #area {
@@ -129,9 +130,15 @@ div .optionsContainer {
 
 div div div .hover {
   position: relative;
-  left: -150px;
+  left: -40px;
   width: 300px;
-  top: -50px;
+  top: -20px;
+}
+
+div div button.buton {
+  position: relative;
+  bottom: -60px;
+  left: 100px;
 }
 
 div div button.my-find {
