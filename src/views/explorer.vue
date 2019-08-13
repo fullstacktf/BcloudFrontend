@@ -73,6 +73,10 @@ export default {
       })
 
     if (localStorage.getItem('email') != null) {
+      setTimeout(() => {
+        this.tilteo()
+        tilteo()
+      }, 1500)
       const user = { email: localStorage.getItem('email') }
       this.tilteo()
       this.$http

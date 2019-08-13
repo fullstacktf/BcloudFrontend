@@ -86,31 +86,29 @@ export default {
   },
   mounted() {
     const data = { email: localStorage.getItem('email') }
-    this.$http
-      .post('/api/users/booksUser', data)
-      .then(response => {
-        this.booksUser = response.data.librosFavoritos
-        console.log(this.booksUser)
-        let getter = localStorage.getItem('book')
+    this.$http.post('/api/users/booksUser', data).then(response => {
+      this.booksUser = response.data.librosFavoritos
+      console.log(this.booksUser)
+      let getter = localStorage.getItem('book')
 
-        for (const book of this.booksUser) {
-          if (getter == JSON.stringify(book)) {
-            let like = document.querySelector('#like')
-            like.classList.add('liked')
-          }
+      for (const book of this.booksUser) {
+        if (getter == JSON.stringify(book)) {
+          let like = document.querySelector('#like')
+          like.classList.add('liked')
         }
+      }
 
-        if (this.booksUser.includes(book)) console.log('le gusta')
-      })
+      if (this.booksUser.includes(book)) console.log('le gusta')
+    })
 
-    let getter = localStorage.getItem('book');
-    const book = JSON.parse(getter);
-    this.imageUrl = book.imageUrl;
-    this.title = book.titulo;
-    this.autor = book.autor;
-    this.publicationDate = book.fechaPublicacion;
-    this.descripcion = book.descripcion;
-    localStorage.setItem('bookToBuy',this.title);
+    let getter = localStorage.getItem('book')
+    const book = JSON.parse(getter)
+    this.imageUrl = book.imageUrl
+    this.title = book.titulo
+    this.autor = book.autor
+    this.publicationDate = book.fechaPublicacion
+    this.descripcion = book.descripcion
+    localStorage.setItem('bookToBuy', this.title)
     this.tilteo()
   },
 }
